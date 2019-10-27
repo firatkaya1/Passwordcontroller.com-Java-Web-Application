@@ -1,0 +1,103 @@
+@charset "UTF-8";
+* {
+    
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.background-opacity-image {
+  margin:200px 0px 0px 900px;
+  width: 200px;
+  height: 200px;
+  display: block;
+  position: relative;
+  z-index: -1;
+  opacity: 0.6;
+  text-align: center;
+    
+}
+
+
+
+.menu-bar-up { 
+    background-color: orange;
+    padding: 2px;
+}
+
+.menu-bar {
+    
+    background-color: dimgray;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+   
+}
+
+.menu-bar ul {
+    display: inline-flex;
+    list-style: none;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.menu-bar ul li {
+    width: 280px;
+    padding: 25px;
+        
+}
+
+.menu-bar ul li a {
+    text-decoration: none;
+    color:#fff;
+    
+}
+ .active, .menu-bar ul li:hover {
+    background-color: gray;
+    border-radius: 3px;
+    
+}
+.menu-bar ul li a:hover {
+    background-color: gray;
+    border-radius: 3px;
+    color: orange;
+   
+    
+}
+.menu-bar .fa {
+    float: left;
+    width: 35px;
+    font-size: 25px;
+
+}
+.sub-menu-1 {
+    display: none;
+    
+}
+
+.menu-bar ul li:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    background-color:dimgray; 
+    margin-top: 15px;
+    margin-left: -15px;
+    
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul {
+    display: block;
+}
+.logosize {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+    
+}
+
+
+
+
