@@ -45,6 +45,10 @@ public class UserActivities extends HttpServlet {
 			request.setAttribute("userLogsList",userLogs);
 			request.getRequestDispatcher("/useractivities.jsp").forward(request, response);
 		}
+		if(type.equals("exit")) {
+			response.sendRedirect("login.jsp");
+			
+		}
 	}
 
 }

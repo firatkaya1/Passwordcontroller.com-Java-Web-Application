@@ -37,7 +37,7 @@
         </ul>  
       </li>
     <li><a>Premium</a></li>
-    <li id="exit"><a>Exit</a></li>
+    <li id="exit"><a href="login.jsp">Exit</a></li>
   </ul>
 </div>
     

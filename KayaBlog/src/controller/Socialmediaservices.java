@@ -30,6 +30,10 @@ public class Socialmediaservices extends HttpServlet {
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
 		}
+		if(type.equals("exit")) {
+			response.sendRedirect("login.jsp");
+			
+		}
 	}
 
 }

@@ -20,7 +20,7 @@
     <li><a>Home</a></li>
     <li><a href="mainpage.jsp">Manage</a>
        <ul class="dropdown">
-           <li><a href="basictable.jsp">Basic Table</a></li>
+           <li><a href="basictables.jsp">Basic Table</a></li>
             <li><a href="emailservices.jsp">Email Services</a></li>
             <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
             <li><a href="bankservices.jsp">Bank Services</a></li>
@@ -37,15 +37,39 @@
         </ul>  
       </li>
     <li><a>Premium</a></li>
-    <li id="exit"><a>Exit</a></li>
+    <li id="exit"><a href="login.jsp">Exit</a></li>
   </ul>
 </div>
     
 <div class="butonAdd">
-	<form action ="mainpage" method = "post" >
-    <input type="submit" value="ADD" name="submit" class="butons">
-    <input type="submit" value="REFRESH" name="submit" class="butons">
-    </form>
+        <input type="submit" value="ADD" name="submit" class="butons" id="myBtn">
+        <form action ="mainpage" method = "post" >
+            <input type="submit" value="REFRESH" name="submit" class="butons" >
+        </form> 
+    </div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 id="addTitle">Bank Services</h2>
+    </div>
+      
+    <div class="modal-body">
+       <form action="mainpage" method="post">
+            <h4>İd</h4><input type="text" readonly>
+            <h4>Bank Name</h4><input type="text">
+            <h4>Bank Card Number</h4><input type="text">
+            <h4>Bank Card Name</h4><input type="text">
+            <h4>Bank Card Last Date</h4><input type="text">
+            <h4>Bank Card Expiration Date</h4><input type="text">
+            <h4>Explanations</h4><input type="text">
+            <input type="submit" value="SAVE" class="savebutton">
+        </form>
+    </div>      
+</div>
+<script src="popup.js"></script> 
 </div>
 <div class="tables">
     <table>

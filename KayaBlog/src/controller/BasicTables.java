@@ -17,7 +17,7 @@ public class BasicTables extends HttpServlet {
     
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,11 +28,23 @@ public class BasicTables extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<BasicTable> tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 
-		
+
 		if(type.equals("REFRESH")) {
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
 		}
+		else if(type.equals("exit")) {
+			response.sendRedirect("login.jsp");
+		}
+		else if(type.equals("save")) {
+			response.sendRedirect("login.jsp");
+			
+		}
+		else {
+			System.out.println("hata");
+		}
+	
+		
 	}
 
 }

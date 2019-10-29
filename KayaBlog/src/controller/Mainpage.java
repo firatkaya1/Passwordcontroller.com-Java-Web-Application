@@ -20,9 +20,12 @@ public class Mainpage extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String submitType =request.getParameter("Submit");
 		
-		
-		
+		if(submitType.equals("exit")) {
+			response.sendRedirect("login.jsp");
+			
+		}
 		
 	}
 

@@ -33,6 +33,10 @@ public class Emailservices extends HttpServlet {
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
 		}
+		if(type.equals("exit")) {
+			response.sendRedirect("login.jsp");
+			
+		}
 		
 	}
 

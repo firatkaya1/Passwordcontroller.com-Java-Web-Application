@@ -20,7 +20,7 @@
     <li><a>Home</a></li>
     <li><a href="mainpage.jsp">Manage</a>
        <ul class="dropdown">
-           <li><a href="basictable.jsp">Basic Table</a></li>
+            <li><a href="basictable.jsp">Basic Table</a></li>
             <li><a href="emailservices.jsp">Email Services</a></li>
             <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
             <li><a href="bankservices.jsp">Bank Services</a></li>
@@ -37,7 +37,7 @@
         </ul>  
       </li>
     <li><a>Premium</a></li>
-    <li id="exit"><a>Exit</a></li>
+    <li id="exit"><a href="login.jsp">Exit</a></li>
   </ul>
 </div>
     
