@@ -101,19 +101,22 @@ public class UserLoginDB {
 			int id=0;
 			while(rs.next()) {
 				BasicTable bt = new BasicTable();
-				bt.setUserid(++id);
 				bt.setUsername(rs.getString("username"));
 				bt.setUseremail(rs.getString("useremail"));
 				bt.setUserShowtype(rs.getString("userShowType"));
 				bt.setUserShowEmail(rs.getString("userShowEmail"));
+				bt.setUserShowUsername(rs.getString("userShowUsername"));
 				bt.setUserShowpassword(rs.getString("userShowPassword"));
 				bt.setUserShowExplanation(rs.getString("userShowExplanation"));
 				
 				if(bt.getUsername().equals(username) && bt.getUseremail().equals(email)) {
+					bt.setUserid(++id);
 					arrayList.add(bt);
+					
 				}
 				
 			}
+			
 			
 		} catch (Exception e) {
 			System.out.println(e);
@@ -218,5 +221,26 @@ public class UserLoginDB {
 		return arrayList;
 	}
 	
-	
+	public int insertBasicTable(String username,String email,BasicTable bt) {
+		int status = 0;
+		 // 
+		try {
+			conn =ConnectionHelper.getConn();
+			ps=conn.prepareStatement("INSERT INTO `userBasicTable` (`username`, `userEmail`, `userShowType`,`userShowEmail`,`userShowUsername`,`userShowPassword`,`userShowExplanation`) VALUES (?,?,?,?,?,?,?)");
+			ps.setString(1, username);
+			ps.setString(2, email);
+			ps.setString(3, bt.getUserShowtype());
+			ps.setString(4, bt.getUserShowEmail());
+			ps.setString(5, bt.getUserShowUsername());
+			ps.setString(6, bt.getUserShowpassword());
+			ps.setString(7, bt.getUserShowExplanation());
+			
+			status = ps.executeUpdate();
+			ps.close();
+			conn.close();
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		return status;
+	}
 }

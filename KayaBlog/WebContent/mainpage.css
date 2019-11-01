@@ -97,8 +97,8 @@ tr:hover {
 }
 td {
   border: 1px solid #000;
-  text-align: center;
-  padding: 8px;
+  text-align: left;
+  padding: 5px;
 }
 
 .butonAdd {
@@ -124,6 +124,22 @@ td {
     background-color: #fff;
     border-color: #20C20E;
 }
+.butons1{
+    width: 200px;
+    float: right;
+    display: inline-block;
+    height: 25px;
+    border-radius: 50px;
+    color: white;
+    background-color: #000;
+    font-style: italic;
+    transition: .5s;
+}
+.butons1:hover{
+    color: #000;
+    background-color: #fff;
+    border-color: #20C20E;
+}
 .myButtons {
     width: 75px;
     border-radius: 50px;
@@ -132,6 +148,20 @@ td {
     font-style: italic;
 }
 .myButtons:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #20C20E;
+     transition: all .7s;
+    
+}
+.myButtons1 {
+    width: 75px;
+    border-radius: 50px;
+    color: white;
+    background-color: #000;
+    font-style: italic;
+}
+.myButtons1:hover {
     color: #000;
     background-color: #fff;
     border-color: #20C20E;
@@ -283,85 +313,6 @@ td {
     color: #20C20E;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #202020;
-  margin: auto;
-  padding: 0;
-  border: 3px solid #888;
-  width: 30%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
-      
-}
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #20C20E;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header {
-  padding: 2px 16px;
-  background-color: #1a1a1a;
-  color: white;
-  border-bottom: 3px solid #888;
-}
-
-.modal-body {
-    padding: 2px 16px;
-
-}
-
-.modal-body input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 
 .savebutton {
     background-color: #4CAF50; /* Green */
@@ -387,6 +338,7 @@ td {
     padding: 12px 16px;
 }
 input[type=text] {
+  height:30px;
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -401,13 +353,144 @@ input[type=text]:focus
     color: #20C20E;
     background-color: #000;
 }
-h4 {
-    color: white;
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #1a1a1a;
+  margin: auto;
+  padding: 0;
+  border: 3px solid #5cb85c;
+  width: 35%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
 
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
 
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
 
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #5cb85c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #000;
+  border-bottom: 3px solid #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+h4 {
+    color: white;
+    padding: 10px;
+}
+.modal1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content1 {
+  position: relative;
+  background-color: #1a1a1a;
+  margin: auto;
+  padding: 0;
+  border: 3px solid #5cb85c;
+  width: 35%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close1 {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close1:hover,
+.close1:focus {
+  color: #5cb85c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header1 {
+  padding: 2px 16px;
+  background-color: #000;
+  border-bottom: 3px solid #5cb85c;
+  color: white;
+}
+
+.modal-body1 {padding: 2px 16px;}
 
 
 

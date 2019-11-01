@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,6 +27,8 @@ public class Login extends HttpServlet {
 				if(userAdminName!="" && userAdminName!=null) {
 					if(userAdminLoginDB.verify(userAdminName, userAdminPassword,userAdminEmail,"Login",useragent)) {
 						HttpSession session = request.getSession(true);		
+						System.out.println("Giriş yapıldi.");
+						System.out.println("Database'e veri girildi."+new java.util.Date());
 						session.setAttribute("username", request.getParameter("username"));
 						session.setAttribute("email", request.getParameter("email"));
 						request.getRequestDispatcher("/mainpage.jsp").forward(request, response);

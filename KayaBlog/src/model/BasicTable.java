@@ -6,20 +6,30 @@ public class BasicTable {
 	private String useremail;
 	private String userShowtype;
 	private String userShowEmail;
+	private String userShowUsername;
 	private String userShowpassword;
 	private String userShowExplanation;
 	
 	public BasicTable() {}
 
-	public BasicTable(int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowpassword,String userShowExplanation) {
+	public BasicTable(int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation) {
 		this.userid = userid;
 		this.username = username;
 		this.useremail = useremail;
 		this.userShowtype = userShowtype;
 		this.userShowEmail = userShowEmail;
+		this.userShowUsername = userShowUsername;
 		this.userShowpassword = userShowpassword;
 		this.userShowExplanation = userShowExplanation;
 		
+	}
+
+	public String getUserShowUsername() {
+		return userShowUsername;
+	}
+
+	public void setUserShowUsername(String userShowUsername) {
+		this.userShowUsername = userShowUsername;
 	}
 
 	public String getUserShowtype() {

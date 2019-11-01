@@ -42,9 +42,9 @@
 </div>
     
 <div class="butonAdd">
+			<input type="submit" value="ADD" name="submit" class="butons">
 	<form action ="emailservices" method = "post" >
-    <input type="submit" value="ADD" name="submit" class="butons">
-    <input type="submit" value="REFRESH" name="submit" class="butons">
+    		<input type="submit" value="REFRESH" name="submit" class="butons">
     </form>
 </div>
 <div class="tables">
@@ -66,13 +66,15 @@
            	 	<td><c:out value="${EmailTable.userEmailServicesAdress}"/></td>
                 <td><c:out value="${EmailTable.userEmailServicesPass}"/></td> 
            	 	<td><c:out value="${EmailTable.userEmailServicesExplana}"/></td>  
-           	 	<td><input type="button" name="submit" value="Edit"  class="myButtons"></td>
-          	  	<td><input type="button" name="submit" value = "Delete" class="myButtons"></td> 
+           	 	<td>
+           	 		<input type="button" name="submit" value="Edit"  class="myButtons">
+           	 	</td>
+          	  	<td>
+          	  		<input type="button" name="submit" value = "Delete" class="myButtons">
+          	  	</td> 
           	  
         	</tr>
     	</c:forEach>
-       
-       
     </table>
 </div>    
     

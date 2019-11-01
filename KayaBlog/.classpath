@@ -18,7 +18,11 @@
 			<attribute name="maven.scope" value="provided"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/kaya/wildfly-10.0.0.Final/modules/system/layers/base/javax/servlet/api/main/jboss-servlet-api_3.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="/home/kaya/wildfly-10.0.0.Final/modules/system/layers/base/javax/servlet/api/main/jboss-servlet-api_3.1_spec-1.0.0.Final.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="/home/kaya/İndirilenler/uadetector-resources-2014.10.jar"/>
 	<classpathentry kind="lib" path="/home/kaya/İndirilenler/uadetector-core-0.9.22.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
