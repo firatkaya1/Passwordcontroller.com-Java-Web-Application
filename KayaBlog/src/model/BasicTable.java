@@ -1,6 +1,7 @@
 package model;
 
 public class BasicTable {
+	private int identifyofDB;
 	private int userid;
 	private String username;
 	private String useremail;
@@ -9,7 +10,7 @@ public class BasicTable {
 	private String userShowUsername;
 	private String userShowpassword;
 	private String userShowExplanation;
-	
+	private String typeofencrypt;
 	public BasicTable() {}
 
 	public BasicTable(int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation) {
@@ -22,6 +23,35 @@ public class BasicTable {
 		this.userShowpassword = userShowpassword;
 		this.userShowExplanation = userShowExplanation;
 		
+	}
+	public BasicTable(int identifyofDB,int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+		this.identifyofDB = identifyofDB;
+		this.userid = userid;
+		this.username = username;
+		this.useremail = useremail;
+		this.userShowtype = userShowtype;
+		this.userShowEmail = userShowEmail;
+		this.userShowUsername = userShowUsername;
+		this.userShowpassword = userShowpassword;
+		this.userShowExplanation = userShowExplanation;
+		this.typeofencrypt = typeofencrypt;
+		
+	}
+
+	public int getIdentifyofDB() {
+		return identifyofDB;
+	}
+
+	public void setIdentifyofDB(int identifyofDB) {
+		this.identifyofDB = identifyofDB;
+	}
+
+	public String getTypeofencrypt() {
+		return typeofencrypt;
+	}
+
+	public void setTypeofencrypt(String typeofencrypt) {
+		this.typeofencrypt = typeofencrypt;
 	}
 
 	public String getUserShowUsername() {

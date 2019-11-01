@@ -101,6 +101,7 @@ public class UserLoginDB {
 			int id=0;
 			while(rs.next()) {
 				BasicTable bt = new BasicTable();
+				bt.setIdentifyofDB(rs.getInt(1));
 				bt.setUsername(rs.getString("username"));
 				bt.setUseremail(rs.getString("useremail"));
 				bt.setUserShowtype(rs.getString("userShowType"));
@@ -108,6 +109,7 @@ public class UserLoginDB {
 				bt.setUserShowUsername(rs.getString("userShowUsername"));
 				bt.setUserShowpassword(rs.getString("userShowPassword"));
 				bt.setUserShowExplanation(rs.getString("userShowExplanation"));
+				bt.setTypeofencrypt(rs.getString("userTypeOfEncrypt"));
 				
 				if(bt.getUsername().equals(username) && bt.getUseremail().equals(email)) {
 					bt.setUserid(++id);

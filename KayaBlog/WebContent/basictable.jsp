@@ -102,61 +102,28 @@
             <h4>Email</h4><input type="text" name ="email" id="emailAdress">
             <h4>Username</h4><input type="text" name="username" id="username">
             <h4>Password</h4><input type="text" name="password" id="password" >
+            <h4>Choose Your Encrypt Algorithms</h4>
+                    <div>
+                        <select id="typeofencrypt" onchange="mySelectBox()" class="selectedarea">
+                    <option value="None">None</option>
+                    <option value="MD-5">MD-5</option>
+                    <option value="SHA-256">SHA-256</option>
+                    <option value="Special-One">Special-One</option>
+                    <option value="Special-Two">Special-Two</option>
+                    <option value="God">God</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Dont Choose Me!">Dont Choose Me!</option>
+                </select>
+                        <input type="text" name="explanations" id="typess" readonly>
+                    </div>
             <h4>Explanations</h4><input type="text" name="explanations" id="explanations" >
             	<input type="Submit" name="Submit" value="SAVE" class="savebutton" > 
         	</form> 
     </div>      
 </div>
 
-<script>
-//Get the modal
-//Get the modal
-//Get the button that opens the modal
-var btns = document.getElementsByClassName("myButtons");
-var addbtn = document.getElementById("addbutton");
-var table = document.getElementById("myTable");
-//Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-//When the user clicks the button, open the modal 
-
-
-for (var i = 0; i < btns.length; i++) {
-	
-btns[i].onclick = function() {
-	 var currentRow = this.id;
-	 document.getElementById("userid").value =table.rows[currentRow].cells[0].innerHTML;
-	 document.getElementById("emailType").value =table.rows[currentRow].cells[1].innerHTML;
-	 document.getElementById("emailAdress").value =table.rows[currentRow].cells[2].innerHTML;
-	 document.getElementById("username").value =table.rows[currentRow].cells[3].innerHTML;
-	 document.getElementById("password").value =table.rows[currentRow].cells[4].innerHTML;
-	 document.getElementById("explanations").value =table.rows[currentRow].cells[5].innerHTML;
-	 modal.style.display = "block";
-	}
-}
-
-addbtn.onclick = function() {
-	 document.getElementById("userid").value ="";
-	 document.getElementById("emailType").value ="";
-	 document.getElementById("emailAdress").value ="";
-	 document.getElementById("username").value ="";
-	 document.getElementById("password").value ="";
-	 document.getElementById("explanations").value ="";
-	 modal.style.display = "block";
-}
-
-
-//When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-modal.style.display = "none";
-}
-
-//When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-if (event.target == modal) {
-modal.style.display = "none";
-}
-}</script> 
+<script src="popup.js">
+</script> 
 </div>
 <footer class="footer">
     <p><i>Copyright © 2019 Kaya Web Services Company, All Right Reserved</i></p>
