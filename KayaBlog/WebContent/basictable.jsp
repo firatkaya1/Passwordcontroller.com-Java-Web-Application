@@ -77,8 +77,13 @@
            	 		<input type="hidden" name="Submit"  class="listToJs">
            	 		
            	 	</td>
-          	  	<td><input type="submit" name="Submit" value = "Delete" class="myButtons1"></td> 
-          	  	           	 	
+           	 	<form action ="basictables" method = "post" >
+          	  	<td>
+          	  		<input type="submit" name="Submit" value = "DELETE" class="myButtons1">
+          	  		<input type="hidden" name="valueofid" value = "${BasicTable.userid}" class="myButtons1">
+          	  		
+          	  	</td> 
+          	  	</form>  	 	
         	</tr>
     	</c:forEach>  
     	    	
@@ -114,7 +119,7 @@
                     <option value="Hard">Hard</option>
                     <option value="Dont Choose Me!">Dont Choose Me!</option>
                 </select>
-                        <input type="text" name="explanations" id="typess" readonly>
+                        <input type="text" name="typeofmyencrypt" id="typess" readonly>
                     </div>
             <h4>Explanations</h4><input type="text" name="explanations" id="explanations" >
             	<input type="Submit" name="Submit" value="SAVE" class="savebutton" > 

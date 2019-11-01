@@ -228,7 +228,7 @@ public class UserLoginDB {
 		 // 
 		try {
 			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userBasicTable` (`username`, `userEmail`, `userShowType`,`userShowEmail`,`userShowUsername`,`userShowPassword`,`userShowExplanation`) VALUES (?,?,?,?,?,?,?)");
+			ps=conn.prepareStatement("INSERT INTO `userBasicTable` (`username`, `userEmail`, `userShowType`,`userShowEmail`,`userShowUsername`,`userShowPassword`,`userShowExplanation`,`userTypeOfEncrypt`) VALUES (?,?,?,?,?,?,?,?)");
 			ps.setString(1, username);
 			ps.setString(2, email);
 			ps.setString(3, bt.getUserShowtype());
@@ -236,6 +236,7 @@ public class UserLoginDB {
 			ps.setString(5, bt.getUserShowUsername());
 			ps.setString(6, bt.getUserShowpassword());
 			ps.setString(7, bt.getUserShowExplanation());
+			ps.setString(8, bt.getTypeofencrypt());
 			
 			status = ps.executeUpdate();
 			ps.close();
@@ -244,5 +245,19 @@ public class UserLoginDB {
 			System.out.println(e);
 		}
 		return status;
+	}
+
+	public  void deleteBasicTable(int id) {
+		
+		try {
+			conn =ConnectionHelper.getConn();
+			ps=conn.prepareStatement("DELETE  FROM newsdata.userBasicTable where id = ?");
+			ps.setInt(1,id);
+			ps.execute();
+			conn.close();
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}
 }
