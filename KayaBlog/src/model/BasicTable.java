@@ -12,9 +12,36 @@ public class BasicTable {
 	private String userShowExplanation;
 	private String typeofencrypt;
 	public BasicTable() {}
-
+	
+	public BasicTable(String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+		
+		this.username = username;
+		this.useremail = useremail;
+		this.userShowtype = userShowtype;
+		this.userShowEmail = userShowEmail;
+		this.userShowUsername = userShowUsername;
+		this.userShowpassword = userShowpassword;
+		this.userShowExplanation = userShowExplanation;
+		this.typeofencrypt = typeofencrypt;
+		
+	}
 	
 	public BasicTable(int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+		
+		this.userid = userid;
+		this.username = username;
+		this.useremail = useremail;
+		this.userShowtype = userShowtype;
+		this.userShowEmail = userShowEmail;
+		this.userShowUsername = userShowUsername;
+		this.userShowpassword = userShowpassword;
+		this.userShowExplanation = userShowExplanation;
+		this.typeofencrypt = typeofencrypt;
+		
+	}
+	
+	public BasicTable(int identifyofDB,int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+		this.identifyofDB = identifyofDB;
 		this.userid = userid;
 		this.username = username;
 		this.useremail = useremail;

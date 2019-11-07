@@ -32,7 +32,8 @@ public class UserLoginDB {
 			if(controll == true) {
 				BrowserInformations bI = new BrowserInformations(useragent);
 				UserLogs ul = new UserLogs(username,useremail,type,bI);
-				insertLog(ul);
+				İnsertDB insert = new İnsertDB();
+				insert.insertLog(ul);
 			}
 			ps.close();
 			conn.close();
@@ -45,26 +46,7 @@ public class UserLoginDB {
 	}
 	
 	
-	public int insertLog(UserLogs ul) {
-		int status = 0;
-		 // 
-		try {
-			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userDate` (`username`, `userEmail`, `userLogType`,`userOS`,`userBrowser`,`useripAdress`,`userLogDate`) VALUES (?,?,?,?,?,?,?)");
-			ps.setString(1, ul.getUsername());
-			ps.setString(2,ul.getUseremailadress());
-			ps.setString(3,ul.getUserlogtype());
-			ps.setString(4,ul.getUserOs());
-			ps.setString(5,ul.getUserBrowser());
-			ps.setString(6,ul.getUserİpAdress());
-			ps.setString(7,ul.getUserLogDate());
-			status = ps.executeUpdate();
-			conn.close();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		return status;
-	}
+	
 	
 	public User getUser(String username, String userpassword,String useremail) {
 		User ur = new User();
@@ -137,7 +119,7 @@ public class UserLoginDB {
 			int id = 0;
 			while(rs.next()) {
 				UserLogs ul = new UserLogs();
-				ul.setId(++id);
+				
 				ul.setUsername(rs.getString("username"));
 				ul.setUseremailadress(rs.getString("userEmail"));
 				ul.setUserlogtype(rs.getString("userLogType"));
@@ -147,10 +129,14 @@ public class UserLoginDB {
 				ul.setUserLogDate(rs.getString("userLogDate"));
 				
 				if(ul.getUsername().equals(username) && ul.getUseremailadress().equals(email)) {
+					ul.setId(++id);
 					arrayList.add(ul);
 				}
 				
 			}
+			conn.close();
+			ps.close();
+			rs.close();
 			
 		} catch (Exception e) {
 			System.out.println(e);
@@ -184,7 +170,9 @@ public class UserLoginDB {
 				}
 				
 			}
-			
+			conn.close();
+			ps.close();
+			rs.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -202,6 +190,7 @@ public class UserLoginDB {
 			int id = 0;
 			while(rs.next()) {
 				EmailTable et = new EmailTable();
+				et.setIdentifyofDB(rs.getInt(1));
 				et.setId(++id);
 				et.setUsername(rs.getString("username"));
 				et.setUseremailadress(rs.getString("useremailadress"));
@@ -215,7 +204,9 @@ public class UserLoginDB {
 				}
 				
 			}
-			
+			conn.close();
+			ps.close();
+			rs.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -223,41 +214,9 @@ public class UserLoginDB {
 		return arrayList;
 	}
 	
-	public int insertBasicTable(String username,String email,BasicTable bt) {
-		int status = 0;
-		 // 
-		try {
-			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userBasicTable` (`username`, `userEmail`, `userShowType`,`userShowEmail`,`userShowUsername`,`userShowPassword`,`userShowExplanation`,`userTypeOfEncrypt`) VALUES (?,?,?,?,?,?,?,?)");
-			ps.setString(1, username);
-			ps.setString(2, email);
-			ps.setString(3, bt.getUserShowtype());
-			ps.setString(4, bt.getUserShowEmail());
-			ps.setString(5, bt.getUserShowUsername());
-			ps.setString(6, bt.getUserShowpassword());
-			ps.setString(7, bt.getUserShowExplanation());
-			ps.setString(8, bt.getTypeofencrypt());
-			
-			status = ps.executeUpdate();
-			ps.close();
-			conn.close();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		return status;
-	}
+	
 
-	public  void deleteBasicTable(int id) {
-		
-		try {
-			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("DELETE  FROM newsdata.userBasicTable where id = ?");
-			ps.setInt(1,id);
-			ps.execute();
-			conn.close();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
-		
-	}
+	
+
+	
 }

@@ -58,7 +58,7 @@
             <th id="userbar">Username</th>
             <th id="passwordbar">Password</th>
             <th>Explanation</th>
-            <th id="editbar">Edit</th>
+            <th id="editbar">EDİT</th>
             <th id="deletebar">DELETE</th>
          </tr>
         
@@ -69,24 +69,23 @@
            	 	<td class="xxusershowtype"><c:out value="${BasicTable.userShowtype}" /></td>  
            	 	<td class="xxusershowemail"><c:out value="${BasicTable.userShowEmail}" /></td>
                 <td class="usershowusername"><c:out value="${BasicTable.userShowUsername}" /></td> 
-           	 	<td class="usershowpassword"><c:out value="${BasicTable.userShowpassword}" /></td>  
+           	 	<td class="usershowpassword"><input type="password" readonly class="passwordfield" value="${BasicTable.userShowpassword}">
+           	 	<input type="submit" value="" class="seePass" id ="${BasicTable.userid}" >
+           	 	</td>  
            	 	<td class="usershowexpl"><c:out value="${BasicTable.userShowExplanation}" /></td>  
-           	 	<td>
-           	 		
+           	 	<td>          	 		
            	 		<input type="submit" name="Submit" value="EDİT" class="myButtons" id="${BasicTable.userid}">
-           	 		<input type="hidden" name="Submit"  class="listToJs">
-           	 		
            	 	</td>
-           	 	<form action ="basictables" method = "post" >
           	  	<td>
+          	  	<form action ="basictables" method = "post" >
           	  		<input type="submit" name="Submit" value = "DELETE" class="myButtons1">
           	  		<input type="hidden" name="valueofid" value = "${BasicTable.userid}" class="myButtons1">
-          	  		
+          	  	</form>  	
           	  	</td> 
-          	  	</form>  	 	
+          	  		 	
         	</tr>
-    	</c:forEach>  
-    	    	
+    	</c:forEach> 
+    	
     </table>	
    
 </div>    
@@ -96,7 +95,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2 id="addTitle">Basic Table</h2>
+      <h2 class="addTitle">Basic Table</h2>
     </div>
       
     <div class="modal-body">
@@ -130,6 +129,36 @@
 <script src="popup.js">
 </script> 
 </div>
+
+
+<div id="modalUpdate" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span  class="close">&times;</span>
+      <h2 class="addTitle">Basic Table</h2>
+    </div>
+      
+    <div class="modal-body">
+       		<form action ="basictables" method = "post" >
+            <h4>İd</h4><input type="text" readonly id="userid1" name="userid1">
+            <h4>Type</h4><input type="text" name="emailType1" id="emailType1">
+            <h4>Email</h4><input type="email" name ="emailAdress1" id="emailAdress1">
+            <h4>Username</h4><input type="text" name="username1" id="username1">
+            <h4>Password</h4><input type="password" name="password1" id="password1" class="password1" >
+            <h4>Explanations</h4><input type="text" name="explanations1" id="explanations1" >
+            	<input type="Submit" name="Submit" value="UPDATE" class="savebutton" > 
+            	
+        	</form> 
+    </div>      
+</div>
+<script src="popup.js">
+</script> 
+</div>
+
+
+
 <footer class="footer">
     <p><i>Copyright © 2019 Kaya Web Services Company, All Right Reserved</i></p>
     

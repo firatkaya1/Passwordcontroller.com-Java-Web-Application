@@ -42,9 +42,7 @@ public class Login extends HttpServlet {
 				}
 
 			}else if(submitType.equals("Register")){
-				//request.getRequestDispatcher("/register.jsp").forward(request, response);
-		        String  browserDetails  =   request.getHeader("User-Agent");
-		        System.out.println("Bu:	"+browserDetails);
+				request.getRequestDispatcher("/register.jsp").forward(request, response);
 				
 			} else if(submitType.equals("Git")){
 				response.sendRedirect(request.getContextPath()+"/login.jsp");

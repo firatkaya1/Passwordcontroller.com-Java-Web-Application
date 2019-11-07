@@ -361,11 +361,12 @@ td {
     background-color: #3e8e41;
 }
 
-#addTitle {
+.addTitle {
     text-align: center;
     padding: 12px 16px;
 }
 
+input[type=email], 
 input[type=text] {
     height: 30px;
     width: 100%;
@@ -586,3 +587,119 @@ h4 {
 .selectedarea {
     margin: 0px 0px 15px 0px;
 }
+
+.deleteButton {
+    background-color: rgb(214, 4, 4);
+    border: none;
+    color: white;
+    position: relative;
+    padding: 15px 32px;
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    left: 80%;
+    bottom: 0px;
+}
+
+.deleteButton:hover {
+    background-color: #af2323;
+}
+
+.deletep {
+    color: white;
+    font-size: 18px;
+    padding-top: 20px;
+}
+
+.close-delete {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-delete:hover,
+.close-delete:focus {
+    color: #5cb85c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content-delete {
+    position: relative;
+    background-color: #1a1a1a;
+    margin: auto;
+    padding: 0;
+    border: 3px solid rgb(214, 4, 4);
+    width: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.model-header-delete {
+    padding: 2px 16px;
+    background-color: #000;
+    border-bottom: 3px solid rgb(214, 4, 4);
+    color: white;
+}
+.seePass {
+    background: url(img/eye2.png) no-repeat scroll 0 0 transparent;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    height: 24px;
+    padding-bottom: 2px;
+    width: 24px;
+    outline: none;
+    border: none;
+    float:right;
+}
+
+
+.usershowpassword  input[type=text]{
+	font-family: arial, sans-serif;
+	background:transparent;
+	border:none;
+	font-size: 15px;
+	width:200px;
+	margin:0px;
+	padding:0px;
+	color:black;
+	
+}
+.usershowpassword  input[type=text]:hover{
+	color:greenyellow;
+}
+.usershowpassword input[type=password] {
+	font-family: arial, sans-serif;
+	background:transparent;
+	border:none;
+	font-size: 15px;
+	width:200px;
+	
+}
+
+.password1  {
+	height: 30px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
