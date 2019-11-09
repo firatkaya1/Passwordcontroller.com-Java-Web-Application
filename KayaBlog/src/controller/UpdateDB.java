@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 
 import model.BasicTable;
 import model.EmailTable;
+import model.SocialMediaTable;
 
 public class UpdateDB {
 	static Connection conn;
@@ -62,6 +63,35 @@ public class UpdateDB {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
+		
+		return status;
+		
+	}
+	
+	public int updateToSocialMediaTable(SocialMediaTable smt) {
+		int status = 0;
+		
+		try {
+			conn =ConnectionHelper.getConn(); 
+			ps = conn.prepareStatement("Update newsdata.userSocialMedia set id=?, username=?, useremailadress=?, userSocialMediaType=?, userSocialMediasEmail=?, userSocialMediaUsername=?, userSocialMediaPassword=?, userSocialMediaExplanations=? where id="+smt.getIdentifyofDB());                     
+			
+			ps.setInt(1,smt.getIdentifyofDB());
+			ps.setString(2,smt.getUsername());
+			ps.setString(3,smt.getUseremailadress());
+			ps.setString(4,smt.getSocialMediaType());
+			ps.setString(5,smt.getSocialMediaEmail());
+			ps.setString(6,smt.getSocialMediaUsername());
+			ps.setString(7,smt.getSocialMediaPassword());
+			ps.setString(8,smt.getSocialMediaExplanation());
+			
+			status = ps.executeUpdate();
+			conn.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
 		
 		return status;
 		

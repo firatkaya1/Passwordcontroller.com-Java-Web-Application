@@ -155,6 +155,7 @@ public class UserLoginDB {
 			int id = 0;
 			while(rs.next()) {
 				SocialMediaTable smt = new SocialMediaTable();
+				smt.setIdentifyofDB(rs.getInt(1));
 				smt.setId(++id);
 				smt.setUsername(rs.getString("username"));
 				smt.setUseremailadress(rs.getString("useremailadress"));

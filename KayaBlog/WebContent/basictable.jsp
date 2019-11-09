@@ -79,7 +79,7 @@
           	  	<td>
           	  	<form action ="basictables" method = "post" >
           	  		<input type="submit" name="Submit" value = "DELETE" class="myButtons1">
-          	  		<input type="hidden" name="valueofid" value = "${BasicTable.userid}" class="myButtons1">
+          	  		<input type="hidden" name="userid" value = "${BasicTable.userid}" class="myButtons1">
           	  	</form>  	
           	  	</td> 
           	  		 	
@@ -126,8 +126,8 @@
     </div>      
 </div>
 
-<script src="popup.js">
-</script> 
+<script src="js/popup.js"></script> 
+
 </div>
 
 
@@ -153,7 +153,7 @@
         	</form> 
     </div>      
 </div>
-<script src="popup.js">
+<script src="js/popup.js">
 </script> 
 </div>
 

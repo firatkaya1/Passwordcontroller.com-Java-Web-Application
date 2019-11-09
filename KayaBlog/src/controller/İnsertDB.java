@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 
 import model.BasicTable;
 import model.EmailTable;
+import model.SocialMediaTable;
 import model.UserLogs;
 
 public class İnsertDB {
@@ -81,6 +82,33 @@ public class İnsertDB {
 		} catch(Exception e) {
 			System.out.println(e);
 		}
+		return status;
+	}
+	
+	public int insertToSocialMediaTable(SocialMediaTable smt) {
+		int status = 0;
+		try {
+			conn =ConnectionHelper.getConn();
+			ps=conn.prepareStatement("INSERT INTO `userSocialMedia` (`username`, `useremailadress`, `userSocialMediaType`,`userSocialMediasEmail`,`userSocialMediaUsername`,`userSocialMediaPassword`,`userSocialMediaExplanations`,`userSocialMediaTypeEncrypt`) VALUES (?,?,?,?,?,?,?,?)");
+			ps.setString(1, smt.getUsername());
+			ps.setString(2, smt.getUseremailadress());
+			ps.setString(3, smt.getSocialMediaType());
+			ps.setString(4, smt.getSocialMediaEmail());
+			ps.setString(5, smt.getSocialMediaUsername());
+			ps.setString(6, smt.getSocialMediaPassword());
+			ps.setString(7, smt.getSocialMediaExplanation());
+			ps.setString(8, smt.getTypeofencrypt());
+			
+			status = ps.executeUpdate();
+			
+			ps.close();
+			conn.close();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
 		return status;
 	}
 	

@@ -44,4 +44,21 @@ public class DeleteDB {
 		
 		return status;
 	}
+	public boolean deleteFromSocialMediaTable(int id) {
+		boolean status = false;
+		
+		try {
+			conn = ConnectionHelper.getConn();
+			ps = conn.prepareStatement("DELETE  FROM newsdata.userSocialMedia where id = ?");
+			
+			ps.setInt(1, id);
+			
+			status = ps.execute();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return status;
+	}
 }

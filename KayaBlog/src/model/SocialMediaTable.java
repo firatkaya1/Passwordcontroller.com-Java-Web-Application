@@ -1,6 +1,7 @@
 package model;
 
 public class SocialMediaTable {
+	private int identifyofDB;
 	private int id;
 	private String username;
 	private String useremailadress;
@@ -9,11 +10,12 @@ public class SocialMediaTable {
 	private String socialMediaUsername;
 	private String socialMediaPassword;
 	private String socialMediaExplanation;
+	private String typeofencrypt;
 	
 	public SocialMediaTable() {
 		
 	}
-	public SocialMediaTable(String username,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation) {
+	public SocialMediaTable(String username,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
 		this.username = username;
 		this.useremailadress = useremailadress;
 		this.socialMediaType = socialMediaType;
@@ -21,6 +23,20 @@ public class SocialMediaTable {
 		this.socialMediaUsername = socialMediaUsername;
 		this.socialMediaPassword = socialMediaPassword;
 		this.socialMediaExplanation = socialMediaExplanation;
+		this.typeofencrypt = typeofencrypt;
+		
+	}
+	public SocialMediaTable(int identifyofDB,int id,String username,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
+		this.identifyofDB = identifyofDB;
+		this.id = id;
+		this.username = username;
+		this.useremailadress = useremailadress;
+		this.socialMediaType = socialMediaType;
+		this.socialMediaEmail = socialMediaEmail;
+		this.socialMediaUsername = socialMediaUsername;
+		this.socialMediaPassword = socialMediaPassword;
+		this.socialMediaExplanation = socialMediaExplanation;
+		this.typeofencrypt = typeofencrypt;
 		
 	}
 	public int getId() {
@@ -70,6 +86,18 @@ public class SocialMediaTable {
 	}
 	public void setSocialMediaExplanation(String socialMediaExplanation) {
 		this.socialMediaExplanation = socialMediaExplanation;
+	}
+	public int getIdentifyofDB() {
+		return identifyofDB;
+	}
+	public void setIdentifyofDB(int identifyofDB) {
+		this.identifyofDB = identifyofDB;
+	}
+	public String getTypeofencrypt() {
+		return typeofencrypt;
+	}
+	public void setTypeofencrypt(String typeofencrypt) {
+		this.typeofencrypt = typeofencrypt;
 	}
 	
 	

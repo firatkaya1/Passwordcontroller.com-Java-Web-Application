@@ -29,6 +29,7 @@ public class Login extends HttpServlet {
 						HttpSession session = request.getSession(true);		
 						System.out.println("Giriş yapıldi.");
 						System.out.println("Database'e veri girildi."+new java.util.Date());
+						System.out.println("Giriş Bilgileri:"+useragent);
 						session.setAttribute("username", request.getParameter("username"));
 						session.setAttribute("email", request.getParameter("email"));
 						request.getRequestDispatcher("/mainpage.jsp").forward(request, response);

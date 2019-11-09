@@ -17,7 +17,7 @@ public class BrowserInformations {
 	}
 
 	public String getBrowsername() {
-		String[] browsers = {"firefox","opera","safari","opr","chrome","edge","chromium"};
+		String[] browsers = {"firefox","opera","safari","opr","chrome","edge","chromium","FIREFOX","Firefox"};
 		
 		String userag = getUserAgent();
 		
@@ -25,9 +25,7 @@ public class BrowserInformations {
 			if(userag.contains(browsers[i])) {
 				browsername=browsers[i];
 				browsername = browsername.substring(0, 1).toUpperCase()+ browsername.substring(1);
-			}
-			else {
-				browsername = "UNKNOWN";
+				System.out.println("Browser name : "+browsername);
 			}
 			
 		}
