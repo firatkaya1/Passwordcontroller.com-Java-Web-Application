@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DeleteDB;
+import database.UpdateDB;
+import database.İnsertDB;
 import model.SocialMediaTable;
 
 public class Socialmediaservices extends HttpServlet {
@@ -67,7 +70,6 @@ public class Socialmediaservices extends HttpServlet {
 			
 		case "UPDATE":
 			int identifyofDB = socialMediaList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB();
-			System.out.println("İDENTİFY DEGERİM:"+identifyofDB);
 			int id = Integer.valueOf(request.getParameter("useridUpdate"));
 			socialmediaType = request.getParameter("socialmediaTypeUpdate");
 			socialmediaEmail = request.getParameter("socialmediaEmailUpdate");
@@ -88,7 +90,6 @@ public class Socialmediaservices extends HttpServlet {
 			break;		
 			
 		case "DELETE":
-			//
 			id = socialMediaList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB();
 			delete.deleteFromSocialMediaTable(id);
 			socialMediaList = uld.getSocialMedia(username, email);

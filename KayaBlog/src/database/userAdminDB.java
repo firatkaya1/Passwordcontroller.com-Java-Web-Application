@@ -1,4 +1,4 @@
-package controller;
+package database;
 
 public interface userAdminDB {
 	

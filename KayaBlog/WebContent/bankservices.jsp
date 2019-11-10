@@ -42,12 +42,13 @@
 </div>
     
 <div class="butonAdd">
-        <form action ="mainpage" method = "post" >
-            <input type="submit" value="REFRESH" name="submit" class="butons" >
+		<input type="submit" value="ADD" name="addbutton" class="butons" id="addbutton">
+        <form action ="bankservices" method = "post" >
+            <input type="submit" value="REFRESH" name="Submit" class="butons" >
         </form> 
     </div>
 <div class="tables">
-    <table>
+    <table id="myTable">
         <tr>
             <th>id</th>
             <th id="bankname">Bank Name</th>
@@ -59,27 +60,97 @@
             <th id="editbar">EDİT</th>
             <th id="deletebar">DELETE</th>
          </tr>
-         <tr>
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td ><c:out value="${BasicTable.userid}"/></td>   
-           	<td>
-           		<input type="Submit" name="Submit" value="Edit" class="myButtons">
-           	</td>
-            <td>
-            <input type="Submit" name="Submit" value = "Delete" class="myButtons">
-            </td>  
-          
-        </tr>
-       
-       
+         <c:forEach items="${tableBankList}" var="BankTable">
+       		<tr>
+           	 	<td><c:out value="${BankTable.id}"/></td>
+           	 	<td class="xxusershowtype"><c:out value="${BankTable.bankname}" /></td>  
+           	 	<td class="xxusershowemail"><c:out value="${BankTable.bankcardnumber}" /></td>
+                <td class="usershowusername"><c:out value="${BankTable.bankcardname}" /></td> 
+           	 	<td class="usershowpassword"><c:out value="${BankTable.banklastdate}"/></td> 
+           	 	<td class="usershowexpl"><c:out value="${BankTable.bankexpirationdate}" /></td>  
+           	 	<td class="usershowexpl"><c:out value="${BankTable.bankexplain}" /></td>
+           	 	<td>          	 		
+           	 		<input type="submit" name="Submit" value="EDİT" class="myButtons" id="${BankTable.id}">
+           	 	</td>
+          	  	<td>
+          	  	<form action ="bankservices" method = "post" >
+          	  		<input type="submit" name="Submit" value = "DELETE" class="myButtons1">
+          	  		<input type="hidden" name="userid" value = "${BankTable.id}" class="myButtons1">
+          	  	</form>  	
+          	  	</td> 
+        	</tr>
+    	</c:forEach>
     </table>
 </div>    
     
+    <div id="modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 class="addTitle">Bank Table</h2>
+    </div>
+      
+    <div class="modal-body">
+       		<form action ="bankservices" method = "post" >
+       		<i style = "color:red;font-size: 14px;">*All field can not be blank.</i>
+            <h4>İd</h4><input type="text" readonly id="userid">
+            <h4>Bank Name</h4><input type="text" name="bankName" id="bankName" placeholder="Bank Name">
+            <h4>Bank Card Name</h4><input type="text" name ="bankcardname" id="bankcardname" placeholder="Bank Card Name">
+            <h4>Bank Card Number</h4><input type="text" name="bankcardnumber" id="bankcardnumber" placeholder="Bank Card Number">
+            <h4>Bank Card Last Date</h4><input type="text" name="bankcardlastdate" id="bankcardlastdate" placeholder="Bank Card Last Date" >
+            <h4>Bank Card Expiration Date</h4><input type="text" name="bankcardexpirationdate" id="bankcardexpirationdate" placeholder ="Bank Card Expiration Date">
+            <h4>Choose Your Encrypt Algorithms</h4>
+                    <div>
+                        <select id="typeofencrypt" onchange="mySelectBox()" class="selectedarea">
+                    <option value="None">None</option>
+                    <option value="MD-5">MD-5</option>
+                    <option value="SHA-256">SHA-256</option>
+                    <option value="Special-One">Special-One</option>
+                    <option value="Special-Two">Special-Two</option>
+                    <option value="God">God</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Dont Choose Me!">Dont Choose Me!</option>
+                </select>
+                        <input type="text" name="typeofmyencrypt" id="typeofmyencrypttext" readonly>
+                    </div>
+            <h4>Explanations</h4><input type="text" name="explain" id="explain" placeholder="Explanations">
+            	<input type="Submit" name="Submit" value="SAVE" class="savebutton" > 
+        	</form> 
+    </div>      
+</div>
+
+<script src="js/popupbanktable.js"></script> 
+
+</div>
+
+<div id="modalUpdate" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span  class="close">&times;</span>
+      <h2 class="addTitle">Bank Table</h2>
+    </div>
+      
+    <div class="modal-body">
+       		<form action ="bankservices" method = "post" >
+            <h4>İd</h4><input type="text" readonly name="useridUpdate" id="useridUpdate"  placeholder="id" >
+            <h4>Bank Name</h4><input type="text" name="bankNameUpdate" id="bankNameUpdate" placeholder="Bank Name">
+            <h4>Bank Card Name</h4><input type="text" name ="bankcardnameUpdate" id="bankcardnameUpdate" placeholder="Bank Card Name">
+            <h4>Bank Card Number</h4><input type="text" name="bankcardnumberUpdate" id="bankcardnumberUpdate" placeholder="Bank Card Number">
+            <h4>Bank Card Last Date</h4><input type="text" name="bankcardlastdateUpdate" id="bankcardlastdateUpdate" placeholder="Bank Card Last Date" >
+            <h4>Bank Card Expiration Date</h4><input type="text" name="bankcardexpirationdateUpdate" id="bankcardexpirationdateUpdate" placeholder ="Bank Card Expiration Date">
+            <h4>Explanations</h4><input type="text" name="explainUpdate" id="explainUpdate" placeholder="Explanations">	
+            	<input type="Submit" name="Submit" value="UPDATE" class="savebutton" > 
+            	
+        	</form> 
+    </div>      
+</div>
+<script src="js/popupbanktable.js">
+</script> 
+</div>    
     
 <footer class="footer">
    <p><i>Copyright © 2019 Kaya Web Services Company, All Right Reserved</i></p>

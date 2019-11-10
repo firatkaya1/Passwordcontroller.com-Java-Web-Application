@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import database.ConnectionHelper;
+import database.İnsertDB;
+import model.BankTable;
 import model.BasicTable;
 import model.BrowserInformations;
 import model.EmailTable;
@@ -213,6 +216,44 @@ public class UserLoginDB {
 		}
 		
 		return arrayList;
+	}
+	
+	public ArrayList<BankTable> getBankTable(String username,String email){
+		ArrayList<BankTable> arrayList = new ArrayList<>();
+		
+		try {
+			conn =ConnectionHelper.getConn();
+			ps = conn.prepareStatement("SELECT * FROM newsdata.userBankServices");
+			ResultSet rs = ps.executeQuery();
+			int id = 0;
+			while(rs.next()) {
+				BankTable bt = new BankTable();
+				bt.setIdentifyofDB(rs.getInt(1));
+				bt.setId(++id);
+				bt.setUsername(rs.getString("username"));
+				bt.setUseremail(rs.getString("useremail"));
+				bt.setBankname(rs.getString("userBankName"));
+				bt.setBankcardnumber(rs.getString("userBankCardNumber"));
+				bt.setBankcardname(rs.getString("userBankCardName"));
+				bt.setBanklastdate(rs.getString("userBankLastDate"));
+				bt.setBankexpirationdate(rs.getString("userBankExpirationDate"));
+				bt.setBankexplain(rs.getString("userBankExplain"));
+				bt.setUsertypeofencrypt(rs.getString("usertypeofencrypt"));
+				
+				if(bt.getUsername().equals(username) && bt.getUseremail().equals(email)) {
+					arrayList.add(bt);
+				}
+				
+			}
+			conn.close();
+			ps.close();
+			rs.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return arrayList;
+		
 	}
 	
 	

@@ -1,8 +1,9 @@
-package controller;
+package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import model.BankTable;
 import model.BasicTable;
 import model.EmailTable;
 import model.SocialMediaTable;
@@ -98,6 +99,33 @@ public class İnsertDB {
 			ps.setString(6, smt.getSocialMediaPassword());
 			ps.setString(7, smt.getSocialMediaExplanation());
 			ps.setString(8, smt.getTypeofencrypt());
+			
+			status = ps.executeUpdate();
+			
+			ps.close();
+			conn.close();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return status;
+	}
+	public int insertToBankTable(BankTable bt) {
+		int status = 0;
+		try {
+			conn =ConnectionHelper.getConn();
+			ps=conn.prepareStatement("INSERT INTO `userBankServices` (`username`, `useremail`, `userBankName`,`userBankCardNumber`,`userBankCardName`,`userBankLastDate`,`userBankExpirationDate`,`userBankExplain`,`usertypeofencrypt`) VALUES (?,?,?,?,?,?,?,?,?)");
+			ps.setString(1, bt.getUsername());
+			ps.setString(2, bt.getUseremail());
+			ps.setString(3, bt.getBankname());
+			ps.setString(4, bt.getBankcardnumber());
+			ps.setString(5, bt.getBankcardname());
+			ps.setString(6, bt.getBanklastdate());
+			ps.setString(7, bt.getBankexpirationdate());
+			ps.setString(8, bt.getBankexplain());
+			ps.setString(9, bt.getUsertypeofencrypt());
 			
 			status = ps.executeUpdate();
 			

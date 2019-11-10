@@ -79,6 +79,14 @@
   <url-pattern>/emailservices</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  <servlet-name>bankservices</servlet-name>
+  <servlet-class>controller.BankServices</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>bankservices</servlet-name>
+  <url-pattern>/bankservices</url-pattern>
+  </servlet-mapping>
   
 </web-app>
 

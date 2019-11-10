@@ -1,8 +1,9 @@
-package controller;
+package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import model.BankTable;
 import model.BasicTable;
 import model.EmailTable;
 import model.SocialMediaTable;
@@ -96,6 +97,34 @@ public class UpdateDB {
 		return status;
 		
 	}
-
-
+	
+	public int updateToBankTable(BankTable bt) {
+		int status = 0;
+		
+		try {
+			conn =ConnectionHelper.getConn(); 
+			ps = conn.prepareStatement("Update newsdata.userBankServices set id=?, username=?, useremail=?, userBankName=?, userBankCardNumber=?, userBankCardName=?, userBankLastDate=?, userBankExpirationDate=?,userBankExplain=? where id="+bt.getIdentifyofDB());                     
+			
+			ps.setInt(1, bt.getIdentifyofDB());
+			ps.setString(2, bt.getUsername());
+			ps.setString(3, bt.getUseremail());
+			ps.setString(4, bt.getBankname());
+			ps.setString(5, bt.getBankcardnumber());
+			ps.setString(6, bt.getBankcardname());
+			ps.setString(7, bt.getBanklastdate());
+			ps.setString(8, bt.getBankexpirationdate());
+			ps.setString(9, bt.getBankexplain());
+			
+			status = ps.executeUpdate();
+			conn.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return status;
+		
+	}
 }

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import database.DeleteDB;
+import database.UpdateDB;
+import database.İnsertDB;
 import model.EmailTable;
 
 public class Emailservices extends HttpServlet {

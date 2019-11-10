@@ -1,4 +1,4 @@
-package controller;
+package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,6 +50,24 @@ public class DeleteDB {
 		try {
 			conn = ConnectionHelper.getConn();
 			ps = conn.prepareStatement("DELETE  FROM newsdata.userSocialMedia where id = ?");
+			
+			ps.setInt(1, id);
+			
+			status = ps.execute();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return status;
+	}
+	
+	public boolean deleteFromBankTable(int id) {
+		boolean status = false;
+		
+		try {
+			conn = ConnectionHelper.getConn();
+			ps = conn.prepareStatement("DELETE  FROM newsdata.userBankServices where id = ?");
 			
 			ps.setInt(1, id);
 			
