@@ -79,4 +79,22 @@ public class DeleteDB {
 		
 		return status;
 	}
+	//
+	public boolean deleteFromTelephoneDirectoryTable(int id) {
+		boolean status = false;
+		
+		try {
+			conn = ConnectionHelper.getConn();
+			ps = conn.prepareStatement("DELETE  FROM newsdata.userPhoneDirectory where id = ?");
+			
+			ps.setInt(1, id);
+			
+			status = ps.execute();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return status;
+	}
 }

@@ -12,6 +12,7 @@ import model.BasicTable;
 import model.BrowserInformations;
 import model.EmailTable;
 import model.SocialMediaTable;
+import model.TelephoneDirectoryTable;
 import model.User;
 import model.UserLogs;
 
@@ -256,7 +257,41 @@ public class UserLoginDB {
 		
 	}
 	
-	
+	public ArrayList<TelephoneDirectoryTable> getTelephoneDirectoryTable(String username,String email){
+		ArrayList<TelephoneDirectoryTable> arrayList = new ArrayList<>();
+		
+		try {
+			conn =ConnectionHelper.getConn();
+			ps = conn.prepareStatement("SELECT * FROM newsdata.userPhoneDirectory");
+			ResultSet rs = ps.executeQuery();
+			int id = 0;
+			while(rs.next()) {
+				TelephoneDirectoryTable tdt = new TelephoneDirectoryTable();
+				tdt.setIdentifyofDB(rs.getInt(1));
+				tdt.setId(++id);
+				tdt.setUsername(rs.getString("username"));
+				tdt.setUseremail(rs.getString("useremail"));
+				tdt.setPhonenumbertype(rs.getString("userPhoneType"));
+				tdt.setPhoneownername(rs.getString("userPhoneOwnerName"));
+				tdt.setPhonenumber(rs.getString("userPhoneNumber"));
+				tdt.setPhonexplain(rs.getString("userPhoneExplain"));
+				tdt.setTypeofencrypt(rs.getString("usertypeofencrypt"));
+				
+				if(tdt.getUsername().equals(username) && tdt.getUseremail().equals(email)) {
+					arrayList.add(tdt);
+				}
+				
+			}
+			conn.close();
+			ps.close();
+			rs.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return arrayList;
+		
+	}
 
 	
 

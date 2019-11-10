@@ -7,6 +7,7 @@ import model.BankTable;
 import model.BasicTable;
 import model.EmailTable;
 import model.SocialMediaTable;
+import model.TelephoneDirectoryTable;
 
 public class UpdateDB {
 	static Connection conn;
@@ -114,6 +115,33 @@ public class UpdateDB {
 			ps.setString(7, bt.getBanklastdate());
 			ps.setString(8, bt.getBankexpirationdate());
 			ps.setString(9, bt.getBankexplain());
+			
+			status = ps.executeUpdate();
+			conn.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return status;
+		
+	}
+	
+	public int updateToPhoneTable(TelephoneDirectoryTable tdt) {
+		int status = 0;
+		
+		try {
+			conn =ConnectionHelper.getConn();   //`username`, `useremail`, `userPhoneType`,`userPhoneOwnerName`,`userPhoneNumber`,`userPhoneExplain`,`usertypeofencrypt`
+			ps = conn.prepareStatement("Update newsdata.userPhoneDirectory set id=?, username=?, useremail=?, userPhoneType=?, userPhoneOwnerName=?, userPhoneNumber=?, userPhoneExplain=? where id="+tdt.getIdentifyofDB());                     
+			ps.setInt(1, tdt.getIdentifyofDB());
+			ps.setString(2,tdt.getUsername());
+			ps.setString(3, tdt.getUseremail());
+			ps.setString(4, tdt.getPhonenumbertype());
+			ps.setString(5, tdt.getPhoneownername());
+			ps.setString(6, tdt.getPhonenumber());
+			ps.setString(7, tdt.getPhonexplain());
 			
 			status = ps.executeUpdate();
 			conn.close();

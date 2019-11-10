@@ -88,6 +88,15 @@
   <url-pattern>/bankservices</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+  <servlet-name>telephonedirectory</servlet-name>
+  <servlet-class>controller.Telephonedirectoryservices</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>telephonedirectory</servlet-name>
+  <url-pattern>/telephonedirectory</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
 
 

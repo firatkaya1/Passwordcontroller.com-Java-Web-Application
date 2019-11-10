@@ -29,7 +29,6 @@ public class BankServices extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String type = request.getParameter("Submit");
-		String values = request.getParameter("valueofid");
 		String username= session.getAttribute("username").toString();
 		String email = session.getAttribute("email").toString();
 		

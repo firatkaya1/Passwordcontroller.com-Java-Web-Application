@@ -7,6 +7,7 @@ import model.BankTable;
 import model.BasicTable;
 import model.EmailTable;
 import model.SocialMediaTable;
+import model.TelephoneDirectoryTable;
 import model.UserLogs;
 
 public class İnsertDB {
@@ -112,6 +113,7 @@ public class İnsertDB {
 		
 		return status;
 	}
+	
 	public int insertToBankTable(BankTable bt) {
 		int status = 0;
 		try {
@@ -140,6 +142,31 @@ public class İnsertDB {
 		return status;
 	}
 	
+	public int insertToPhoneTable(TelephoneDirectoryTable tdt) {
+		int status = 0;
+		try {
+			conn =ConnectionHelper.getConn();
+			ps=conn.prepareStatement("INSERT INTO `userPhoneDirectory` (`username`, `useremail`, `userPhoneType`,`userPhoneOwnerName`,`userPhoneNumber`,`userPhoneExplain`,`usertypeofencrypt`) VALUES (?,?,?,?,?,?,?)");
+			ps.setString(1, tdt.getUsername());
+			ps.setString(2, tdt.getUseremail());
+			ps.setString(3, tdt.getPhonenumbertype());
+			ps.setString(4, tdt.getPhoneownername());
+			ps.setString(5, tdt.getPhonenumber());
+			ps.setString(6, tdt.getPhonexplain());
+			ps.setString(7, tdt.getTypeofencrypt());
+			
+			status = ps.executeUpdate();
+			
+			ps.close();
+			conn.close();
+			
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return status;
+	}
 	
 	
 }

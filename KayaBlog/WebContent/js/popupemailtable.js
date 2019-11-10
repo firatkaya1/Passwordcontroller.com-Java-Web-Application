@@ -29,6 +29,7 @@ for(var i = 0 ;i<showPasswords.length;i++){
 	
 	showPasswords[i].onclick = function () {
 		var currentRow = this.id;
+		console.log(currentRow)
 		var currentPasswordrow = document.getElementsByClassName("passwordfield")[currentRow - 1];
 		if (currentPasswordrow.type === "password") {
 			currentPasswordrow.type = "text";

@@ -25,9 +25,6 @@
             <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
             <li><a href="bankservices.jsp">Bank Services</a></li>
             <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
-            <li><a>Note Services</a></li>
-            <li><a>To Do List</a></li>
-            <li><a>Date Services</a></li>
         </ul>  
       </li>
        <li><a>Profile</a>
