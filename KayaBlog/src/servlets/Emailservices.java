@@ -33,7 +33,7 @@ public class Emailservices extends HttpServlet {
 		ArrayList<EmailTable> emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 		
 		
-		switch(type) {
+	switch(type) {
 		case "REFRESH":
 			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 			
@@ -68,7 +68,8 @@ public class Emailservices extends HttpServlet {
 			
 			UpdateDB update = new UpdateDB();
 			
-			EmailTable table = new EmailTable(emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+			EmailTable table = new EmailTable(
+					emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
 					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("emailServicesUpdate"),
