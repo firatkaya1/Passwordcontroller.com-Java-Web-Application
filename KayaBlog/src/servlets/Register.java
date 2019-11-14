@@ -28,7 +28,6 @@ public class Register extends HttpServlet {
 		
 	switch(submitType) {
 		case "Register":
-			
 			Check check = new Check(
 					request.getParameter("username"),
 					request.getParameter("password"),
