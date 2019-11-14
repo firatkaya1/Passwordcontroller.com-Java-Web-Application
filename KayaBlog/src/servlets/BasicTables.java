@@ -23,10 +23,10 @@ public class BasicTables extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserLoginDB uld = new UserLoginDB();
+		
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
-		
 		
 		ArrayList<BasicTable> tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
@@ -69,21 +69,21 @@ public class BasicTables extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			BasicTable basicTable = new BasicTable(
-					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),   		//identifyofDb
-					Integer.valueOf(request.getParameter("userid1")),										    		//id
-					session.getAttribute("username").toString(),											    		//username 		
-					session.getAttribute("email").toString(),												    		//email 	 
-					request.getParameter("emailType1"),														    		//emailtype	
-					request.getParameter("emailAdress1"),																//email on table
-					request.getParameter("username1"),																	//username on table
-					request.getParameter("password1"),																	//password on table
-					request.getParameter("explanations1"),																//explain on table
-					request.getParameter("typeofmyencrypt1"));															//encrypt type
+					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),		//identifyofDb
+					Integer.valueOf(request.getParameter("userid1")),		//id
+					session.getAttribute("username").toString(),		//username 		
+					session.getAttribute("email").toString(),		//email 	 
+					request.getParameter("emailType1"),		//emailtype	
+					request.getParameter("emailAdress1"),		//email on table
+					request.getParameter("username1"),		//username on table
+					request.getParameter("password1"),		//password on table
+					request.getParameter("explanations1"),		//explain on table
+					request.getParameter("typeofmyencrypt1"));		//encrypt type
 			
 			
-			update.updateToBasicTable(basicTable);																		//update database
+			update.updateToBasicTable(basicTable);		//update database
 			
-			tableBasicList = uld.getTable(basicTable.getUsername(),basicTable.getUseremail());							//refresh BasicTable values
+			tableBasicList = uld.getTable(basicTable.getUsername(),basicTable.getUseremail());		//refresh BasicTable values
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
