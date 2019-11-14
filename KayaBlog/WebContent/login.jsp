@@ -24,10 +24,10 @@
                 <a  href="forgetpass.html" class="forgetpassword">Forget password ? </a>
                 <br>
                 <span>
-             	<div> 
+             	
              	 <input type="Submit" name="Submit" value="Register" class = "btn" />
                	 <input type="Submit" name="Submit" value="Login" class = "btn" />
-                </div>
+                
                 </span>
              </form>
              
