@@ -2,29 +2,48 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.UserRegisterDB;
+
 public class Check {
 	
-
+	private String username;
+	private String email;
+	
 	private CheckEmail ce;
 	private CheckUsername cun;
 	private CheckPassword cp;
 	private CheckPhoneNumber cpn;
 	private CheckPrivacyPoliticy cpp;
 	
-	 ArrayList<String> errorList = new ArrayList<String>();
+	UserRegisterDB userRegisterDB;
 	
-	public Check(String userAdminName,String userAdminPassword, String userAdminPassword2, String userAdminPhone,String userAdminEmail,String userPrivacyPoliticy) {
+	ArrayList<String> errorList = new ArrayList<String>();
+	
+	public Check(String username,String password, String repassword, String phonenumber,String email,String privacypolitic) {
+		this.username = username;
+		this.email = email;
 		
-		ce = new CheckEmail(userAdminEmail);
-		cp = new CheckPassword(userAdminPassword, userAdminPassword2);
-		cpn = new CheckPhoneNumber(userAdminPhone);
-		cun = new CheckUsername(userAdminName);
-		cpp = new CheckPrivacyPoliticy(userPrivacyPoliticy);
+		userRegisterDB = new UserRegisterDB();
+		ce = new CheckEmail(email);
+		cp = new CheckPassword(password, repassword);
+		cpn = new CheckPhoneNumber(phonenumber);
+		cun = new CheckUsername(username);
+		cpp = new CheckPrivacyPoliticy(privacypolitic);
+	}
+	
+	public boolean verify() {
+		
+		if(controll() && userRegisterDB.verify(email, username)) {
+			return true;
+		}
+		errorList.add("Email or username has already taken.");
+		
+		
+		return false;
 	}
 	
 	public boolean controll() {
 		boolean controll = true;
-	
 		
 		if(!ce.controll()) return false;
 		if(!cp.controll()) return false;
@@ -32,12 +51,8 @@ public class Check {
 		if(!cun.controll()) return false;
 		if(!cpp.controll()) return false;
 		
-		
-		
-		
 		return controll;
 	}
-	
 	
 	public ArrayList<String> errorListAll() {
 		

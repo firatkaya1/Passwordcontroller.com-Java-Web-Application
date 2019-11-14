@@ -18,7 +18,7 @@
   
   <servlet>
   <servlet-name>login</servlet-name>
-  <servlet-class>controller.Login</servlet-class>
+  <servlet-class>servlets.Login</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>login</servlet-name>
@@ -27,7 +27,7 @@
   
   <servlet>
   <servlet-name>register</servlet-name>
-  <servlet-class>controller.Register</servlet-class>
+  <servlet-class>servlets.Register</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>register</servlet-name>
@@ -36,7 +36,7 @@
   
    <servlet>
   <servlet-name>mainpage</servlet-name>
-  <servlet-class>controller.Mainpage</servlet-class>
+  <servlet-class>servlets.Mainpage</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>mainpage</servlet-name>
@@ -45,7 +45,7 @@
   
   <servlet>
   <servlet-name>basictables</servlet-name>
-  <servlet-class>controller.BasicTables</servlet-class>
+  <servlet-class>servlets.BasicTables</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>basictables</servlet-name>
@@ -54,7 +54,7 @@
  
  <servlet>
   <servlet-name>useractivities</servlet-name>
-  <servlet-class>controller.UserActivities</servlet-class>
+  <servlet-class>servlets.UserActivities</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>useractivities</servlet-name>
@@ -63,7 +63,7 @@
   
   <servlet>
   <servlet-name>socialmediaservices</servlet-name>
-  <servlet-class>controller.Socialmediaservices</servlet-class>
+  <servlet-class>servlets.Socialmediaservices</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>socialmediaservices</servlet-name>
@@ -72,7 +72,7 @@
   
   <servlet>
   <servlet-name>emailservices</servlet-name>
-  <servlet-class>controller.Emailservices</servlet-class>
+  <servlet-class>servlets.Emailservices</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>emailservices</servlet-name>
@@ -81,7 +81,7 @@
   
   <servlet>
   <servlet-name>bankservices</servlet-name>
-  <servlet-class>controller.BankServices</servlet-class>
+  <servlet-class>servlets.BankServices</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>bankservices</servlet-name>
@@ -90,7 +90,7 @@
   
     <servlet>
   <servlet-name>telephonedirectory</servlet-name>
-  <servlet-class>controller.Telephonedirectoryservices</servlet-class>
+  <servlet-class>servlets.Telephonedirectoryservices</servlet-class>
   </servlet>
   <servlet-mapping>
   <servlet-name>telephonedirectory</servlet-name>

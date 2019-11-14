@@ -1,4 +1,4 @@
-package controller;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.DispatcherType;
