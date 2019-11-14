@@ -23,21 +23,17 @@ public class BasicTables extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserLoginDB uld = new UserLoginDB();
-		
-		
-		
-		
 		HttpSession session = request.getSession();
-		String type = request.getParameter("Submit");
-		String username= session.getAttribute("username").toString();
-		String email = session.getAttribute("email").toString();
 		
-		ArrayList<BasicTable> tableBasicList = uld.getTable(username, email);
+		String type = request.getParameter("Submit");
+		
+		
+		ArrayList<BasicTable> tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
 		switch(type) {
 		case "REFRESH":
 			
-			tableBasicList = uld.getTable(username, email);
+			tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -100,7 +96,7 @@ public class BasicTables extends HttpServlet {
 			
 			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
 			
-			tableBasicList = uld.getTable(username, email);
+			tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
