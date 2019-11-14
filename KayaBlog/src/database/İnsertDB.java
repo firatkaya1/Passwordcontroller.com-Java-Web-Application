@@ -38,13 +38,13 @@ public class İnsertDB {
 		return status;
 	}
 	
-	public int insertToBasicTable(String username,String email,BasicTable bt) {
+	public int insertToBasicTable(BasicTable bt) {
 		int status = 0;
 		try {
 			conn =ConnectionHelper.getConn();
 			ps=conn.prepareStatement("INSERT INTO `userBasicTable` (`username`, `useremail`, `userShowType`,`userShowEmail`,`userShowUsername`,`userShowPassword`,`userShowExplanation`,`userTypeOfEncrypt`) VALUES (?,?,?,?,?,?,?,?)");
-			ps.setString(1, username);
-			ps.setString(2, email);
+			ps.setString(1, bt.getUsername());
+			ps.setString(2, bt.getUseremail());
 			ps.setString(3, bt.getUserShowtype());
 			ps.setString(4, bt.getUserShowEmail());
 			ps.setString(5, bt.getUserShowUsername());

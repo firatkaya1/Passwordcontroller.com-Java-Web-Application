@@ -14,7 +14,7 @@ public class UpdateDB {
 	static PreparedStatement ps;
 	
 	
-	public int updateToBasicTable(String username,String email,BasicTable bt) {
+	public int updateToBasicTable(BasicTable bt) {
 		int status = 0;
 		
 		try {
@@ -22,8 +22,8 @@ public class UpdateDB {
 			ps = conn.prepareStatement("Update newsdata.userBasicTable set id=?, username=?, useremail=?, userShowType=?, userShowEmail=?, userShowUsername=?, userShowPassword=?, userShowExplanation=? where id="+bt.getIdentifyofDB());                     
 			
 			ps.setInt(1,bt.getIdentifyofDB());
-			ps.setString(2,username);
-			ps.setString(3,email);
+			ps.setString(2,bt.getUsername());
+			ps.setString(3,bt.getUseremail());
 			ps.setString(4,bt.getUserShowtype());
 			ps.setString(5,bt.getUserShowEmail());
 			ps.setString(6,bt.getUserShowUsername());

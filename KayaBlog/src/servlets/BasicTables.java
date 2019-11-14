@@ -23,13 +23,12 @@ public class BasicTables extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		UserLoginDB uld = new UserLoginDB();
-		İnsertDB insert = new İnsertDB();
-		DeleteDB delete = new DeleteDB();
-		UpdateDB update = new UpdateDB();
+		
+		
+		
 		
 		HttpSession session = request.getSession();
 		String type = request.getParameter("Submit");
-		String values = request.getParameter("valueofid");
 		String username= session.getAttribute("username").toString();
 		String email = session.getAttribute("email").toString();
 		
@@ -37,52 +36,58 @@ public class BasicTables extends HttpServlet {
 		
 		switch(type) {
 		case "REFRESH":
+			
 			tableBasicList = uld.getTable(username, email);
+			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
+			
 			break;
 			
 		case "SAVE":
-			String typeEmail = request.getParameter("typeEmail");
-			String ShowEmail = request.getParameter("email");
-			String ShowUsername = request.getParameter("username");
-			String ShowPassword = request.getParameter("password");
-			String typeEncrypt = request.getParameter("typeofmyencrypt");
-			String explanations = request.getParameter("explanations");
 			
+			İnsertDB insert = new İnsertDB();	
 			
-			if(!typeEmail.isEmpty() && !ShowEmail.isEmpty() && !ShowUsername.isEmpty()  && !ShowPassword.isEmpty()) 
-			{
-				BasicTable bt = new BasicTable(username,email,typeEmail,ShowEmail,ShowUsername,ShowPassword,explanations,typeEncrypt);
+			BasicTable bt = new BasicTable(
+				session.getAttribute("username").toString(),
+				session.getAttribute("email").toString(),
+				request.getParameter("typeEmail"),
+				request.getParameter("email"),
+				request.getParameter("username"),
+				request.getParameter("password"),
+				request.getParameter("explanations"),
+				request.getParameter("typeofmyencrypt"));
 			
-				insert.insertToBasicTable(username,email, bt);
+				insert.insertToBasicTable(bt);
 			
-				tableBasicList = uld.getTable(username, email);
+				tableBasicList = uld.getTable(bt.getUsername(), bt.getUseremail());
 			
 				request.setAttribute("tableBasicList",tableBasicList);
 				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
-			} else {
-				request.setAttribute("tableBasicList",tableBasicList);
-				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
-			}
+			 
 			
 			break;
 			
 		case "UPDATE":
-			int identifyofDB = tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB();
-			int id = Integer.valueOf(request.getParameter("userid1"));
-			typeEmail = request.getParameter("emailType1");
-			ShowEmail = request.getParameter("emailAdress1");
-			ShowUsername = request.getParameter("username1");
-			ShowPassword = request.getParameter("password1");
-			typeEncrypt = request.getParameter("typeofmyencrypt1");
-			explanations = request.getParameter("explanations1");
 			
-			BasicTable bt = new BasicTable(identifyofDB,id,username,email,typeEmail,ShowEmail,ShowUsername,ShowPassword,explanations,typeEncrypt);
-			// update database
-			update.updateToBasicTable(username,email, bt);
-			// refresh BasicTable values
-			tableBasicList = uld.getTable(username, email);
+			UpdateDB update = new UpdateDB();
+			
+			BasicTable basicTable = new BasicTable(
+					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),   		//identifyofDb
+					Integer.valueOf(request.getParameter("userid1")),										    		//id
+					session.getAttribute("username").toString(),											    		//username 		
+					session.getAttribute("email").toString(),												    		//email 	 
+					request.getParameter("emailType1"),														    		//emailtype	
+					request.getParameter("emailAdress1"),																//email on table
+					request.getParameter("username1"),																	//username on table
+					request.getParameter("password1"),																	//password on table
+					request.getParameter("explanations1"),																//explain on table
+					request.getParameter("typeofmyencrypt1"));															//encrypt type
+			
+			
+			update.updateToBasicTable(basicTable);																		//update database
+			
+			tableBasicList = uld.getTable(basicTable.getUsername(),basicTable.getUseremail());							//refresh BasicTable values
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -90,11 +95,16 @@ public class BasicTables extends HttpServlet {
 			break;
 			
 		case "DELETE":
-			id = tableBasicList.get(Integer.valueOf(values)-1).getIdentifyofDB();
-			delete.deleteFromBasicTable(id);
+			
+			DeleteDB delete = new DeleteDB();
+			
+			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
+			
 			tableBasicList = uld.getTable(username, email);
+			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
+			
 			break;
 			
 		default:
