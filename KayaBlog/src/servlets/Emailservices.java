@@ -23,90 +23,86 @@ public class Emailservices extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserLoginDB uld = new UserLoginDB();
-		İnsertDB insert = new İnsertDB();
-		DeleteDB delete = new DeleteDB();
-		UpdateDB update = new UpdateDB();
+		
+		UserLoginDB userLoginDB = new UserLoginDB();
+		
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
-		String username=session.getAttribute("username").toString();
-		String email=session.getAttribute("email").toString();
 		
-		
-		ArrayList<EmailTable> emailList = uld.getEmailTable(username,email);
+		ArrayList<EmailTable> emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 		
 		
 		switch(type) {
 		case "REFRESH":
-			emailList = uld.getEmailTable(username, email);
+			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
-			type = "";
+			
 			break;
+			
 		case "SAVE":
-			String emailServices = request.getParameter("emailServices");
-			String emailServicesAdress = request.getParameter("emailAdress");
-			String emailPassword= request.getParameter("password");
-			String explanations = request.getParameter("explanations");
-			String typeEncrypt = request.getParameter("typeofmyencrypttext");
 			
-			if(!emailServices.isEmpty() && !emailServicesAdress.isEmpty() && !emailPassword.isEmpty()) 
-			{
-				EmailTable et = new EmailTable(username,email,emailServices,emailServicesAdress,emailPassword,explanations,typeEncrypt);
+			İnsertDB insert = new İnsertDB();
 			
-				insert.insertToEmailTable(username,email, et);
+			EmailTable emailTable = new EmailTable(
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("emailServices"),
+					request.getParameter("emailAdress"),
+					request.getParameter("password"),
+					request.getParameter("explanations"),
+					request.getParameter("typeofmyencrypttext"));
+		
+			insert.insertToEmailTable(emailTable);
+		
+			emailList = userLoginDB.getEmailTable(emailTable.getUsername(), emailTable.getUseremailadress());
+		
+			request.setAttribute("emailList",emailList);
+			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
 			
-				emailList = uld.getEmailTable(username, email);
-			
-				request.setAttribute("emailList",emailList);
-				request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
-			} else {
-				request.setAttribute("emailList",emailList);
-				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
-			}
-			type = "";
 			break;
 			
 		case "UPDATE":
-			int identifyofDB = emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB();
-			emailServices = request.getParameter("emailServicesUpdate");
-			emailServicesAdress = request.getParameter("emailAdressUpdate");
-			emailPassword = request.getParameter("passwordUpdate");
-			explanations = request.getParameter("explanationsUpdate");
 			
-			EmailTable et = new EmailTable(identifyofDB,username,email,emailServices,emailServicesAdress,emailPassword,explanations);
+			UpdateDB update = new UpdateDB();
 			
-			update.updateToEmailTable(username, email, et);
+			EmailTable table = new EmailTable(emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("emailServicesUpdate"),
+					request.getParameter("emailAdressUpdate"),
+					request.getParameter("passwordUpdate"),
+					request.getParameter("explanationsUpdate"));
 			
-			emailList = uld.getEmailTable(username, email);
+			update.updateToEmailTable(table);
+			
+			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
-			type = "";
+			
 			break;
 			
 		case "DELETE":
-			identifyofDB = emailList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB();
 			
-			delete.deleteFromEmailTable(identifyofDB);
+			DeleteDB delete = new DeleteDB();
 			
-			emailList = uld.getEmailTable(username, email);
+			delete.deleteFromEmailTable(emailList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
+			
+			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
 			
-			type = "";
 			break;
 			
 		default:
 			System.out.println("Error");
-			type = "";
+			
 			break;
 			
 		}
-		
-		
 	}
-
 }

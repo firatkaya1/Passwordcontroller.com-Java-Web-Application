@@ -63,13 +63,13 @@ public class İnsertDB {
 		return status;
 	}
 	
-	public int insertToEmailTable(String username,String email,EmailTable et) {
+	public int insertToEmailTable(EmailTable et) {
 		int status = 0;
 		try {
 			conn =ConnectionHelper.getConn();
 			ps=conn.prepareStatement("INSERT INTO `userEmailServices` (`username`, `useremailadress`, `userEmailType`,`userEmailServicesAdress`,`userEmailServicesPassword`,`userEmailServicesExplanations`,`userTypeOfEncrypt`) VALUES (?,?,?,?,?,?,?)");
-			ps.setString(1, username);
-			ps.setString(2, email);
+			ps.setString(1, et.getUsername());
+			ps.setString(2, et.getUseremailadress());
 			ps.setString(3, et.getUserEmailType());
 			ps.setString(4, et.getUserEmailServicesAdress());
 			ps.setString(5, et.getUserEmailServicesPass() );

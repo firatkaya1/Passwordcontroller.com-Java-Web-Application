@@ -42,7 +42,7 @@ public class UpdateDB {
 		return status;
 	}
 	
-	public int updateToEmailTable(String username,String email,EmailTable et) {
+	public int updateToEmailTable(EmailTable et) {
 		int status = 0;
 		
 		try {
@@ -50,8 +50,8 @@ public class UpdateDB {
 			ps = conn.prepareStatement("Update newsdata.userEmailServices set id=?, username=?, useremailadress=?, userEmailType=?, userEmailServicesAdress=?, userEmailServicesPassword=?, userEmailServicesExplanations=? where id="+et.getIdentifyofDB());                     
 			
 			ps.setInt(1, et.getIdentifyofDB());
-			ps.setString(2, username);
-			ps.setString(3, email);
+			ps.setString(2, et.getUsername());
+			ps.setString(3, et.getUseremailadress());
 			ps.setString(4, et.getUserEmailType());
 			ps.setString(5, et.getUserEmailServicesAdress());
 			ps.setString(6, et.getUserEmailServicesPass());

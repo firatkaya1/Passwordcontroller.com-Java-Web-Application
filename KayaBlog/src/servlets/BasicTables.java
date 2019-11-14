@@ -29,6 +29,7 @@ public class BasicTables extends HttpServlet {
 		ArrayList<BasicTable> tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
 		switch(type) {
+		
 		case "REFRESH":
 			
 			tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
@@ -59,7 +60,6 @@ public class BasicTables extends HttpServlet {
 				request.setAttribute("tableBasicList",tableBasicList);
 				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
 			 
-			
 			break;
 			
 		case "UPDATE":
@@ -103,7 +103,9 @@ public class BasicTables extends HttpServlet {
 			
 		default:
 			System.out.println("Unexpected Error.");
+			
 			break;
+			
 		}
 		
 	}
