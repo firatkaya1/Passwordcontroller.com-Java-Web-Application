@@ -20,19 +20,20 @@ public class BasicTables extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UserLoginDB uld = new UserLoginDB();
+		UserLoginDB userLoginDB = new UserLoginDB();
+		BasicTable basicTable;
 		
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<BasicTable> tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		ArrayList<BasicTable> tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
 		switch(type) {
 		
 		case "REFRESH":
 			
-			tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -43,7 +44,7 @@ public class BasicTables extends HttpServlet {
 			
 			İnsertDB insert = new İnsertDB();	
 			
-			BasicTable bt = new BasicTable(
+			basicTable = new BasicTable(
 				session.getAttribute("username").toString(),
 				session.getAttribute("email").toString(),
 				request.getParameter("typeEmail"),
@@ -53,9 +54,9 @@ public class BasicTables extends HttpServlet {
 				request.getParameter("explanations"),
 				request.getParameter("typeofmyencrypt"));
 			
-				insert.insertToBasicTable(bt);
+				insert.insertToBasicTable(basicTable);
 			
-				tableBasicList = uld.getTable(bt.getUsername(), bt.getUseremail());
+				tableBasicList = userLoginDB.getTable(basicTable.getUsername(), basicTable.getUseremail());
 			
 				request.setAttribute("tableBasicList",tableBasicList);
 				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -66,7 +67,7 @@ public class BasicTables extends HttpServlet {
 			
 			UpdateDB update = new UpdateDB();
 			
-			BasicTable basicTable = new BasicTable(
+			basicTable = new BasicTable(
 					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),		
 					Integer.valueOf(request.getParameter("userid1")),		
 					session.getAttribute("username").toString(),		
@@ -81,7 +82,7 @@ public class BasicTables extends HttpServlet {
 			
 			update.updateToBasicTable(basicTable);		//update database
 			
-			tableBasicList = uld.getTable(basicTable.getUsername(),basicTable.getUseremail());		
+			tableBasicList = userLoginDB.getTable(basicTable.getUsername(),basicTable.getUseremail());		
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -94,7 +95,7 @@ public class BasicTables extends HttpServlet {
 			
 			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
 			
-			tableBasicList = uld.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);

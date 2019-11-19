@@ -24,78 +24,91 @@ public class Telephonedirectoryservices extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserLoginDB uld = new UserLoginDB();
-		İnsertDB insert = new İnsertDB();
-		DeleteDB delete = new DeleteDB();
-		UpdateDB update = new UpdateDB();
+		UserLoginDB userLoginDB = new UserLoginDB();
 		
+		
+		
+		
+		TelephoneDirectoryTable directoryTable;
 		HttpSession session = request.getSession();
 		String type = request.getParameter("Submit");
-		String username= session.getAttribute("username").toString();
-		String email = session.getAttribute("email").toString();
 		
-		ArrayList<TelephoneDirectoryTable> tableTelephoneDirectoryList = uld.getTelephoneDirectoryTable(username, email);
+		ArrayList<TelephoneDirectoryTable> tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
 		switch(type) {
 		case "REFRESH":
-			tableTelephoneDirectoryList = uld.getTelephoneDirectoryTable(username, email);
+			
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
 			type = "";
+			
 			break;
 			
 		case "SAVE":
-			String phonenumbertype = request.getParameter("phonenumbertype");
-			String phoneownername = request.getParameter("phoneownername");
-			String phonenumber= request.getParameter("phonenumber");
-			String phoneexplain = request.getParameter("phoneexplain");
-			String typeofmyencrypt = request.getParameter("typeofmyencrypt");
 			
+			İnsertDB insert = new İnsertDB();
 			
-			if(!phonenumbertype.isEmpty() && !phoneownername.isEmpty() && !phonenumber.isEmpty()) 
-			{
-				TelephoneDirectoryTable tdt = new TelephoneDirectoryTable(0,0,username,email,phonenumbertype,phoneownername,phonenumber,phoneexplain,typeofmyencrypt);
-				
-				insert.insertToPhoneTable(tdt);
+			directoryTable = new TelephoneDirectoryTable(0,0,
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("phonenumbertype"),
+					request.getParameter("phoneownername"),
+					request.getParameter("phonenumber"),
+					request.getParameter("phoneexplain"),
+					request.getParameter("typeofmyencrypt"));
 			
-				tableTelephoneDirectoryList = uld.getTelephoneDirectoryTable(username, email);
+			insert.insertToPhoneTable(directoryTable);
+		
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		
+			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
+			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
 			
-				request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
-				request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
-			} else {
-				request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
-				request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
-			}
 			type = "";
+		
 			break;
 			
 		case "UPDATE":
-			int identifyofDB = tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB();
-			int id = Integer.valueOf(request.getParameter("useridUpdate"));
-			phonenumbertype = request.getParameter("phonenumbertypeUpdate");
-			phoneownername = request.getParameter("phoneownernameUpdate");
-			phonenumber= request.getParameter("phonenumberUpdate");
-			phoneexplain = request.getParameter("phoneexplainUpdate");
-			typeofmyencrypt = "None";
+		
+			UpdateDB update = new UpdateDB();
 			
-			TelephoneDirectoryTable tdt = new TelephoneDirectoryTable(identifyofDB,id,username,email,phonenumbertype,phoneownername,phonenumber,phoneexplain,typeofmyencrypt);
-			// update database
-			update.updateToPhoneTable(tdt);
-			// refresh BasicTable values
-			tableTelephoneDirectoryList = uld.getTelephoneDirectoryTable(username, email);
+			directoryTable = new TelephoneDirectoryTable(
+					tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("useridUpdate")),
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("phonenumbertypeUpdate"),
+					request.getParameter("phoneownernameUpdate"),
+					request.getParameter("phonenumberUpdate"),
+					request.getParameter("phoneexplainUpdate"),
+					"None");
+			
+			update.updateToPhoneTable(directoryTable);
+			
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
+			
 			type = "";
+			
 			break;
 			
 		case "DELETE":
-			id = Integer.valueOf(request.getParameter("userid"));
-			delete.deleteFromTelephoneDirectoryTable(id);
-			tableTelephoneDirectoryList = uld.getTelephoneDirectoryTable(username, email);
+			
+			DeleteDB delete = new DeleteDB();
+			
+			delete.deleteFromTelephoneDirectoryTable(tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
+			
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
+			
 			type = "";
+			
 			break;
 			
 		default:

@@ -23,67 +23,69 @@ public class Socialmediaservices extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserLoginDB uld = new UserLoginDB();
-		İnsertDB insert = new İnsertDB();
-		DeleteDB delete = new DeleteDB();
-		UpdateDB update = new UpdateDB();
+		
+		UserLoginDB userLoginDB = new UserLoginDB();
+		
+		SocialMediaTable socialMediaTable;
 		
 		HttpSession session = request.getSession();
-		String type = request.getParameter("Submit");
-		String username = session.getAttribute("username").toString();
-		String email = session.getAttribute("email").toString();
 		
-		ArrayList<SocialMediaTable> socialMediaList = uld.getSocialMedia(username,email);
+		String type = request.getParameter("Submit");
+		
+		ArrayList<SocialMediaTable> socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 		
 		
 		switch(type) {
 		case "REFRESH":
-			socialMediaList = uld.getSocialMedia(username, email);
+			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
-			type = "";
+			
 			break;
+			
 		case "SAVE":
-			String socialmediaType = request.getParameter("socialmediaType");
-			String socialmediaEmail = request.getParameter("socialmediaEmail");
-			String socialmediausername = request.getParameter("socialmediausername");
-			String socialmediapassword = request.getParameter("socialmediapassword");
-			String typeofmyencrypt = request.getParameter("typeofmyencrypt");
-			String socialmediaexp = request.getParameter("socialmediaexp");
 			
+			İnsertDB insert = new İnsertDB();
 			
-			if(!socialmediaType.isEmpty() && !socialmediaEmail.isEmpty() && !socialmediapassword.isEmpty()  && !typeofmyencrypt.isEmpty()) 
-			{
-				SocialMediaTable smt = new SocialMediaTable(username,email,socialmediaType,socialmediaEmail,socialmediausername,socialmediapassword,socialmediaexp,typeofmyencrypt);
-			
-				insert.insertToSocialMediaTable(smt);
-			
-				socialMediaList = uld.getSocialMedia(username, email);
-			
-				request.setAttribute("socialMediaList",socialMediaList);
-				request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
-			} else {
-				request.setAttribute("socialMediaList",socialMediaList);
-				request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
-			}
-			type = "";
+			socialMediaTable = new SocialMediaTable(
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("socialmediaType"),
+					request.getParameter("socialmediaEmail"),
+					request.getParameter("socialmediausername"),
+					request.getParameter("socialmediapassword"),
+					request.getParameter("socialmediaexp"),
+					request.getParameter("typeofmyencrypt"));
+		
+			insert.insertToSocialMediaTable(socialMediaTable);
+		
+			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUsername(), socialMediaTable.getUseremailadress());
+		
+			request.setAttribute("socialMediaList",socialMediaList);
+			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
+			 
 			break;	
 			
 		case "UPDATE":
-			int identifyofDB = socialMediaList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB();
-			int id = Integer.valueOf(request.getParameter("useridUpdate"));
-			socialmediaType = request.getParameter("socialmediaTypeUpdate");
-			socialmediaEmail = request.getParameter("socialmediaEmailUpdate");
-			socialmediausername = request.getParameter("socialmediausernameUpdate");
-			socialmediapassword = request.getParameter("socialmediapasswordUpdate");
-			typeofmyencrypt = request.getParameter("typeofmyencrypt");
-			socialmediaexp = request.getParameter("socialmediaexpUpdate");
 			
-			SocialMediaTable smt = new SocialMediaTable(identifyofDB,id,username,email,socialmediaType,socialmediaEmail,socialmediausername,socialmediapassword,socialmediaexp,typeofmyencrypt);
-			// update database
-			update.updateToSocialMediaTable(smt);
-			// refresh BasicTable values
-			socialMediaList = uld.getSocialMedia(username, email);
+			UpdateDB update = new UpdateDB();
+			
+			socialMediaTable = new SocialMediaTable(
+					socialMediaList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("useridUpdate")),
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("socialmediaTypeUpdate"),
+					request.getParameter("socialmediaEmailUpdate"),
+					request.getParameter("socialmediausernameUpdate"),
+					request.getParameter("socialmediapasswordUpdate"),
+					request.getParameter("socialmediaexpUpdate"),
+					request.getParameter("typeofmyencrypt"));
+			
+			update.updateToSocialMediaTable(socialMediaTable);
+			
+			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUsername(), socialMediaTable.getUseremailadress());
 			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
@@ -91,13 +93,17 @@ public class Socialmediaservices extends HttpServlet {
 			break;		
 			
 		case "DELETE":
-			id = socialMediaList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB();
-			delete.deleteFromSocialMediaTable(id);
-			socialMediaList = uld.getSocialMedia(username, email);
+			
+			DeleteDB delete = new DeleteDB();
+			
+			delete.deleteFromSocialMediaTable(socialMediaList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
+			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
 			type = "";
-		break;
+		
+			break;
 		}
 		
 	}

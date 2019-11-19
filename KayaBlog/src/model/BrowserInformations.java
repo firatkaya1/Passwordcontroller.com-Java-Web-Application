@@ -25,7 +25,7 @@ public class BrowserInformations {
 			if(userag.contains(browsers[i])) {
 				browsername=browsers[i];
 				browsername = browsername.substring(0, 1).toUpperCase()+ browsername.substring(1);
-				System.out.println("Browser name : "+browsername);
+				
 			}
 			
 		}

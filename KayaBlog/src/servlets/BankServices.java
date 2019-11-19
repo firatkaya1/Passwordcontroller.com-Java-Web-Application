@@ -23,82 +23,94 @@ public class BankServices extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserLoginDB uld = new UserLoginDB();
-		İnsertDB insert = new İnsertDB();
-		DeleteDB delete = new DeleteDB();
-		UpdateDB update = new UpdateDB();
+		UserLoginDB userLoginDB = new UserLoginDB();
+		
+		BankTable bankTable;
 		
 		HttpSession session = request.getSession();
-		String type = request.getParameter("Submit");
-		String username= session.getAttribute("username").toString();
-		String email = session.getAttribute("email").toString();
 		
-		ArrayList<BankTable> tableBankList = uld.getBankTable(username, email);
+		String type = request.getParameter("Submit");
+		
+		ArrayList<BankTable> tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 		
 		switch(type) {
 		case "REFRESH":
-			tableBankList = uld.getBankTable(username, email);
+			
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
 			type = "";
+			
 			break;
 			
 		case "SAVE":
-			String bankName = request.getParameter("bankName");
-			String bankcardname = request.getParameter("bankcardname");
-			String bankcardnumber= request.getParameter("bankcardnumber");
-			String lastdate = request.getParameter("bankcardlastdate");
-			String expirationdate = request.getParameter("bankcardexpirationdate");
-			String typeofmyencrypt = request.getParameter("typeofmyencrypt");
-			String explanations = request.getParameter("explain");
 			
+			İnsertDB insert = new İnsertDB();
 			
-			if(!bankcardname.isEmpty() && !bankcardnumber.isEmpty() && !lastdate.isEmpty()) 
-			{
-				BankTable bt = new BankTable(0,0,username,email,bankName,bankcardname,bankcardnumber,lastdate,expirationdate,explanations,typeofmyencrypt);
+			bankTable = new BankTable(0,0,
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("bankName"),
+					request.getParameter("bankcardname"),
+					request.getParameter("bankcardnumber"),
+					request.getParameter("bankcardlastdate"),
+					request.getParameter("bankcardexpirationdate"),
+					request.getParameter("explain"),
+					request.getParameter("typeofmyencrypt"));
+		
+			insert.insertToBankTable(bankTable);
+		
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		
+			request.setAttribute("tableBankList",tableBankList);
+			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
 			
-				insert.insertToBankTable(bt);
-			
-				tableBankList = uld.getBankTable(username, email);
-			
-				request.setAttribute("tableBankList",tableBankList);
-				request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
-			} else {
-				request.setAttribute("tableBankList",tableBankList);
-				request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
-			}
 			type = "";
+			
 			break;
 			
 		case "UPDATE":
-			int identifyofDB = tableBankList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB();
-			int id = Integer.valueOf(request.getParameter("useridUpdate"));
-			bankName = request.getParameter("bankNameUpdate");
-			bankcardname = request.getParameter("bankcardnameUpdate");
-			bankcardnumber= request.getParameter("bankcardnumberUpdate");
-			lastdate = request.getParameter("bankcardlastdateUpdate");
-			expirationdate = request.getParameter("bankcardexpirationdateUpdate");
-			typeofmyencrypt = "None";
-			explanations = request.getParameter("explainUpdate");
+		
+			UpdateDB update = new UpdateDB();
 			
-			BankTable bt = new BankTable(identifyofDB,id,username,email,bankName,bankcardname,bankcardnumber,lastdate,expirationdate,explanations,typeofmyencrypt);
-			// update database
-			update.updateToBankTable(bt);
-			// refresh BasicTable values
-			tableBankList = uld.getBankTable(username, email);
+			bankTable = new BankTable(
+					tableBankList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("useridUpdate")),
+					session.getAttribute("username").toString(),
+					session.getAttribute("email").toString(),
+					request.getParameter("bankNameUpdate"),
+					request.getParameter("bankcardnameUpdate"),
+					request.getParameter("bankcardnumberUpdate"),
+					request.getParameter("bankcardlastdateUpdate"),
+					request.getParameter("bankcardexpirationdateUpdate"),
+					request.getParameter("explainUpdate"),
+					"None");
+			
+			update.updateToBankTable(bankTable);
+			
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
+			
 			type = "";
+			
 			break;
 			
 		case "DELETE":
-			id = Integer.valueOf(request.getParameter("userid"));
-			delete.deleteFromBankTable(id);
-			tableBankList = uld.getBankTable(username, email);
+			
+			DeleteDB delete = new DeleteDB();
+			
+			delete.deleteFromBankTable(tableBankList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
+			
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
+			
 			type = "";
+			
 			break;
 			
 		default:
