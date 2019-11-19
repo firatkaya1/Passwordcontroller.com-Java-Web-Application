@@ -38,10 +38,7 @@
   </ul>
 </div>
     
-<footer class="footer">
-    <p>Created by KAYA ENCRYPTO COMPANY &copy; 2019</p>
-    
-</footer>    
+   
     
 </body>
 

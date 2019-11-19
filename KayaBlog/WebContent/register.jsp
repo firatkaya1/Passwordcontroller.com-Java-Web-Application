@@ -37,9 +37,7 @@
             </form>
         </div>
     </div>
-        <div class="footer">
-             <p><i>Copyright © 2019 Kaya Web Services Company, All Right Reserved</i></p>
-        </div>
+        
     
     </body>
 </html>

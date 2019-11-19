@@ -146,10 +146,7 @@
 </script> 
 </div>     
     
-<footer class="footer">
-   <p><i>Copyright © 2019 Kaya Web Services Company, All Right Reserved</i></p>
-    
-</footer>    
+   
     
 </body>
 
