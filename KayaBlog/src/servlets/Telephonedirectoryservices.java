@@ -26,11 +26,10 @@ public class Telephonedirectoryservices extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserLoginDB userLoginDB = new UserLoginDB();
 		
-		
-		
-		
 		TelephoneDirectoryTable directoryTable;
+		
 		HttpSession session = request.getSession();
+		
 		String type = request.getParameter("Submit");
 		
 		ArrayList<TelephoneDirectoryTable> tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());

@@ -22,6 +22,8 @@ public class Emailservices extends HttpServlet {
 		
 		UserLoginDB userLoginDB = new UserLoginDB();
 		
+		EmailTable emailTable;
+		
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
@@ -42,7 +44,7 @@ public class Emailservices extends HttpServlet {
 			
 			İnsertDB insert = new İnsertDB();
 			
-			EmailTable emailTable = new EmailTable(
+			emailTable = new EmailTable(
 					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("emailServices"),
@@ -64,7 +66,7 @@ public class Emailservices extends HttpServlet {
 			
 			UpdateDB update = new UpdateDB();
 			
-			EmailTable table = new EmailTable(
+			emailTable = new EmailTable(
 					emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
 					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
@@ -73,7 +75,7 @@ public class Emailservices extends HttpServlet {
 					request.getParameter("passwordUpdate"),
 					request.getParameter("explanationsUpdate"));
 			
-			update.updateToEmailTable(table);
+			update.updateToEmailTable(emailTable);
 			
 			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
 			
