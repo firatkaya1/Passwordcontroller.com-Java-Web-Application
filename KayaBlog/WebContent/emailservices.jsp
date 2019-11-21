@@ -16,7 +16,7 @@
 <div class="topmenu">
   <ul>
     <li><a>How Its Work ?</a></li>
-    <li><a>Home</a></li>
+    <li><a href="home.jsp">Home</a></li>
     <li><a href="mainpage.jsp">Manage</a>
        <ul class="dropdown">
            <li><a href="basictable.jsp">Basic Table</a></li>
