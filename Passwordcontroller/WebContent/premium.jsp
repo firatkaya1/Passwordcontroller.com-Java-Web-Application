@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 
 <head>
     <title>Premium</title>
+
+    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/premium.png">
     <link rel="stylesheet" href="mainpage.css">
@@ -16,16 +20,16 @@
 </head>
 
 <body>
-<div class="topmenu">
+    <div class="topmenu">
         <ul>
-            <li><a href="howitsworks.jsp" >How Its Work ?</a></li>
+            <li><a href="howitsworks.html">How Its Work ?</a></li>
             <li><a href="home.jsp">Home</a></li>
             <li><a href="mainpage.jsp">Manage</a>
                 <ul class="dropdown">
                     <li><a href="basictable.jsp">Basic Table</a></li>
                     <li><a href="emailservices.jsp">Email Services</a></li>
                     <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
-                    <li><a href="bankservices.jsp" id="here">Bank Services</a></li>
+                    <li><a href="bankservices.jsp">Bank Services</a></li>
                     <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
                 </ul>
             </li>
@@ -51,6 +55,7 @@
                 <li>+20 Social Media Table Rows</li>
                 <li>+20 Bank Service Table Rows</li>
                 <li>+20 Telephone Directory Table Rows</li>
+                <li>Download PDF Format</li>
                 <li class="headerdown"><button class="buybutton">BUY</button></li>
             </ul>
         </div>
@@ -63,6 +68,7 @@
                 <li>+50 Social Media Table Rows</li>
                 <li>+50 Bank Service Table Rows</li>
                 <li>+50 Telephone Directory Table Rows</li>
+                <li>Download PDF Format</li>
                 <li class="headerdown"><button class="buybutton" id="buythis">BUY</button></li>
             </ul>
         </div>
@@ -75,11 +81,29 @@
                 <li>+120 Social Media Table Rows</li>
                 <li>+120 Bank Service Table Rows</li>
                 <li>+120 Telephone Directory Table Rows</li>
+                <li>Download PDF Format</li>
                 <li class="headerdown"><button class="buybutton">BUY</button></li>
             </ul>
         </div>
 
 
+    </div>
+
+    <div id="myModal" class="modalPremium">
+        <div class="modal-contentPremium">
+            <div class="modal-headerPremium">
+                <span class="close">&times;</span>
+                <h2 id="addTitle">Buy Premium</h2>
+            </div>
+
+            <div class="modal-bodyPremium">
+                <form action="mainpage" method="post">
+                    <h4>Please fill in the field below.</h4><input type="text" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    <input type="submit" value="BUY" class="buybuttonPremium">
+                </form>
+            </div>
+        </div>
+        <script src="js/popuppremium.js"></script>
     </div>
 
 

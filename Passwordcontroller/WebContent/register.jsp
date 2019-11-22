@@ -31,7 +31,7 @@
                 <input type="checkbox" name="newsletter" value = "true" /><i class="myitalic">I want to receive emails.</i><br><br>
                 <span>
                 
-                <a href=login.jsp class = "btn">Sign in</a> 
+                <a href=login.jsp class = "btn">Login</a> 
                 <input type="Submit" name="Submit" value="Register" class = "btn" />
                 </span>
             </form>

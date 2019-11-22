@@ -90,25 +90,10 @@ input[type=tel]:focus {
 .myitalic {
     font-size: 12px;
 }
-
-
-
-.footer {
-   
-    padding: 5px;
-    font-size: 12px;
-    background-color: #1a1a1a;
-    color: #fff;
-    text-align: center;
-    position: fixed;
-	bottom: 0px;
-	width: 100%;
-    border-top: 1px  solid #20C20E;
-    
-}
-.footer:hover {
-    color: #20C20E;
+.forgetpassword {
+	color: #20C20E;
+	
 }
 
-    
-}
+
+  

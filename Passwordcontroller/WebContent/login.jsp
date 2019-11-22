@@ -21,7 +21,7 @@
                 <input type="text" name="email" placeholder="Email adress"><br><br>
                 <input type="text" name="username" placeholder="Username"><br><br>
                 <input type="password" name="password" placeholder="Password"><br>
-                <a  href="forgetpass.html" class="forgetpassword">Forget password ? </a>
+                <a  href="forgetpassword.jsp" class="forgetpassword">Forget password ? </a>
                 <br>
                 <span>
              	
