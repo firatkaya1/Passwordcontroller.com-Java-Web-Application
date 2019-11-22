@@ -8,6 +8,7 @@
 <head>
     <title>Bank Services</title>
     <link rel="stylesheet" href="mainpage.css">
+    <link rel="shortcut icon" href="img/logo.png">
     <script src="https://use.fontawesome.com/e54f0b343c.js"></script>
 
 </head>
@@ -32,7 +33,7 @@
                     <li><a href="useractivities.jsp">User Settings</a></li>
                 </ul>
             </li>
-            <li><a>Premium</a></li>
+            <li><a href="premium.jsp">Premium<div class="premiumicon"></div></a></li>
             <li id="exit"><a href="login.jsp">Exit</a></li>
         </ul>
     </div>

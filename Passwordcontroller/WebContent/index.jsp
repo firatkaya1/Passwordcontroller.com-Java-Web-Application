@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Passwordcontroller.com</title>
+<link rel="shortcut icon" href="img/logo.png">
 </head>
 <body>
 	<form action="login" method = "post">

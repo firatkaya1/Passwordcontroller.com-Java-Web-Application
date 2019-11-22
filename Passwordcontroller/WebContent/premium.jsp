@@ -35,7 +35,7 @@
                     <li><a href="useractivities.jsp">User Settings</a></li>
                 </ul>
             </li>
-            <li><a href="premium.html" id="here">Premium<div class="premiumicon"></div></a></li>
+            <li><a href="premium.jsp" id="here">Premium<div class="premiumicon"></div></a></li>
             <li id="exit"><a href="login.jsp">Exit</a></li>
         </ul>
     </div>

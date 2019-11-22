@@ -8,6 +8,7 @@
     <title>How Its Work ?</title>
     <link rel="stylesheet" href="mainpage.css">
     <link rel="stylesheet" href="howitsworks.css">
+    <link rel="shortcut icon" href="img/logo.png">
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/e54f0b343c.js"></script>
 
@@ -34,7 +35,7 @@
                     <li><a href="useractivities.jsp">User Settings</a></li>
                 </ul>
             </li>
-            <li><a>Premium</a></li>
+            <li><a href="premium.jsp">Premium<div class="premiumicon"></div></a></li>
             <li id="exit"><a href="login.jsp">Exit</a></li>
         </ul>
     </div>

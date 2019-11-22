@@ -9,6 +9,7 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="mainpage.css">
+    <link rel="shortcut icon" href="img/logo.png">
     <script src="https://use.fontawesome.com/e54f0b343c.js"></script>
 
 </head>
