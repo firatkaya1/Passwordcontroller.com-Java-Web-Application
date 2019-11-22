@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    border: 1px solid black;
+    padding-bottom: 100px;
+    background: rgb(131, 58, 180);
+    background: -moz-linear-gradient(302deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: -webkit-linear-gradient(302deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: linear-gradient(302deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#833ab4", endColorstr="#fcb045", GradientType=1);
+}
+
+.header {
+    padding: 10px;
+}
+
+.header p {
+    color: #000;
+}
+
+.steps {
+    width: 80%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.steps .eachstep img {
+    display: block;
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+}
+
+.steps p {
+    color: #000;
+    float: left;
+}
+
+h4 {
+    color: black;
+}

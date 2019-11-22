@@ -93,7 +93,7 @@ public class BasicTables extends HttpServlet {
 			
 			DeleteDB delete = new DeleteDB();
 			
-			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
+			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
 			tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
 			

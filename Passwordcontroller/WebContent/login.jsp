@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Our Memorise</title>
 	 <link rel="stylesheet" href="login.css">
-     <link rel="shortcut icon" href="image/logo.png" >
+     <link rel="shortcut icon" href="img/logo.png" >
 </head>
 <body>
     <div class="loginlog-background">
