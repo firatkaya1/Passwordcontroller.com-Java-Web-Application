@@ -2,10 +2,14 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
+import controller.SendMail;
 import model.BankTable;
 import model.BasicTable;
+import model.BrowserInformations;
 import model.EmailTable;
+import model.MailModels;
 import model.SocialMediaTable;
 import model.TelephoneDirectoryTable;
 
@@ -155,4 +159,51 @@ public class UpdateDB {
 		return status;
 		
 	}
+	public int updatePassword(String email,String password,String userAgent) {
+		int status = 0;
+		
+		try {
+			System.out.println("Update Fonksiyonu çalıştı.");
+			conn =ConnectionHelper.getConn();  
+			ps = conn.prepareStatement("Update newsdata.userAdmins set userAdminPassword=? where userAdminEmail='"+email+"' ");     
+			ps.setString(1, password);
+			
+			status = ps.executeUpdate();
+			if(status == 1) {
+				// update is succesfull, SEND MAİL 
+				
+				
+				ps = conn.prepareStatement("SELECT * FROM `userAdmins` where `userAdminEmail` = ?");
+				ps.setString(1, email);
+				ResultSet rs = ps.executeQuery();
+				while(rs.next()) {
+					System.out.println(rs.getString("userAdminEmail"));
+					if(email.equals(rs.getString("userAdminEmail"))) {
+						System.out.println(rs.getString("userAdminName"));
+						String username = rs.getString("userAdminName");
+						BrowserInformations b = new BrowserInformations(userAgent);
+						
+						MailModels mm = new MailModels(email,username,password,b.getBrowsername(),b.getOperatingSystem(),b.getUserİp(),b.getDate());
+						String template = mm.getResetpassword();
+						
+						SendMail sm = new SendMail(email,template);
+						sm.sendMail();
+					}
+				}
+			}
+			
+			
+			conn.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		
+		
+		return status;
+	}
+	
 }

@@ -17,9 +17,6 @@ public class CheckUsername {
 		
 		if(!isNull()) return false;
 		if(!usernameLenght()) return false;
-		if(!usernameUppercase()) return false;
-		if(!usernameLowercase()) return false;
-		
 		
 		return controll;
 	}
@@ -42,30 +39,6 @@ public class CheckUsername {
 		return true;
 	}
 	
-	//Username has to be one or more uppercase character.
-	public boolean usernameUppercase() {
-		for(int i=0;i<username.length();i++) {
-			if(Character.isUpperCase(username.charAt(i))) 
-				return true;
-			
-		}
-		errorList.add("*Username must have at least one uppercase character.");
-		return false;
-	}
-	
-	//Username has to be one or more lowercase character.
-	public boolean usernameLowercase() {
-
-		for(int i=0;i<username.length();i++) {
-			if(Character.isLowerCase(username.charAt(i))) 
-				return true;
-		}
-		
-		errorList.add("*Username must have at least one lowercase character.");
-		return false;
-		
-	}	
-
 	public List<String> errorList(){
 		return errorList;
 	}

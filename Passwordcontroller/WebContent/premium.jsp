@@ -22,7 +22,7 @@
 <body>
     <div class="topmenu">
         <ul>
-            <li><a href="howitsworks.html">How Its Work ?</a></li>
+            <li><a href="howitsworks.jsp">How Its Work ?</a></li>
             <li><a href="home.jsp">Home</a></li>
             <li><a href="mainpage.jsp">Manage</a>
                 <ul class="dropdown">
@@ -103,7 +103,7 @@
                 </form>
             </div>
         </div>
-        <script src="js/popuppremium.js"></script>
+        <script src="jes/popuppremium.js"></script>
     </div>
 
 

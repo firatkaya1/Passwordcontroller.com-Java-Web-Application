@@ -17,10 +17,14 @@
         <div class="loginlog-form">
             
                 <p>Please fill in the field below. </p><br>
+                <form action="login" method = "post">
                 <input type="email" name="email" placeholder="Email adress"><br><br>
                 <span>
-                	<a href="forgetpasswordsend.jsp"><button class="btn">Next</button></a>
+                	<a href="forgetpasswordsend.jsp">
+                	<input type="Submit"  name="Submit" value="Next" class="btn">
+                	</a>
                 </span>
+                </form>
             
 
 

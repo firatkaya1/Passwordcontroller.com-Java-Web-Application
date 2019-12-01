@@ -4,6 +4,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class BrowserInformations {
 	private String browsername;
@@ -63,6 +65,9 @@ public class BrowserInformations {
 		}
 		  return userİpAdress;
 		
+	}
+	public String getDate() {
+		return new SimpleDateFormat("yyyy/MM/dd | HH:mm:ss").format(Calendar.getInstance().getTime());
 	}
 	
 

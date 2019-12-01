@@ -124,7 +124,7 @@
     </div>      
 </div>
 
-<script src="js/popup.js"></script> 
+<script src="jes/popup.js"></script> 
 
 </div>
 
@@ -151,7 +151,7 @@
         	</form> 
     </div>      
 </div>
-<script src="js/popup.js">
+<script src="jes/popup.js">
 </script> 
 </div>
 

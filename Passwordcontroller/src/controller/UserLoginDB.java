@@ -50,8 +50,6 @@ public class UserLoginDB {
 	}
 	
 	
-	
-	
 	public User getUser(String username, String userpassword,String useremail) {
 		User ur = new User();
 		try {

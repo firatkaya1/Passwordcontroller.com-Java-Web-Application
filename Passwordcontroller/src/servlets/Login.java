@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.LoginAuthentication;
+import database.UpdateDB;
 
 
 public class Login extends HttpServlet {
@@ -28,7 +29,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("email", request.getParameter("email"));
 				
-				request.getRequestDispatcher("/mainpage.jsp").forward(request, response);
+				request.getRequestDispatcher("/home.jsp").forward(request, response);
 				
 			}  else {
 				
@@ -54,7 +55,15 @@ public class Login extends HttpServlet {
 			type =null;
 			
 			break;
-
+		case "Next":
+			System.out.println("BUTONA tıklandi.");
+			String yenisifre = "a12345678";
+			UpdateDB update = new UpdateDB();
+			System.out.println("email adresi:"+request.getParameter("email"));
+			update.updatePassword(request.getParameter("email"), yenisifre,request.getHeader("User-Agent"));
+			
+			response.sendRedirect(request.getContextPath()+"/forgetpasswordsend.jsp");
+			break;
 		default:
 			break;
 		}

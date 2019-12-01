@@ -20,6 +20,7 @@ public class UserLogs {
 	public UserLogs() {
 		
 	}
+
 	
 	public UserLogs(String username,String useremailadress,String userlogtype,BrowserInformations browser) throws UnknownHostException, SocketException {
 		this.browser = browser;

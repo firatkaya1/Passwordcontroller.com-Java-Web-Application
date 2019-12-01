@@ -118,7 +118,7 @@
     </div>      
 </div>
 
-<script src="js/popupbanktable.js"></script> 
+<script src="jes/popupbanktable.js"></script> 
 
 </div>
 
@@ -145,7 +145,7 @@
         	</form> 
     </div>      
 </div>
-<script src="js/popupbanktable.js">
+<script src="jes/popupbanktable.js">
 </script> 
 </div>    
 

@@ -112,7 +112,7 @@
     </div>      
 </div>
 
-<script src="js/popupemailtable.js">
+<script src="jes/popupemailtable.js">
 </script> 
 </div>    
     
@@ -137,7 +137,7 @@
         	</form> 
     </div>      
 </div>
-<script src="js/popupemailtable.js">
+<script src="jes/popupemailtable.js">
 </script> 
 </div>    
     

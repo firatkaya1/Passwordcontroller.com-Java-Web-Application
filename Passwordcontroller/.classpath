@@ -23,5 +23,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/kaya/wildfly-10.0.0.Final/modules/system/layers/base/javax/mail/api/main/javax.mail-1.5.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

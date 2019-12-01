@@ -117,7 +117,7 @@
     </div>      
 </div>
 
-<script src="js/popupsocialmedia.js"></script> 
+<script src="jes/popupsocialmedia.js"></script> 
 
 </div>    
     
@@ -143,7 +143,7 @@
         	</form> 
     </div>      
 </div>
-<script src="js/popupsocialmedia.js">
+<script src="jes/popupsocialmedia.js">
 </script> 
 </div>     
     

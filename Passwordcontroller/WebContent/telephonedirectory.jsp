@@ -113,7 +113,7 @@
     </div>      
 </div>
 
-<script src="js/popuptelephonedirectory.js"></script> 
+<script src="jes/popuptelephonedirectory.js"></script> 
 
 </div>  
 
@@ -138,7 +138,7 @@
         	</form> 
     </div>      
 </div>
-<script src="js/popuptelephonedirectory.js">
+<script src="jes/popuptelephonedirectory.js">
 </script> 
 </div>    
     

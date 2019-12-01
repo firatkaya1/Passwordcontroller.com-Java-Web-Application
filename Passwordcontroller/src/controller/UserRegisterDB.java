@@ -46,7 +46,8 @@ public class UserRegisterDB {
 			ps.setString(2, username);
 			
 			ResultSet rs = ps.executeQuery();
-			if(!rs.next()) {
+			while(rs.next()) {
+				if(!email.equals(rs.getString("userAdminEmail")) ||  !username.equals(rs.getString("userAdminName"))) 
 				controll = true;
 			}
 			ps.close();
