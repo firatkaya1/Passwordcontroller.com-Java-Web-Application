@@ -39,7 +39,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="index.jsp">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">Home </a></li>
+                                        <li><a class="active" href="index.jsp">Home </a></li>
                                         <li><a href="#">How Its Work ? </a></li>
                                         <li><a href="#">Manage <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
