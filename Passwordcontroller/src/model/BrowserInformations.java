@@ -19,7 +19,7 @@ public class BrowserInformations {
 	}
 
 	public String getBrowsername() {
-		String[] browsers = {"firefox","opera","safari","opr","chrome","edge","chromium","FIREFOX","Firefox"};
+		String[] browsers = {"firefox","opera","safari","chrome","edge","chromium","FIREFOX","Firefox","Safari","Chrome","Explorer"};
 		
 		String userag = getUserAgent();
 		
@@ -36,7 +36,7 @@ public class BrowserInformations {
 	}
 
 	public String getOperatingSystem() {
-		String[] os = {"unix","windows","android","iphone","mac","linux"};
+		String[] os = {"unix","android","ios","windows","linux","mac os x","blackberry","windows mobile","iphone"};
 		
 		String userag = getUserAgent();
 		
