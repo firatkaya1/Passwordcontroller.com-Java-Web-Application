@@ -58,10 +58,10 @@ public class UserLogs {
 	public void setUserOs(String userOs) {
 		this.userOs = userOs;
 	}
-	public String getUserİpAdress() {
+	public String getUserIpAdress() {
 		return  userIpAdress;
 	}
-	public void setUserİpAdress(String userİpAdress) {
+	public void setUserIpAdress(String userİpAdress) {
 		this.userIpAdress = userİpAdress;
 	}
 	public String getUserLogDate() {

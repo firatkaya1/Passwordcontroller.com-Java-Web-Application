@@ -43,22 +43,18 @@ public class Check {
 		
 		if(!ce.controll())  {
 			errorList.addAll(ce.errorList());
-			System.out.println("controll  : "+cp.controll());
 			controll = false;
 		}
 		if(!cp.controll()) {
 			errorList.addAll(cp.errorList());
-			System.out.println("controll password : "+!cp.controll());
 			controll = false;
 		}
 		if(!cpn.controll()) {
 			errorList.addAll(cpn.errorList());
-			System.out.println("cpn  : "+!cp.controll());
 			controll = false;
 		}
 		if(!cpp.controll())  {
 			errorList.addAll(cpp.errorList());
-			System.out.println("cpp  : "+!cpp.controll());
 			controll = false;
 		}
 		

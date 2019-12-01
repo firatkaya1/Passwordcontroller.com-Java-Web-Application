@@ -158,7 +158,7 @@ public class UpdateDB {
 		int status = 0;
 		
 		try {
-			System.out.println("Update Fonksiyonu çalıştı.");
+			System.out.println("Update Fonksiyonu çalışti.");
 			conn =ConnectionHelper.getConn();  
 			ps = conn.prepareStatement("Update newsdata.userAdmins set userAdminPassword=? where userAdminEmail='"+email+"' ");     
 			ps.setString(1, password);

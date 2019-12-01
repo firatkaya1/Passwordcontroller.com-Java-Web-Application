@@ -25,7 +25,7 @@ public class InsertDB {
 			ps.setString(2,ul.getUserlogtype());
 			ps.setString(3,ul.getUserOs());
 			ps.setString(4,ul.getUserBrowser());
-			ps.setString(5,ul.getUserİpAdress());
+			ps.setString(5,ul.getUserIpAdress());
 			ps.setString(6,ul.getUserLogDate());
 			status = ps.executeUpdate();
 			// close connections

@@ -123,7 +123,7 @@ public class UserLoginDB {
 				ul.setUserlogtype(rs.getString("userLogType"));
 				ul.setUserOs(rs.getString("userOS"));
 				ul.setUserBrowser(rs.getString("userBrowser"));
-				ul.setUserİpAdress(rs.getString("useripAdress"));
+				ul.setUserIpAdress(rs.getString("useripAdress"));
 				ul.setUserLogDate(rs.getString("userLogDate"));
 				
 				if(ul.getUseremailadress().equals(email)) {

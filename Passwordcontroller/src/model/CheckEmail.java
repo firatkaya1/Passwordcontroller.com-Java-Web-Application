@@ -20,7 +20,7 @@ public class CheckEmail {
 	
 	public boolean isNull() {
 		if(email.isEmpty()) {
-			errorList.add("*Email can not be blank.");
+			errorList.add("Email can not be blank."); 
 			return false;
 		}
 		return true;
