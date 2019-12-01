@@ -38,6 +38,9 @@ public class DeleteDB {
 			
 			status = ps.execute();
 			
+			conn.close();
+			ps.close();
+			
 		}catch(Exception e) {
 			System.out.println();
 		}
@@ -54,6 +57,9 @@ public class DeleteDB {
 			ps.setInt(1, id);
 			
 			status = ps.execute();
+			
+			conn.close();
+			ps.close();
 			
 		} catch(Exception e) {
 			System.out.println(e);
@@ -73,6 +79,9 @@ public class DeleteDB {
 			
 			status = ps.execute();
 			
+			conn.close();
+			ps.close();
+			
 		} catch(Exception e) {
 			System.out.println(e);
 		}
@@ -90,6 +99,9 @@ public class DeleteDB {
 			ps.setInt(1, id);
 			
 			status = ps.execute();
+			
+			conn.close();
+			ps.close();
 			
 		} catch(Exception e) {
 			System.out.println(e);

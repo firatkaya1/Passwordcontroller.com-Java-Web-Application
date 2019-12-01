@@ -21,7 +21,6 @@ public class Login extends HttpServlet {
 		
 		switch(type) {
 		case "Login":
-			System.out.println("verify : "+loginAuthentication.verify());
 			if(loginAuthentication.verify()) {
 				
 				HttpSession session = request.getSession(true);	

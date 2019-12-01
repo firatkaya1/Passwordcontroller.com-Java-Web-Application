@@ -54,7 +54,7 @@
             <th id="ipadressbar">Bank Card Last Date</th>
             <th id="ipadressbar">Bank Card Expiration Date</th>
             <th id="datebar">Explanations</th>
-            <th id="editbar">EDİT</th>
+            <th id="editbar">EDIT</th>
             <th id="deletebar">DELETE</th>
          </tr>
          <c:forEach items="${tableBankList}" var="BankTable">

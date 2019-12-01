@@ -62,7 +62,7 @@
            	<td><c:out value="${UserLogs.userlogtype}"/></td>  
            	<td><c:out value="${UserLogs.userOs}"/></td>
             <td><c:out value="${UserLogs.userBrowser}"/></td> 
-           	<td><c:out value="${UserLogs.userİpAdress}"/></td>  
+           	<td><c:out value="${UserLogs.userIpAdress}"/></td>  
            	<td><c:out value="${UserLogs.userLogDate}"/></td>  
            	<td><input type="button" name="submit" value="Edit"  class="myButtons"></td>
             <td><input type="button" name="submit" value = "Suspect" class="myButtons"></td>   	  
