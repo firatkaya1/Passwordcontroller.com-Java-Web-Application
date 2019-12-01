@@ -11,10 +11,10 @@ public class BrowserInformations {
 	private String browsername;
 	private String OperatingSystem;
 	private String userAgent;
-	private String userİpAdress;
+	private String userIpAdress;
 	
 	public BrowserInformations(String userAgent) {
-		userİpAdress = "0.0.0.0.0";
+		userIpAdress = "0.0.0.0.0";
 		this.userAgent = userAgent.toLowerCase();
 	}
 
@@ -57,13 +57,13 @@ public class BrowserInformations {
 		return userAgent;
 	}
 
-	public String getUserİp() throws UnknownHostException, SocketException {
+	public String getUserIp() throws UnknownHostException, SocketException {
 		
 		try(final DatagramSocket socket = new DatagramSocket()){
 			socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-			userİpAdress= socket.getLocalAddress().getHostAddress();
+			userIpAdress= socket.getLocalAddress().getHostAddress();
 		}
-		  return userİpAdress;
+		  return userIpAdress;
 		
 	}
 	public String getDate() {

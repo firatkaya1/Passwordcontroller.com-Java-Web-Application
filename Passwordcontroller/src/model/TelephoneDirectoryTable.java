@@ -3,7 +3,6 @@ package model;
 public class TelephoneDirectoryTable {
 	private int identifyofDB;
 	private int id;
-	private String username;
 	private String useremail;
 	private String phonenumbertype;
 	private String phoneownername;
@@ -13,10 +12,9 @@ public class TelephoneDirectoryTable {
 	
 	public TelephoneDirectoryTable() {}
 	
-	public TelephoneDirectoryTable(int identifyofDB,int id,String username,String useremail,String phonenumbertype,String phoneownername,String phonenumber,String phonexplain,String typeofencrypt) {
+	public TelephoneDirectoryTable(int identifyofDB,int id,String useremail,String phonenumbertype,String phoneownername,String phonenumber,String phonexplain,String typeofencrypt) {
 		this.identifyofDB = identifyofDB;
 		this.id = id;
-		this.username = username;
 		this.useremail = useremail;
 		this.phonenumbertype = phonenumbertype;
 		this.phoneownername = phoneownername;
@@ -37,12 +35,6 @@ public class TelephoneDirectoryTable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getUseremail() {
 		return useremail;

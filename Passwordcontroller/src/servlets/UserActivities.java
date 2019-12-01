@@ -41,7 +41,7 @@ public class UserActivities extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		
-		ArrayList<UserLogs> userLogs = uld.getUserLogs(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		ArrayList<UserLogs> userLogs = uld.getUserLogs(session.getAttribute("email").toString());
 		
 		if(type.equals("REFRESH")) {
 			request.setAttribute("userLogsList",userLogs);

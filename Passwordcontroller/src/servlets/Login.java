@@ -17,17 +17,18 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type =request.getParameter("Submit"); 
 		
-		LoginAuthentication loginAuthentication = new LoginAuthentication(request.getParameter("username"), request.getParameter("password"), request.getParameter("email"),type, request.getHeader("User-Agent"));
+		LoginAuthentication loginAuthentication = new LoginAuthentication(request.getParameter("email"), request.getParameter("password"),type, request.getHeader("User-Agent"));
 		
 		switch(type) {
 		case "Login":
-			
+			System.out.println("verify : "+loginAuthentication.verify());
 			if(loginAuthentication.verify()) {
 				
 				HttpSession session = request.getSession(true);	
 				
-				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("email", request.getParameter("email"));
+				session.setAttribute("password", request.getParameter("password"));
+				
 				
 				request.getRequestDispatcher("/home.jsp").forward(request, response);
 				

@@ -30,11 +30,10 @@ public class Register extends HttpServlet {
 		case "Register":
 			
 			Check check = new Check(
-					request.getParameter("username"),
+					request.getParameter("email"),
 					request.getParameter("password"),
 					request.getParameter("repassword"),
 					request.getParameter("phonenumber"),
-					request.getParameter("email"),
 					request.getParameter("privacypolitic"));
 			
 				if(check.verify()) {
@@ -43,7 +42,6 @@ public class Register extends HttpServlet {
 					
 					User user = new User(
 							request.getParameter("email"),
-							request.getParameter("username"),
 							request.getParameter("password"),
 							request.getParameter("phonenumber"),
 							new SimpleDateFormat("yyyy/MM/dd | HH:mm:ss").format(Calendar.getInstance().getTime()),

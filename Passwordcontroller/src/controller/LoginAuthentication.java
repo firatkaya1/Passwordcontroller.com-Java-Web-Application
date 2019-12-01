@@ -3,19 +3,17 @@ package controller;
 
 public class LoginAuthentication {
 	
-	private String username;
+	private String useremail;
 	private String password;
-	private String email;
 	private String type;
 	private String useragent;
 	
 	
 	UserLoginDB userAdminLoginDB;
 	
-	public LoginAuthentication(String username, String password,String email,String type,String useragent) {
-		this.username = username;
+	public LoginAuthentication(String useremail, String password,String type,String useragent) {
+		this.useremail = useremail;
 		this.password = password;
-		this.email = email;
 		this.type = type;
 		this.useragent = useragent;
 	}
@@ -32,13 +30,10 @@ public class LoginAuthentication {
 	
 	public boolean isEmpty() {
 		
-		if(username.isEmpty()) {
+		if(useremail.isEmpty()) {
 			return false;
 		}
 		if(password.isEmpty()) {
-			return false;
-		}
-		if(email.isEmpty()) {
 			return false;
 		}
 		if(type.isEmpty()) {
@@ -53,7 +48,7 @@ public class LoginAuthentication {
 	
 	public boolean verifyInformations() {
 		userAdminLoginDB = new UserLoginDB();
-		return userAdminLoginDB.verify(username, password, email, type, useragent);
+		return userAdminLoginDB.verify(useremail,password, type, useragent);
 	}
 
 

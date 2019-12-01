@@ -23,7 +23,6 @@
        	 
                 <br>
                 <input type="email" name="email" placeholder="Email adress"><br><br>
-                <input type="text" name="username" placeholder="Username"><br><br>
                 <input type="password" name="password" placeholder="Password"><br><br>
                 <input type="password" name="repassword" placeholder="Re-Password Again"><br><br>
                 <input type="tel" name="phonenumber" placeholder="Phone Number"><br><br>

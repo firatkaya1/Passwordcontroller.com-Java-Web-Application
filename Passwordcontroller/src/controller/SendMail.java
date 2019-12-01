@@ -17,7 +17,7 @@ public class SendMail {
 	public String template;
 	public String receipent;
 	
-	private static String myAccountEmail =	 "noreply@passwordcontroller.com";
+	private static String myAccountEmail ="noreply@passwordcontroller.com";
 	private static String password = "9S1DEVLXKBiX";
 	
 	public SendMail(String receipent,String template) {

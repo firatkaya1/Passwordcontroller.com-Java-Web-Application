@@ -3,7 +3,6 @@ package model;
 public class SocialMediaTable {
 	private int identifyofDB;
 	private int id;
-	private String username;
 	private String useremailadress;
 	private String socialMediaType;
 	private String socialMediaEmail;
@@ -15,8 +14,8 @@ public class SocialMediaTable {
 	public SocialMediaTable() {
 		
 	}
-	public SocialMediaTable(String username,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
-		this.username = username;
+	public SocialMediaTable(String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
+		
 		this.useremailadress = useremailadress;
 		this.socialMediaType = socialMediaType;
 		this.socialMediaEmail = socialMediaEmail;
@@ -26,10 +25,9 @@ public class SocialMediaTable {
 		this.typeofencrypt = typeofencrypt;
 		
 	}
-	public SocialMediaTable(int identifyofDB,int id,String username,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
+	public SocialMediaTable(int identifyofDB,int id,String useremailadress,String socialMediaType,String socialMediaEmail,String socialMediaUsername,String socialMediaPassword,String socialMediaExplanation,String typeofencrypt) {
 		this.identifyofDB = identifyofDB;
 		this.id = id;
-		this.username = username;
 		this.useremailadress = useremailadress;
 		this.socialMediaType = socialMediaType;
 		this.socialMediaEmail = socialMediaEmail;
@@ -44,12 +42,6 @@ public class SocialMediaTable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getUseremailadress() {
 		return useremailadress;

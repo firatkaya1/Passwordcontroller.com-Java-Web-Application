@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
-import database.İnsertDB;
+import database.InsertDB;
 import model.BankTable;
 
 public class BankServices extends HttpServlet {
@@ -31,12 +31,12 @@ public class BankServices extends HttpServlet {
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<BankTable> tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		ArrayList<BankTable> tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 		
 		switch(type) {
 		case "REFRESH":
 			
-			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
@@ -46,10 +46,9 @@ public class BankServices extends HttpServlet {
 			
 		case "SAVE":
 			
-			İnsertDB insert = new İnsertDB();
+			InsertDB insert = new InsertDB();
 			
 			bankTable = new BankTable(0,0,
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("bankName"),
 					request.getParameter("bankcardname"),
@@ -61,7 +60,7 @@ public class BankServices extends HttpServlet {
 		
 			insert.insertToBankTable(bankTable);
 		
-			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 		
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
@@ -77,7 +76,6 @@ public class BankServices extends HttpServlet {
 			bankTable = new BankTable(
 					tableBankList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
 					Integer.valueOf(request.getParameter("useridUpdate")),
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("bankNameUpdate"),
 					request.getParameter("bankcardnameUpdate"),
@@ -89,7 +87,7 @@ public class BankServices extends HttpServlet {
 			
 			update.updateToBankTable(bankTable);
 			
-			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
@@ -104,7 +102,7 @@ public class BankServices extends HttpServlet {
 			
 			delete.deleteFromBankTable(tableBankList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
-			tableBankList = userLoginDB.getBankTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);

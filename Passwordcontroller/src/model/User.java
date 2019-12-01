@@ -3,33 +3,32 @@ package model;
 public class User {
 	private int userid;
 	private String emailAdress;
-	private String userAdminName;
 	private String userAdminPassword;
 	private String userAdminPhone;
 	private String userAdminCreateDate;
 	private String userAccesMail;
+	private String userpremiumid;
 	
 	
 	public User() {
 		
 	}
 	
-	public User(String emailAdress, String userAdminName, String userAdminPassword, String userAdminPhone,String userAdminCreateDate, String userAccesMail) {	
+	public User(String emailAdress, String userAdminPassword, String userAdminPhone,String userAdminCreateDate, String userAccesMail) {	
 		this.emailAdress = emailAdress;
-		this.userAdminName = userAdminName;
 		this.userAdminPassword = userAdminPassword;
 		this.userAdminPhone = userAdminPhone;
 		this.userAdminCreateDate = userAdminCreateDate;
-		this.userAccesMail = userAccesMail;
+		this.userAccesMail = "123456";
 	}
-	public User(int userid,String emailAdress, String userAdminName, String userAdminPassword, String userAdminPhone,String userAdminCreateDate, String userAccesMail) {	
+	public User(int userid,String emailAdress, String userAdminPassword, String userAdminPhone,String userAdminCreateDate, String userAccesMail) {	
 		this.userid = userid;
 		this.emailAdress = emailAdress;
-		this.userAdminName = userAdminName;
 		this.userAdminPassword = userAdminPassword;
 		this.userAdminPhone = userAdminPhone;
 		this.userAdminCreateDate = userAdminCreateDate;
 		this.userAccesMail = userAccesMail;
+		this.userpremiumid = "123456";
 	}
 
 	
@@ -41,15 +40,6 @@ public class User {
 	public void setEmailAdress(String emailAdress) {
 		this.emailAdress = emailAdress;
 	}
-
-	public String getUserAdminName() {
-		return userAdminName;
-	}
-
-	public void setUserAdminName(String userAdminName) {
-		this.userAdminName = userAdminName;
-	}
-
 	public String getUserAdminPassword() {
 		return userAdminPassword;
 	}
@@ -87,6 +77,14 @@ public class User {
 
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+
+	public String getUserpremiumid() {
+		return userpremiumid;
+	}
+
+	public void setUserpremiumid(String userpremiumid) {
+		this.userpremiumid = userpremiumid;
 	}
 	
 	

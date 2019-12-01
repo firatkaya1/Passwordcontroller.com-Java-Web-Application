@@ -3,7 +3,6 @@ package model;
 public class BankTable {
 	private int identifyofDB;
 	private int id;
-	private String username;
 	private String useremail;
 	private String bankname;
 	private String bankcardnumber;
@@ -15,10 +14,9 @@ public class BankTable {
 	
 	public BankTable() {}
 	
-	public BankTable(int identifyofDB,int id,String username,String useremail,String bankname,String bankcardnumber,String bankcardname,String banklastdate,String bankexpirationdate,String bankexplain,String usertypeofencrypt) {
+	public BankTable(int identifyofDB,int id,String useremail,String bankname,String bankcardnumber,String bankcardname,String banklastdate,String bankexpirationdate,String bankexplain,String usertypeofencrypt) {
 		this.identifyofDB = identifyofDB;
 		this.id = id;
-		this.username = username;
 		this.useremail = useremail;
 		this.bankname = bankname;
 		this.bankcardnumber = bankcardnumber;
@@ -39,12 +37,6 @@ public class BankTable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getUseremail() {
 		return useremail;

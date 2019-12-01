@@ -60,12 +60,13 @@ public class CheckPassword{
 	// Password's length has to longer than 8.
 	public boolean passwordLenght() {
 		
-		if(password.length()>8) {
-			errorList.add("*Password lenght must have at least 8 character");
+		if(password.length()>=8) {
 			return true;
-		} 
-			
-		return false;
+		} else {
+			errorList.add("*Password lenght must have at least 8 character");	
+			return false;
+		}
+		
 	}
 	
 	//Password has to be one or more uppercase character.

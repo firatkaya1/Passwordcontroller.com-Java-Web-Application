@@ -3,7 +3,6 @@ package model;
 public class BasicTable {
 	private int identifyofDB;
 	private int userid;
-	private String username;
 	private String useremail;
 	private String userShowtype;
 	private String userShowEmail;
@@ -13,9 +12,8 @@ public class BasicTable {
 	private String typeofencrypt;
 	public BasicTable() {}
 	
-	public BasicTable(String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+	public BasicTable(String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
 		
-		this.username = username;
 		this.useremail = useremail;
 		this.userShowtype = userShowtype;
 		this.userShowEmail = userShowEmail;
@@ -26,10 +24,9 @@ public class BasicTable {
 		
 	}
 	
-	public BasicTable(int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+	public BasicTable(int userid,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
 		
 		this.userid = userid;
-		this.username = username;
 		this.useremail = useremail;
 		this.userShowtype = userShowtype;
 		this.userShowEmail = userShowEmail;
@@ -40,10 +37,9 @@ public class BasicTable {
 		
 	}
 	
-	public BasicTable(int identifyofDB,int userid,String username,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
+	public BasicTable(int identifyofDB,int userid,String useremail,String userShowtype,String userShowEmail,String userShowUsername,String userShowpassword,String userShowExplanation,String typeofencrypt) {
 		this.identifyofDB = identifyofDB;
 		this.userid = userid;
-		this.username = username;
 		this.useremail = useremail;
 		this.userShowtype = userShowtype;
 		this.userShowEmail = userShowEmail;
@@ -77,62 +73,33 @@ public class BasicTable {
 	public void setUserShowUsername(String userShowUsername) {
 		this.userShowUsername = userShowUsername;
 	}
-
 	public String getUserShowtype() {
 		return userShowtype;
 	}
-
-
 	public void setUserShowtype(String userShowtype) {
 		this.userShowtype = userShowtype;
 	}
-
-
 	public String getUserShowEmail() {
 		return userShowEmail;
 	}
-
-
 	public void setUserShowEmail(String userShowEmail) {
 		this.userShowEmail = userShowEmail;
 	}
-
-
 	public String getUserShowpassword() {
 		return userShowpassword;
 	}
-
-
 	public void setUserShowpassword(String userShowpassword) {
 		this.userShowpassword = userShowpassword;
 	}
-
-
 	public String getUserShowExplanation() {
 		return userShowExplanation;
 	}
-
-
 	public void setUserShowExplanation(String userShowExplanation) {
 		this.userShowExplanation = userShowExplanation;
 	}
-	
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
 	public String getUseremail() {
 		return useremail;
 	}
-
-
 	public void setUseremail(String useremail) {
 		this.useremail = useremail;
 	}

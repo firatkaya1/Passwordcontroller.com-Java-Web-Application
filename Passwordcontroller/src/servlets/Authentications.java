@@ -55,7 +55,7 @@ public class Authentications implements Filter {
 	        HttpSession session = req.getSession(false);
 	        
 		// pass the request along the filter chain
-	        if(session == null || session.getAttribute("username") == null || session.getAttribute("email")==null) {
+	        if(session == null || session.getAttribute("email") == null || session.getAttribute("password")==null) {
 	        	res.sendRedirect(req.getContextPath()+"/login.jsp");
 	        } else {
 	        	chain.doFilter(request, response);

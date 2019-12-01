@@ -7,12 +7,11 @@ import java.util.Calendar;
 
 public class UserLogs {
 	private int id;
-	private String username;
 	private String useremailadress;
 	private String userlogtype;
 	private String userOs;
 	private String userBrowser;
-	private String userİpAdress;
+	private String userIpAdress;
 	private String userLogDate;
 
 	BrowserInformations browser;
@@ -22,14 +21,13 @@ public class UserLogs {
 	}
 
 	
-	public UserLogs(String username,String useremailadress,String userlogtype,BrowserInformations browser) throws UnknownHostException, SocketException {
+	public UserLogs(String useremailadress,String userlogtype,BrowserInformations browser) throws UnknownHostException, SocketException {
 		this.browser = browser;
-		this.username = username;
 		this.useremailadress = useremailadress;
 		this.userlogtype = userlogtype;
 		this.userOs = browser.getOperatingSystem();
 		this.userBrowser = browser.getBrowsername();
-		this.userİpAdress = browser.getUserİp();
+		this.userIpAdress = browser.getUserIp();
 		this.userLogDate = new SimpleDateFormat("yyyy/MM/dd | HH:mm:ss").format(Calendar.getInstance().getTime());
 	}
 	
@@ -41,12 +39,7 @@ public class UserLogs {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	public String getUseremailadress() {
 		return useremailadress;
 	}
@@ -66,10 +59,10 @@ public class UserLogs {
 		this.userOs = userOs;
 	}
 	public String getUserİpAdress() {
-		return  userİpAdress;
+		return  userIpAdress;
 	}
 	public void setUserİpAdress(String userİpAdress) {
-		this.userİpAdress = userİpAdress;
+		this.userIpAdress = userİpAdress;
 	}
 	public String getUserLogDate() {
 		return userLogDate;

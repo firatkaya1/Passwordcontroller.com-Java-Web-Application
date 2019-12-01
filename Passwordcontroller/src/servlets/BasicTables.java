@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
-import database.İnsertDB;
+import database.InsertDB;
 import model.BasicTable;
 
 
@@ -27,13 +27,13 @@ public class BasicTables extends HttpServlet {
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<BasicTable> tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		ArrayList<BasicTable> tableBasicList = userLoginDB.getTable(session.getAttribute("email").toString());
 		
 		switch(type) {
 		
 		case "REFRESH":
 			
-			tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBasicList = userLoginDB.getTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -42,10 +42,9 @@ public class BasicTables extends HttpServlet {
 			
 		case "SAVE":
 			
-			İnsertDB insert = new İnsertDB();	
+			InsertDB insert = new InsertDB();	
 			
 			basicTable = new BasicTable(
-				session.getAttribute("username").toString(),
 				session.getAttribute("email").toString(),
 				request.getParameter("typeEmail"),
 				request.getParameter("email"),
@@ -56,7 +55,7 @@ public class BasicTables extends HttpServlet {
 			
 				insert.insertToBasicTable(basicTable);
 			
-				tableBasicList = userLoginDB.getTable(basicTable.getUsername(), basicTable.getUseremail());
+				tableBasicList = userLoginDB.getTable(basicTable.getUseremail());
 			
 				request.setAttribute("tableBasicList",tableBasicList);
 				request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -69,8 +68,7 @@ public class BasicTables extends HttpServlet {
 			
 			basicTable = new BasicTable(
 					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),		
-					Integer.valueOf(request.getParameter("userid1")),		
-					session.getAttribute("username").toString(),		
+					Integer.valueOf(request.getParameter("userid1")),
 					session.getAttribute("email").toString(),			 
 					request.getParameter("emailType1"),		
 					request.getParameter("emailAdress1"),		
@@ -82,7 +80,7 @@ public class BasicTables extends HttpServlet {
 			
 			update.updateToBasicTable(basicTable);		//update database
 			
-			tableBasicList = userLoginDB.getTable(basicTable.getUsername(),basicTable.getUseremail());		
+			tableBasicList = userLoginDB.getTable(basicTable.getUseremail());		
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);
@@ -95,7 +93,7 @@ public class BasicTables extends HttpServlet {
 			
 			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
-			tableBasicList = userLoginDB.getTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableBasicList = userLoginDB.getTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);

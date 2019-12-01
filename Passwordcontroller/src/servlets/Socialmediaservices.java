@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
-import database.İnsertDB;
+import database.InsertDB;
 import model.SocialMediaTable;
 
 public class Socialmediaservices extends HttpServlet {
@@ -32,12 +32,12 @@ public class Socialmediaservices extends HttpServlet {
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<SocialMediaTable> socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+		ArrayList<SocialMediaTable> socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("email").toString());
 		
 		
 		switch(type) {
 		case "REFRESH":
-			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("email").toString());
 			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
@@ -46,10 +46,9 @@ public class Socialmediaservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			İnsertDB insert = new İnsertDB();
+			InsertDB insert = new InsertDB();
 			
 			socialMediaTable = new SocialMediaTable(
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("socialmediaType"),
 					request.getParameter("socialmediaEmail"),
@@ -60,7 +59,7 @@ public class Socialmediaservices extends HttpServlet {
 		
 			insert.insertToSocialMediaTable(socialMediaTable);
 		
-			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUsername(), socialMediaTable.getUseremailadress());
+			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUseremailadress());
 		
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
@@ -74,7 +73,6 @@ public class Socialmediaservices extends HttpServlet {
 			socialMediaTable = new SocialMediaTable(
 					socialMediaList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
 					Integer.valueOf(request.getParameter("useridUpdate")),
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("socialmediaTypeUpdate"),
 					request.getParameter("socialmediaEmailUpdate"),
@@ -85,7 +83,7 @@ public class Socialmediaservices extends HttpServlet {
 			
 			update.updateToSocialMediaTable(socialMediaTable);
 			
-			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUsername(), socialMediaTable.getUseremailadress());
+			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUseremailadress());
 			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
@@ -97,7 +95,7 @@ public class Socialmediaservices extends HttpServlet {
 			DeleteDB delete = new DeleteDB();
 			
 			delete.deleteFromSocialMediaTable(socialMediaList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
-			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("email").toString());
 			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);

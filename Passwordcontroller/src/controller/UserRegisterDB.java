@@ -12,16 +12,16 @@ public class UserRegisterDB {
 	static Connection conn;
 	static PreparedStatement ps;
 	
-	public int insertUser(User uar) {
+	public int insertUser(User user) {
 		int status = 0;
 		try {
 			conn=ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userAdmins` (`userAdminName`, `userAdminPassword`, `userAdminEmail`, `userAdminPhone`, `userAdminCreateDate`) VALUES (?,?,?,?,?)");
-			ps.setString(1,uar.getUserAdminName());
-			ps.setString(2,uar.getUserAdminPassword());	
-			ps.setString(3,uar.getEmailAdress());
-			ps.setString(4,uar.getUserAdminPhone());
-			ps.setString(5,uar.getUserAdminCreateDate());
+			ps=conn.prepareStatement("INSERT INTO `userInformation` (`useremail`, `userpassword`, `userphone`, `usercreatedate`,`userpremiumid`) VALUES (?,?,?,?,?)");
+			ps.setString(1,user.getEmailAdress());
+			ps.setString(2,user.getUserAdminPassword());	
+			ps.setString(3,user.getUserAdminPhone());
+			ps.setString(4,user.getUserAdminCreateDate());
+			ps.setString(5, "123456");
 			status = ps.executeUpdate();
 			ps.close();
 			conn.close();
@@ -36,20 +36,17 @@ public class UserRegisterDB {
 	
 
 	
-	public boolean verify(String email,String username) {
-		boolean controll = false;
+	public boolean verify(String email) {
+		boolean controll = true;
 		
 		try {
 			conn =ConnectionHelper.getConn();
-			ps = conn.prepareStatement("SELECT * FROM `userAdmins` WHERE  `userAdminEmail` = ? AND `userAdminName` = ?");		
+			ps = conn.prepareStatement("SELECT * FROM `userInformation` WHERE  `useremail` = ? ");		
 			ps.setString(1, email);
-			ps.setString(2, username);
 			
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				if(!email.equals(rs.getString("userAdminEmail")) ||  !username.equals(rs.getString("userAdminName"))) 
-				controll = true;
-			}
+			controll = rs.next();
+			
 			ps.close();
 			conn.close();
 			

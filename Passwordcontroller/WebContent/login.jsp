@@ -19,7 +19,6 @@
                 <i style = "color:red;font-size: 12px;">${message2}</i>
                 <br>
                 <input type="text" name="email" placeholder="Email adress"><br><br>
-                <input type="text" name="username" placeholder="Username"><br><br>
                 <input type="password" name="password" placeholder="Password"><br>
                 <a  href="forgetpassword.jsp" class="forgetpassword">Forget password ? </a>
                 <br>

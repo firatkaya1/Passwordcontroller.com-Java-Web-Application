@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
-import database.İnsertDB;
+import database.InsertDB;
 import model.TelephoneDirectoryTable;
 
 public class Telephonedirectoryservices extends HttpServlet {
@@ -33,12 +33,12 @@ public class Telephonedirectoryservices extends HttpServlet {
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<TelephoneDirectoryTable> tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+		ArrayList<TelephoneDirectoryTable> tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
 		
 		switch(type) {
 		case "REFRESH":
 			
-			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
@@ -48,10 +48,9 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			İnsertDB insert = new İnsertDB();
+			InsertDB insert = new InsertDB();
 			
 			directoryTable = new TelephoneDirectoryTable(0,0,
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("phonenumbertype"),
 					request.getParameter("phoneownername"),
@@ -61,7 +60,7 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 			insert.insertToPhoneTable(directoryTable);
 		
-			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable( session.getAttribute("email").toString());
 		
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
@@ -77,7 +76,6 @@ public class Telephonedirectoryservices extends HttpServlet {
 			directoryTable = new TelephoneDirectoryTable(
 					tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
 					Integer.valueOf(request.getParameter("useridUpdate")),
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("phonenumbertypeUpdate"),
 					request.getParameter("phoneownernameUpdate"),
@@ -87,7 +85,7 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 			update.updateToPhoneTable(directoryTable);
 			
-			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
@@ -102,7 +100,7 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 			delete.deleteFromTelephoneDirectoryTable(tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
-			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("username").toString(), session.getAttribute("email").toString());
+			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);

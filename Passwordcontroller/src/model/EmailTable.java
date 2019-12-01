@@ -3,7 +3,6 @@ package model;
 public class EmailTable {
 	private int IdentifyofDB;
 	private int id;
-	private String username;
 	private String useremailadress;
 	private String userEmailType;
 	private String userEmailServicesAdress;
@@ -17,8 +16,8 @@ public class EmailTable {
 		
 		
 	}
-	public EmailTable(String username,String useremailadress,String userEmailType,String userEmailServicesAdress,String userEmailServicesPass,String userEmailServicesExplana,String typeofencrypt) {                         
-		this.username = username;
+	public EmailTable(String useremailadress,String userEmailType,String userEmailServicesAdress,String userEmailServicesPass,String userEmailServicesExplana,String typeofencrypt) {                         
+		
 		this.useremailadress = useremailadress;
 		this.userEmailType = userEmailType;
 		this.userEmailServicesAdress = userEmailServicesAdress;
@@ -27,9 +26,8 @@ public class EmailTable {
 		this.typeofencrypt = typeofencrypt;
 		
 	}
-	public EmailTable(int IdentifyofDB,String username,String useremailadress,String userEmailType,String userEmailServicesAdress,String userEmailServicesPass,String userEmailServicesExplana) {                         
+	public EmailTable(int IdentifyofDB,String useremailadress,String userEmailType,String userEmailServicesAdress,String userEmailServicesPass,String userEmailServicesExplana) {                         
 		this.IdentifyofDB = IdentifyofDB;
-		this.username = username;
 		this.useremailadress = useremailadress;
 		this.userEmailType = userEmailType;
 		this.userEmailServicesAdress = userEmailServicesAdress;
@@ -48,12 +46,6 @@ public class EmailTable {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getUseremailadress() {
 		return useremailadress;

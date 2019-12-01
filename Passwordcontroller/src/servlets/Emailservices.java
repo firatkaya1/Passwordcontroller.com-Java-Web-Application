@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
-import database.İnsertDB;
+import database.InsertDB;
 import model.EmailTable;
 
 public class Emailservices extends HttpServlet {
@@ -28,12 +28,12 @@ public class Emailservices extends HttpServlet {
 		
 		String type = request.getParameter("Submit");
 		
-		ArrayList<EmailTable> emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+		ArrayList<EmailTable> emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
 		
 		
 	switch(type) {
 		case "REFRESH":
-			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+			emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
@@ -42,10 +42,9 @@ public class Emailservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			İnsertDB insert = new İnsertDB();
+			InsertDB insert = new InsertDB();
 			
 			emailTable = new EmailTable(
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("emailServices"),
 					request.getParameter("emailAdress"),
@@ -55,7 +54,7 @@ public class Emailservices extends HttpServlet {
 		
 			insert.insertToEmailTable(emailTable);
 		
-			emailList = userLoginDB.getEmailTable(emailTable.getUsername(), emailTable.getUseremailadress());
+			emailList = userLoginDB.getEmailTable(emailTable.getUseremailadress());
 		
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
@@ -68,7 +67,6 @@ public class Emailservices extends HttpServlet {
 			
 			emailTable = new EmailTable(
 					emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
-					session.getAttribute("username").toString(),
 					session.getAttribute("email").toString(),
 					request.getParameter("emailServicesUpdate"),
 					request.getParameter("emailAdressUpdate"),
@@ -77,7 +75,7 @@ public class Emailservices extends HttpServlet {
 			
 			update.updateToEmailTable(emailTable);
 			
-			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+			emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
@@ -90,7 +88,7 @@ public class Emailservices extends HttpServlet {
 			
 			delete.deleteFromEmailTable(emailList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
 			
-			emailList = userLoginDB.getEmailTable(session.getAttribute("username").toString(),session.getAttribute("email").toString());
+			emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
