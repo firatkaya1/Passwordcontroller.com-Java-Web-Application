@@ -160,7 +160,7 @@ public class UpdateDB {
 		try {
 			System.out.println("Update Fonksiyonu çalışti.");
 			conn =ConnectionHelper.getConn();  
-			ps = conn.prepareStatement("Update newsdata.userAdmins set userAdminPassword=? where userAdminEmail='"+email+"' ");     
+			ps = conn.prepareStatement("Update newsdata.userInformation set userAdminPassword=? where userAdminEmail='"+email+"' ");     
 			ps.setString(1, password);
 			
 			status = ps.executeUpdate();
@@ -168,7 +168,7 @@ public class UpdateDB {
 				// update is succesfull, SEND MAİL 
 				
 				
-				ps = conn.prepareStatement("SELECT * FROM `userAdmins` where `userAdminEmail` = ?");
+				ps = conn.prepareStatement("SELECT * FROM `userInformation` where `userAdminEmail` = ?");
 				ps.setString(1, email);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
