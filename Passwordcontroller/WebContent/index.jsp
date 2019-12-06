@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ page import="java.util.List"%>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -10,7 +15,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
 
-    <!-- CSS Baslangıc Tanımlamaları -->
+    <!-- CSS BaslangÄ±c TanÄ±mlamalarÄ± -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -25,11 +30,11 @@
 </head>
 
 <body>
-    <!--[Internet Explorer 9 Versiyonu Kullanıyorsa]>
+    <!--[Internet Explorer 9 Versiyonu KullanÄ±yorsa]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![IE]-->
 
-    <!-- Header Bolum Baslangıcı-->
+    <!-- Header Bolum BaslangÄ±cÄ±-->
     <header>
         <div class="header-area ">
             <div id="sticky-header" class="main-header-area">
@@ -88,7 +93,7 @@
     </header>
     <!-- Header Bolum Sonu -->
 
-    <!-- Slider Alan Baslangıcı -->
+    <!-- Slider Alan BaslangÄ±cÄ± -->
     <div class="slider_area ">
         <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
             <div class="container">
@@ -101,7 +106,7 @@
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_info">
                             <h3>Strong Access <br> All The Password<br> Easy Auth</h3>
-                            <a href="#" class="boxed_btn falogins">Let's Do This</a>
+                            <a href="login.jsp" class="boxed_btn falogins">Let's Do This</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +115,7 @@
     </div>
     <!-- Slider Alan Sonu -->
 
-    <!-- Hakkında Alan Baslangıcı -->
+    <!-- HakkÄ±nda Alan BaslangÄ±cÄ± -->
     <div class="about_area">
         <div class="container">
             <div class="row">
@@ -157,7 +162,7 @@
     </div>
     <!-- Hakkinda Alan Sonu -->
 
-    <!-- Kurs Yorumları Baslangıcı -->
+    <!-- Kurs YorumlarÄ± BaslangÄ±cÄ± -->
     <div class="testimonial_area testimonial_bg_1 overlay">
         <div class="testmonial_active owl-carousel">
             <div class="single_testmoial">
@@ -198,16 +203,16 @@
             </div>
         </div>
     </div>
-    <!-- Kurs Yorumları Sonu -->
+    <!-- Kurs YorumlarÄ± Sonu -->
 
-    <!-- Kurs Planları Baslangıcı -->
+    <!-- Kurs PlanlarÄ± BaslangÄ±cÄ± -->
     <div class="our_courses">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
                         <h3>Password Controller</h3>
-                        <p>Always use a unique password for each account you create. The danger with reusing passwords is that as soon as one site has a security issue, <br> it‘s very easy for hackers to try the same username and password combination on
+                        <p>Always use a unique password for each account you create. The danger with reusing passwords is that as soon as one site has a security issue, <br> itâs very easy for hackers to try the same username and password combination on
                             other websites.
                         </p>
                     </div>
@@ -262,16 +267,16 @@
                         </div>
                         <h3>Something You Like</h3>
                         <p>
-                            If you’re creating a master password that you’ll need to remember, try using phrases or lyrics from your favorite movie or song.
+                            If you are creating a master password that you will need to remember, try using phrases or lyrics from your favorite movie or song.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Kurs Planları Sonu -->
+    <!-- Kurs PlanlarÄ± Sonu -->
 
-    <!-- Footer Baslangıcı -->
+    <!-- Footer BaslangÄ±cÄ± -->
     <footer class="footer footer_bg_1">
         <div class="footer_top">
             <div class="container">
@@ -291,7 +296,7 @@
     </footer>
     <!-- Footer Sonu -->
 
-    <!-- JS Dosyaları -->
+    <!-- JS DosyalarÄ± -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
