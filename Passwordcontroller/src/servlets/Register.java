@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
 					request.getParameter("password"),
 					request.getParameter("repassword"),
 					request.getParameter("phonenumber"),
-					request.getParameter("privacypolitic"));
+					request.getParameter("agree-term"));
 			
 				if(check.verify()) {
 					
@@ -45,7 +45,7 @@ public class Register extends HttpServlet {
 							request.getParameter("password"),
 							request.getParameter("phonenumber"),
 							new SimpleDateFormat("yyyy/MM/dd | HH:mm:ss").format(Calendar.getInstance().getTime()),
-							request.getParameter("newsletter"));				
+							request.getParameter("agree-mail"));				
 					
 					userRegisterDB.insertUser(user);
 					

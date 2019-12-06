@@ -97,20 +97,21 @@ public class BankServices extends HttpServlet {
 			break;
 			
 		case "DELETE":
-			
+
 			DeleteDB delete = new DeleteDB();
-			
-			delete.deleteFromBankTable(tableBankList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
-			
+
+			delete.deleteFromBankTable(
+					tableBankList.get(Integer.valueOf(request.getParameter("userid")) - 1).getIdentifyofDB());
+
 			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
-			
-			request.setAttribute("tableBankList",tableBankList);
+
+			request.setAttribute("tableBankList", tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
-			
+
 			type = "";
-			
+
 			break;
-			
+
 		default:
 			System.out.println("Unexpected Error.");
 			break;

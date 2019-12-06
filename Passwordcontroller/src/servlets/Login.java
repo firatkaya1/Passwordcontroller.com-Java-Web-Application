@@ -17,12 +17,11 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type =request.getParameter("Submit"); 
 		
-		LoginAuthentication loginAuthentication = new LoginAuthentication(request.getParameter("email"), request.getParameter("password"),type, request.getHeader("User-Agent"));
+		LoginAuthentication loginAuthentication = new LoginAuthentication(request.getParameter("email"), request.getParameter("password"), request.getHeader("User-Agent"));
 		
 		switch(type) {
-		case "Login":
+		case "Log in":
 			if(loginAuthentication.verify()) {
-				
 				HttpSession session = request.getSession(true);	
 				
 				session.setAttribute("email", request.getParameter("email"));
@@ -32,7 +31,6 @@ public class Login extends HttpServlet {
 				request.getRequestDispatcher("/home.jsp").forward(request, response);
 				
 			}  else {
-				
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 			
@@ -55,7 +53,7 @@ public class Login extends HttpServlet {
 			type =null;
 			
 			break;
-		case "Next":
+		case "Reset My Password":
 			System.out.println("BUTONA tıklandi.");
 			String yenisifre = "a12345678";
 			UpdateDB update = new UpdateDB();

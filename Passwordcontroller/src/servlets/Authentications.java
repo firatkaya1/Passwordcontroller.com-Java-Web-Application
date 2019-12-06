@@ -16,28 +16,17 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class Authentications
  */
-@WebFilter(
-		dispatcherTypes = {
-				DispatcherType.REQUEST, 
-				DispatcherType.FORWARD
-		}
-					, 
-		urlPatterns = { "/Authentications" }, 
-		servletNames = { 
-				"basictables", 
-				"emailservices", 
-				"mainpage", 
-				"useractivities", 
-				"socialmediaservices"
-		})
+@WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.FORWARD }, urlPatterns = {
+		"/Authentications" }, servletNames = { "basictables", "emailservices", "mainpage", "useractivities",
+				"socialmediaservices" })
 public class Authentications implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public Authentications() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public Authentications() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -49,22 +38,19 @@ public class Authentications implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		 	HttpServletRequest req = (HttpServletRequest) request;
-	        HttpServletResponse res = (HttpServletResponse) response;
-	        HttpSession session = req.getSession(false);
-	        
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response;
+		HttpSession session = req.getSession(false);
+
 		// pass the request along the filter chain
-	        if(session == null || session.getAttribute("email") == null || session.getAttribute("password")==null) {
-	        	res.sendRedirect(req.getContextPath()+"/login.jsp");
-	        } else {
-	        	chain.doFilter(request, response);
-	        }
-	        
-	        
-		
-		
-		
+		if (session == null || session.getAttribute("email") == null || session.getAttribute("password") == null) {
+			res.sendRedirect(req.getContextPath() + "/login.jsp");
+		} else {
+			chain.doFilter(request, response);
+		}
+
 	}
 
 	/**

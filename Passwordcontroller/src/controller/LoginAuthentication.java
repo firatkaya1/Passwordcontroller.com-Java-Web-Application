@@ -11,10 +11,10 @@ public class LoginAuthentication {
 	
 	UserLoginDB userAdminLoginDB;
 	
-	public LoginAuthentication(String useremail, String password,String type,String useragent) {
+	public LoginAuthentication(String useremail, String password,String useragent) {
 		this.useremail = useremail;
 		this.password = password;
-		this.type = type;
+		this.type = "Login";
 		this.useragent = useragent;
 	}
 	

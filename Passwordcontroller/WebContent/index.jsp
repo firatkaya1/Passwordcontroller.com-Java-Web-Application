@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -39,7 +37,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.jsp">
+                                <a href="index.html">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
@@ -48,7 +46,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.jsp">Home </a></li>
+                                        <li><a class="active" href="index.html">Home </a></li>
                                         <li><a href="#">How Its Work ? </a></li>
                                         <li><a href="#">Manage <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
@@ -58,6 +56,12 @@
                                                 <li><a href="#">Bank Services</a></li>
                                                 <li><a href="#">Telephone Directory</a></li>
                                                 <li><a href="#">Date Services</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Profile</a>
+                                            <ul class="submenu">
+                                                <li><a href="#">User Activities</a></li>
+                                                <li><a href="#">User Settings</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Premium</a></li>
@@ -91,14 +95,12 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xl-6 col-md-6">
                         <div class="illastrator_png">
-                            <img src="img/banner/logo_ilastration.png" alt="">
+                            <img src="img/banner/mainpic.svg" alt="Main Page Index Picture">
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_info">
-                            <h3>Strong Access <br>
-                                All The Password<br>
-                                Easy Auth</h3>
+                            <h3>Strong Access <br> All The Password<br> Easy Auth</h3>
                             <a href="#" class="boxed_btn falogins">Let's Do This</a>
                         </div>
                     </div>
@@ -116,11 +118,8 @@
                     <div class="single_about_info">
                         <h3>
                             100+ Encryption Algorithms
-                            <br>
-                            from 15 Services</h3>
-                        <p>We are happy to develop a system that will help you protect your password quickly and securely.
-                            You can encrypt your passwords as you like.
-                            1000 or more iterations to achieve a sufficiently good security level.</p>
+                            <br> from 15 Services</h3>
+                        <p>We are happy to develop a system that will help you protect your password quickly and securely. You can encrypt your passwords as you like. 1000 or more iterations to achieve a sufficiently good security level.</p>
                     </div>
                 </div>
                 <div class="col-xl-6 offset-xl-1 col-lg-6">
@@ -170,11 +169,10 @@
                                     <img src="img/testmonial/author_one.png" alt="">
                                 </div>
                                 <p>
-                                    The action page will require different code depending on what exactly you need to do.<br>
-                                    For example, you might want to implement security measures to check that the mail doesn't look like spam.
+                                    The action page will require different code depending on what exactly you need to do.<br> For example, you might want to implement security measures to check that the mail doesn't look like spam.
 
                                 </p>
-                                <span>- Fırat Kaya</span>
+                                <span>- Firat Kaya</span>
                             </div>
                         </div>
                     </div>
@@ -189,11 +187,10 @@
                                     <img src="img/testmonial/author_two.png" alt="">
                                 </div>
                                 <p>
-                                    So pack up everyone because we are going back to the original map from 30,000 years ago.<br>
-                                    Everyone back to Turkey...and we will live in trees. Or wait. Everyone back to the oceans!
+                                    So pack up everyone because we are going back to the original map from 30,000 years ago.<br> Everyone back to Turkey...and we will live in trees. Or wait. Everyone back to the oceans!
 
                                 </p>
-                                <span>- Furkan Aydın</span>
+                                <span>- Furkan Aydin</span>
                             </div>
                         </div>
                     </div>
@@ -210,8 +207,8 @@
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
                         <h3>Password Controller</h3>
-                        <p>Always use a unique password for each account you create. The danger with reusing passwords is that as soon as one site has a security issue, <br>
-                            it‘s very easy for hackers to try the same username and password combination on other websites.
+                        <p>Always use a unique password for each account you create. The danger with reusing passwords is that as soon as one site has a security issue, <br> it‘s very easy for hackers to try the same username and password combination on
+                            other websites.
                         </p>
                     </div>
                 </div>
@@ -226,8 +223,7 @@
                         </div>
                         <h3>Don’t Use Identifiable</h3>
                         <p>
-                            Don’t use any personally identifiable information in your passwords.
-                            Names, birthdays, and street addresses may be easy to remember
+                            Don’t use any personally identifiable information in your passwords. Names, birthdays, and street addresses may be easy to remember
                         </p>
                     </div>
                 </div>
@@ -240,8 +236,7 @@
                         </div>
                         <h3>Hard To Find</h3>
                         <p>
-                            Make sure your passwords are at least 12 characters long and contain,
-                            Some people prefer to generate passwords which are 14 or 20 characters in length.
+                            Make sure your passwords are at least 12 characters long and contain, Some people prefer to generate passwords which are 14 or 20 characters in length.
                         </p>
                     </div>
                 </div>
