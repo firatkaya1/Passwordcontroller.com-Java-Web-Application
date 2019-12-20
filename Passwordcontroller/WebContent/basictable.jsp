@@ -4,7 +4,10 @@
 <!DOCTYPE html>
 
 <html>
-
+	<%
+		if(session.getAttribute("email").toString() == null)
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
+	%>
 <head>
     <title>Basic Table</title>
     <link rel="stylesheet" href="mainpage.css">

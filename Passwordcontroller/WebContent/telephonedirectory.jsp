@@ -5,7 +5,10 @@
 <!DOCTYPE html>
 
 <html>
-
+	<%
+		if(session.getAttribute("email").toString() == null)
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
+	%>
 <head>
     <title>Bank Services</title>
     <link rel="stylesheet" href="mainpage.css">

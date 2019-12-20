@@ -84,4 +84,15 @@
     <servlet-name>telephonedirectory</servlet-name>
     <url-pattern>/telephonedirectory</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>settings</servlet-name>
+    <servlet-class>servlets.Settings</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>settings</servlet-name>
+    <url-pattern>/settings</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

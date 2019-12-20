@@ -5,7 +5,15 @@
 <!DOCTYPE html>
 
 <html>
-
+	<%
+		if(session.getAttribute("email").toString() == null || session.getAttribute("email").toString() == ""){
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
+		} 
+		else {
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
+		}
+	%>
+	
 <head>
     <title>User Activities</title>
     <link rel="stylesheet" href="mainpage.css">
@@ -42,7 +50,7 @@
 <div class="butonAdd">
 	<form action ="useractivities" method = "post" >
     <input type="submit" value="REFRESH" name="submit" class="butons">
-    </form>
+    
 </div>
 <div class="tables">
     <table>
@@ -58,7 +66,7 @@
          </tr>
         <c:forEach items="${userLogsList}" var="UserLogs">
        		 <tr>
-           	<td ><c:out value="${UserLogs.id}"/></td>
+           	<td><c:out value="${UserLogs.id}"/></td>
            	<td><c:out value="${UserLogs.userlogtype}"/></td>  
            	<td><c:out value="${UserLogs.userOs}"/></td>
             <td><c:out value="${UserLogs.userBrowser}"/></td> 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import database.ConnectionHelper;
 import database.InsertDB;
@@ -115,7 +116,7 @@ public class UserLoginDB {
 			conn =ConnectionHelper.getConn();
 			ps = conn.prepareStatement("SELECT * FROM newsdata.userDate");
 			ResultSet rs = ps.executeQuery();
-			int id = 0;
+			int id = 100;
 			while(rs.next()) {
 				UserLogs ul = new UserLogs();
 				
@@ -140,7 +141,7 @@ public class UserLoginDB {
 			System.out.println(e);
 		}
 		
-		
+		Collections.reverse(arrayList);
 		return arrayList;
 	}
 	public ArrayList<SocialMediaTable> getSocialMedia(String email){

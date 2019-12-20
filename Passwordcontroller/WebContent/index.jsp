@@ -42,7 +42,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="index.jsp">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
@@ -51,25 +51,19 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">Home </a></li>
-                                        <li><a href="#">How Its Work ? </a></li>
-                                        <li><a href="#">Manage <i class="ti-angle-down"></i></a>
+                                        <li><a class="active" href="index.jsp">Home </a></li>
+                                        <li><a href="index.jsp">How Its Work ? </a></li>
+                                        <li><a href="login.jsp">Manage <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="#">Basic Table</a></li>
-                                                <li><a href="#">Email Services</a></li>
-                                                <li><a href="#">Social Media Services</a></li>
-                                                <li><a href="#">Bank Services</a></li>
-                                                <li><a href="#">Telephone Directory</a></li>
-                                                <li><a href="#">Date Services</a></li>
+                                                <li><a href="login.jsp">Basic Table</a></li>
+                                                <li><a href="login.jsp">Email Services</a></li>
+                                                <li><a href="login.jsp">Social Media Services</a></li>
+                                                <li><a href="login.jsp">Bank Services</a></li>
+                                                <li><a href="login.jsp">Telephone Directory</a></li>
+                                                <li><a href="login.jsp">Date Services</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Profile</a>
-                                            <ul class="submenu">
-                                                <li><a href="#">User Activities</a></li>
-                                                <li><a href="#">User Settings</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Premium</a></li>
+                                        <li><a href="login.jsp">Premium</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -284,7 +278,7 @@
                     <div class="col-xl-4 col-md-6 col-lg-4">
                         <div class="footer_widget">
                             <div class="footer_logo">
-                                <a href="#">
+                                <a href="index.jsp">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>

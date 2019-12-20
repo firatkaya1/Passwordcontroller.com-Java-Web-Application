@@ -28,7 +28,7 @@ public class UserLogs {
 		this.userOs = browser.getOperatingSystem();
 		this.userBrowser = browser.getBrowsername();
 		this.userIpAdress = browser.getUserIp();
-		this.userLogDate = new SimpleDateFormat("yyyy/MM/dd | HH:mm:ss").format(Calendar.getInstance().getTime());
+		this.userLogDate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime());
 	}
 	
 	public int getId() {

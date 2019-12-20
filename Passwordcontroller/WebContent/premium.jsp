@@ -1,113 +1,184 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html lang="tr">
 
-<html>
+	<%
+		if(session.getAttribute("email").toString() == null){
+			response.sendRedirect(request.getContextPath()+"/error.jsp");
+		}
+	%>
 
 <head>
-    <title>Premium</title>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/premium.png">
-    <link rel="stylesheet" href="mainpage.css">
-    <link rel="stylesheet" href="premium.css">
-    <link href="https://fonts.googleapis.com/css?family=Slabo+27px&display=swap" rel="stylesheet">
-    <script src="https://use.fontawesome.com/e54f0b343c.js"></script>
-
-
+<meta charset="UTF-8">
+<title>Password Controller - Premium Page</title>
+<link href="fonts/open/OpenSans-Regular.ttf" rel='stylesheet'
+	type='text/css'>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style-premium.css">
 </head>
 
 <body>
-    <div class="topmenu">
-        <ul>
-            <li><a href="howitsworks.jsp">How Its Work ?</a></li>
-            <li><a href="home.jsp">Home</a></li>
-            <li><a href="mainpage.jsp">Manage</a>
-                <ul class="dropdown">
-                    <li><a href="basictable.jsp">Basic Table</a></li>
-                    <li><a href="emailservices.jsp">Email Services</a></li>
-                    <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
-                    <li><a href="bankservices.jsp">Bank Services</a></li>
-                    <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
-                </ul>
-            </li>
-            <li><a>Profile</a>
-                <ul class="dropdown">
-                    <li><a href="useractivities.jsp">User Activities</a></li>
-                    <li><a href="useractivities.jsp">User Settings</a></li>
-                </ul>
-            </li>
-            <li><a href="premium.jsp" id="here">Premium<div class="premiumicon"></div></a></li>
-            <li id="exit"><a href="login.jsp">Exit</a></li>
-        </ul>
-    </div>
+	<div class="main">
+		<header>
+			<div class="header-area ">
+				<div id="sticky-header" class="main-header-area">
+					<div class="container-fluid p-0">
+						<div class="row align-items-center no-gutters">
+							<div class="col-xl-2 col-lg-2">
+								<div class="logo-img">
+									<a href="index.jsp"> <img src="img/logo.png" alt="">
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-7 col-lg-7">
+								<div class="main-menu  d-none d-lg-block">
+									<nav>
+										<ul id="navigation">
+											<li><a href="home.jsp">Home </a></li>
+											<li><a href="#">How Its Work ? </a></li>
+											<li><a href="#">Manage <i class="ti-angle-down"></i></a>
+												<ul class="submenu">
+                                                        <li><a href="basictable.jsp">Basic Table</a></li>
+                                                        <li><a href="emailservices.jsp">Email Services</a></li>
+                                                        <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
+                                                        <li><a href="bankservices.jsp">Bank Services</a></li>
+                                                        <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
+                                                        <li><a href="#">Date Services</a></li>
+                                                    </ul></li>
+											<li><a class="active" href="premium.jsp">Premium</a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 d-none d-lg-block">
+								<div class="log_chat_area d-flex align-items-center">
+									<div class="live_chat_btn">
+										<a class="boxed_btn_orange" href="login.jsp"> <span
+											class="falogins">Login</span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="mobile_menu d-block d-lg-none"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
-    <div class="container">
+		<div class="pricing-container">
+			<ul class="pricing-list bounce-invert">
+				<li>
+					<ul class="pricing-wrapper">
+						<li data-type="monthly" class="is-visible"><header
+								class="pricing-header">
+								<h2>Small</h2>
+								<div class="price">
+									<span class="currency">$</span> <span class="value">2.99</span>
+									<span class="duration">Year</span>
+								</div>
+							</header>
+							<div class="pricing-body">
+								<ul class="pricing-features">
+									<li><em>20</em> Database Table Rows</li>
+									<li><em>5</em> Email Account Services</li>
+									<li><em>3</em> Encryption Algorithm</li>
+									<li><em>40</em> Different Products Integration</li>
+									<li><em>20</em> Download PDF Format</li>
+									<li><em>24/7</em> Support</li>
+								</ul>
+							</div> <footer class="pricing-footer">
+								<a class="select" href="payment.jsp">Select Plan</a>
+							</footer></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="pricing-wrapper">
+						<li data-type="monthly" class="is-visible"><header
+								class="pricing-header">
+								<h2>Medium</h2>
+								<div class="price">
+									<span class="currency">$</span> <span class="value">5.99</span>
+									<span class="duration">Year</span>
+								</div>
+							</header>
+							<div class="pricing-body">
+								<ul class="pricing-features">
+									<li><em>50</em> Database Table Rows</li>
+									<li><em>10</em> Email Account Services</li>
+									<li><em>5</em> Encryption Algorithm</li>
+									<li><em>60</em> Different Products Integration</li>
+									<li><em>80</em> Download PDF Format</li>
+									<li><em>24/7</em> Support</li>
+								</ul>
+							</div> <footer class="pricing-footer">
+								<a class="select" href="payment.jsp">Select Plan</a>
+							</footer></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="pricing-wrapper">
+						<li data-type="monthly" class="is-visible"><header
+								class="pricing-header">
+								<h2>Large</h2>
+								<div class="price">
+									<span class="currency">$</span> <span class="value">9.99</span>
+									<span class="duration">Year</span>
+								</div>
+							</header>
+							<div class="pricing-body">
+								<ul class="pricing-features">
+									<li><em>120</em> Database Table Rows</li>
+									<li><em>15</em> Email Account Services</li>
+									<li><em>10</em> Encryption Algorithm</li>
+									<li><em>100</em> Different Products Integration</li>
+									<li><em>Unlimited</em> Download PDF Format</li>
+									<li><em>24/7</em> Support</li>
+								</ul>
+							</div> <footer class="pricing-footer">
+								<a class="select" href="payment.jsp">Select Plan</a>
+							</footer></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- JS Dosyaları -->
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="js/vendor/jquery-1.12.4.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/isotope.pkgd.min.js"></script>
+	<script src="js/ajax-form.js"></script>
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/scrollIt.js"></script>
+	<script src="js/jquery.scrollUp.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/nice-select.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/gijgo.min.js"></script>
+	<script src="js/contact.js"></script>
+	<script src="js/jquery.ajaxchimp.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/mail-script.js"></script>
 
-        <div class="columns">
-            <ul class="price">
-                <li class="header">Small</li>
-                <li class="headerdown">$ 2.99/YEAR</li>
-                <li>+20 Basic Table Rows</li>
-                <li>+20 Email Services Table Rows</li>
-                <li>+20 Social Media Table Rows</li>
-                <li>+20 Bank Service Table Rows</li>
-                <li>+20 Telephone Directory Table Rows</li>
-                <li>Download PDF Format</li>
-                <li class="headerdown"><button class="buybutton">BUY</button></li>
-            </ul>
-        </div>
-        <div class="columns">
-            <ul class="price">
-                <li class="header">Medium</li>
-                <li class="headerdown">$ 5.99/YEAR</li>
-                <li>+50 Basic Table Rows</li>
-                <li>+50 Email Services Table Rows</li>
-                <li>+50 Social Media Table Rows</li>
-                <li>+50 Bank Service Table Rows</li>
-                <li>+50 Telephone Directory Table Rows</li>
-                <li>Download PDF Format</li>
-                <li class="headerdown"><button class="buybutton" id="buythis">BUY</button></li>
-            </ul>
-        </div>
-        <div class="columns">
-            <ul class="price">
-                <li class="header">PRO</li>
-                <li class="headerdown">$ 9.99/YEAR</li>
-                <li>+120 Basic Table Rows</li>
-                <li>+120 Email Services Table Rows</li>
-                <li>+120 Social Media Table Rows</li>
-                <li>+120 Bank Service Table Rows</li>
-                <li>+120 Telephone Directory Table Rows</li>
-                <li>Download PDF Format</li>
-                <li class="headerdown"><button class="buybutton">BUY</button></li>
-            </ul>
-        </div>
-
-
-    </div>
-
-    <div id="myModal" class="modalPremium">
-        <div class="modal-contentPremium">
-            <div class="modal-headerPremium">
-                <span class="close">&times;</span>
-                <h2 id="addTitle">Buy Premium</h2>
-            </div>
-
-            <div class="modal-bodyPremium">
-                <form action="mainpage" method="post">
-                    <h4>Please fill in the field below.</h4><input type="text" placeholder="XXXX-XXXX-XXXX-XXXX">
-                    <input type="submit" value="BUY" class="buybuttonPremium">
-                </form>
-            </div>
-        </div>
-        <script src="jes/popuppremium.js"></script>
-    </div>
-
-
-
+	<script src="js/main.js"></script>
 
 </body>
 
