@@ -5,10 +5,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 	<%
-	 	String email = session.getAttribute("email").toString();
-		String name = email.substring(0,email.indexOf("@"));
-		if(session.getAttribute("email").toString() == null)
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
+		
+	String email="";
+	String name="";
+	if(null == session.getAttribute("email")) {
+		response.sendRedirect(request.getContextPath()+"/error.jsp");
+	} else {
+		 email = session.getAttribute("email").toString();
+		 name = email.substring(0,email.indexOf("@"));
+	}
 	%>
 
 

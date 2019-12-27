@@ -114,15 +114,14 @@ public class InsertDB {
 		int status = 0;
 		try {
 			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userBankServices` (`useremail`, `userBankName`,`userBankCardNumber`,`userBankCardName`,`userBankLastDate`,`userBankExpirationDate`,`userBankExplain`,`usertypeofencrypt`) VALUES (?,?,?,?,?,?,?,?)");
+			ps=conn.prepareStatement("INSERT INTO `userBankServices` (`useremail`, `userBankName`,`userBankCardNumber`,`userBankCardName`,`userBankExpirationDate`,`userBankExplain`,`usertypeofencrypt`) VALUES (?,?,?,?,?,?,?)");
 			ps.setString(1, bt.getUseremail());
 			ps.setString(2, bt.getBankname());
 			ps.setString(3, bt.getBankcardnumber());
 			ps.setString(4, bt.getBankcardname());
-			ps.setString(5, bt.getBanklastdate());
-			ps.setString(6, bt.getBankexpirationdate());
-			ps.setString(7, bt.getBankexplain());
-			ps.setString(8, bt.getUsertypeofencrypt());
+			ps.setString(5, bt.getBankexpirationdate());
+			ps.setString(6, bt.getBankexplain());
+			ps.setString(7, bt.getUsertypeofencrypt());
 			
 			status = ps.executeUpdate();
 			

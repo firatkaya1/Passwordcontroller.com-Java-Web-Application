@@ -46,12 +46,12 @@ public class BasicTables extends HttpServlet {
 			
 			basicTable = new BasicTable(
 				session.getAttribute("email").toString(),
-				request.getParameter("typeEmail"),
-				request.getParameter("email"),
+				request.getParameter("type"),
+				request.getParameter("emailadress"),
 				request.getParameter("username"),
 				request.getParameter("password"),
-				request.getParameter("explanations"),
-				request.getParameter("typeofmyencrypt"));
+				request.getParameter("description"),
+					"none");		//request.getParameter("typeofmyencrypt1")
 			
 				insert.insertToBasicTable(basicTable);
 			
@@ -67,15 +67,15 @@ public class BasicTables extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			basicTable = new BasicTable(
-					tableBasicList.get(Integer.valueOf(request.getParameter("userid1"))-1).getIdentifyofDB(),		
-					Integer.valueOf(request.getParameter("userid1")),
+					tableBasicList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB(),		
+					Integer.valueOf(request.getParameter("userid")),
 					session.getAttribute("email").toString(),			 
-					request.getParameter("emailType1"),		
-					request.getParameter("emailAdress1"),		
-					request.getParameter("username1"),		
-					request.getParameter("password1"),		
-					request.getParameter("explanations1"),		
-					request.getParameter("typeofmyencrypt1"));		
+					request.getParameter("type"),		
+					request.getParameter("emailadress"),		
+					request.getParameter("username"),		
+					request.getParameter("password"),		
+					request.getParameter("description"),		
+					"none");		//request.getParameter("typeofmyencrypt1")
 			
 			
 			update.updateToBasicTable(basicTable);		//update database

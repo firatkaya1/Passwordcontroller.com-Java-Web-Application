@@ -46,11 +46,11 @@ public class Emailservices extends HttpServlet {
 			
 			emailTable = new EmailTable(
 					session.getAttribute("email").toString(),
-					request.getParameter("emailServices"),
-					request.getParameter("emailAdress"),
+					request.getParameter("type"),
+					request.getParameter("email"),
 					request.getParameter("password"),
-					request.getParameter("explanations"),
-					request.getParameter("typeofmyencrypttext"));
+					request.getParameter("description"),
+					"none");  //request.getParameter("typeofmyencrypttext")
 		
 			insert.insertToEmailTable(emailTable);
 		
@@ -66,12 +66,12 @@ public class Emailservices extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			emailTable = new EmailTable(
-					emailList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
+					emailList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB(),
 					session.getAttribute("email").toString(),
-					request.getParameter("emailServicesUpdate"),
-					request.getParameter("emailAdressUpdate"),
-					request.getParameter("passwordUpdate"),
-					request.getParameter("explanationsUpdate"));
+					request.getParameter("type"),
+					request.getParameter("email"),
+					request.getParameter("password"),
+					request.getParameter("description"));
 			
 			update.updateToEmailTable(emailTable);
 			

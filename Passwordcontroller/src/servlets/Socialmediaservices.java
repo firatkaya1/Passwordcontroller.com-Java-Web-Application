@@ -50,12 +50,12 @@ public class Socialmediaservices extends HttpServlet {
 			
 			socialMediaTable = new SocialMediaTable(
 					session.getAttribute("email").toString(),
-					request.getParameter("socialmediaType"),
-					request.getParameter("socialmediaEmail"),
-					request.getParameter("socialmediausername"),
-					request.getParameter("socialmediapassword"),
-					request.getParameter("socialmediaexp"),
-					request.getParameter("typeofmyencrypt"));
+					request.getParameter("type"),
+					request.getParameter("email"),
+					request.getParameter("username"),
+					request.getParameter("password"),
+					request.getParameter("description"),
+					"none");
 		
 			insert.insertToSocialMediaTable(socialMediaTable);
 		
@@ -71,15 +71,15 @@ public class Socialmediaservices extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			socialMediaTable = new SocialMediaTable(
-					socialMediaList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
-					Integer.valueOf(request.getParameter("useridUpdate")),
+					socialMediaList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("userid")),
 					session.getAttribute("email").toString(),
-					request.getParameter("socialmediaTypeUpdate"),
-					request.getParameter("socialmediaEmailUpdate"),
-					request.getParameter("socialmediausernameUpdate"),
-					request.getParameter("socialmediapasswordUpdate"),
-					request.getParameter("socialmediaexpUpdate"),
-					request.getParameter("typeofmyencrypt"));
+					request.getParameter("type"),
+					request.getParameter("email"),
+					request.getParameter("username"),
+					request.getParameter("password"),
+					request.getParameter("description"),
+					"none");
 			
 			update.updateToSocialMediaTable(socialMediaTable);
 			

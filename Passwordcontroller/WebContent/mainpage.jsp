@@ -5,6 +5,16 @@
 <!DOCTYPE html>
 
 <html>
+	<%
+	String email="";
+	String name="";
+	if(null == session.getAttribute("email")) {
+		response.sendRedirect(request.getContextPath()+"/error.jsp");
+	} else {
+		 email = session.getAttribute("email").toString();
+		 name = email.substring(0,email.indexOf("@"));
+	}
+	%>
 
 <head>
     <title>Home</title>

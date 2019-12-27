@@ -53,10 +53,9 @@ public class BankServices extends HttpServlet {
 					request.getParameter("bankName"),
 					request.getParameter("bankcardname"),
 					request.getParameter("bankcardnumber"),
-					request.getParameter("bankcardlastdate"),
 					request.getParameter("bankcardexpirationdate"),
-					request.getParameter("explain"),
-					request.getParameter("typeofmyencrypt"));
+					request.getParameter("description"),
+					"none");
 		
 			insert.insertToBankTable(bankTable);
 		
@@ -74,15 +73,14 @@ public class BankServices extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			bankTable = new BankTable(
-					tableBankList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
-					Integer.valueOf(request.getParameter("useridUpdate")),
+					tableBankList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("userid")),
 					session.getAttribute("email").toString(),
-					request.getParameter("bankNameUpdate"),
-					request.getParameter("bankcardnameUpdate"),
-					request.getParameter("bankcardnumberUpdate"),
-					request.getParameter("bankcardlastdateUpdate"),
-					request.getParameter("bankcardexpirationdateUpdate"),
-					request.getParameter("explainUpdate"),
+					request.getParameter("bankName"),
+					request.getParameter("bankcardname"),
+					request.getParameter("bankcardnumber"),
+					request.getParameter("bankcardexpirationdate"),
+					request.getParameter("description"),
 					"None");
 			
 			update.updateToBankTable(bankTable);

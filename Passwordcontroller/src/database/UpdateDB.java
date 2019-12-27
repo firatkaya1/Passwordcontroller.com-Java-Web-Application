@@ -105,16 +105,15 @@ public class UpdateDB {
 		
 		try {
 			conn =ConnectionHelper.getConn(); 
-			ps = conn.prepareStatement("Update newsdata.userBankServices set id=?, useremail=?, userBankName=?, userBankCardNumber=?, userBankCardName=?, userBankLastDate=?, userBankExpirationDate=?,userBankExplain=? where id="+bt.getIdentifyofDB());                     
+			ps = conn.prepareStatement("Update newsdata.userBankServices set id=?, useremail=?, userBankName=?, userBankCardNumber=?, userBankCardName=?, userBankExpirationDate=?,userBankExplain=? where id="+bt.getIdentifyofDB());                     
 			
 			ps.setInt(1, bt.getIdentifyofDB());
 			ps.setString(2, bt.getUseremail());
 			ps.setString(3, bt.getBankname());
 			ps.setString(4, bt.getBankcardnumber());
 			ps.setString(5, bt.getBankcardname());
-			ps.setString(6, bt.getBanklastdate());
-			ps.setString(7, bt.getBankexpirationdate());
-			ps.setString(8, bt.getBankexplain());
+			ps.setString(6, bt.getBankexpirationdate());
+			ps.setString(7, bt.getBankexplain());
 			
 			status = ps.executeUpdate();
 			conn.close();

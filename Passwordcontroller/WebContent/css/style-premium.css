@@ -354,6 +354,7 @@ a {
 
 .pricing-wrapper .is-visible {
     position: relative;
+    background-color: #D1F2EB !important;
     z-index: 5;
 }
 

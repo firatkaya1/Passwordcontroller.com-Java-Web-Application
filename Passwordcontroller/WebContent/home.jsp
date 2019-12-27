@@ -6,10 +6,14 @@
 <html lang="tr">
 	<%
 
-     	String email = session.getAttribute("email").toString();  
-		String name = email.substring(0,email.indexOf("@"));
-		if(session.getAttribute("email").toString() == null)
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
+	String email="";
+	String name="";
+	if(null == session.getAttribute("email")) {
+		response.sendRedirect(request.getContextPath()+"/error.jsp");
+	} else {
+		 email = session.getAttribute("email").toString();
+		 name = email.substring(0,email.indexOf("@"));
+	}
 	%>
 <head>
     <meta charset="UTF-8">
@@ -253,8 +257,8 @@
                                                 <th>date</th>
                                                 <th>ID</th>
                                                 <th>Browser</th>
-                                                <th class="text-right">Explanation</th>
-                                                <th class="text-right">Service</th>
+                                                <th>Explanation</th>
+                                                <th>Service</th>
                                             </tr>
                                         </thead>
                                         

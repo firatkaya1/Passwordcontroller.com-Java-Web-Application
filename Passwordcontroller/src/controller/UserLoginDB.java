@@ -155,7 +155,7 @@ public class UserLoginDB {
 			while(rs.next()) {
 				SocialMediaTable smt = new SocialMediaTable();
 				smt.setIdentifyofDB(rs.getInt(1));
-				smt.setId(++id);
+				
 				smt.setUseremailadress(rs.getString("useremailadress"));
 				smt.setSocialMediaType(rs.getString("userSocialMediaType"));
 				smt.setSocialMediaEmail(rs.getString("userSocialMediasEmail"));
@@ -165,6 +165,7 @@ public class UserLoginDB {
 				
 				
 				if(smt.getUseremailadress().equals(email)) {
+					smt.setId(++id);
 					arrayList.add(smt);
 				}
 				
@@ -190,7 +191,6 @@ public class UserLoginDB {
 			while(rs.next()) {
 				EmailTable et = new EmailTable();
 				et.setIdentifyofDB(rs.getInt(1));
-				et.setId(++id);
 				et.setUseremailadress(rs.getString("useremailadress"));
 				et.setUserEmailType(rs.getString("userEmailType"));
 				et.setUserEmailServicesAdress(rs.getString("userEmailServicesAdress"));
@@ -198,6 +198,7 @@ public class UserLoginDB {
 				et.setUserEmailServicesExplana(rs.getString("userEmailServicesExplanations"));
 				
 				if(et.getUseremailadress().equals(email)) {
+					et.setId(++id);
 					arrayList.add(et);
 				}
 				
@@ -228,7 +229,6 @@ public class UserLoginDB {
 				bt.setBankname(rs.getString("userBankName"));
 				bt.setBankcardnumber(rs.getString("userBankCardNumber"));
 				bt.setBankcardname(rs.getString("userBankCardName"));
-				bt.setBanklastdate(rs.getString("userBankLastDate"));
 				bt.setBankexpirationdate(rs.getString("userBankExpirationDate"));
 				bt.setBankexplain(rs.getString("userBankExplain"));
 				bt.setUsertypeofencrypt(rs.getString("usertypeofencrypt"));

@@ -52,11 +52,11 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 			directoryTable = new TelephoneDirectoryTable(0,0,
 					session.getAttribute("email").toString(),
-					request.getParameter("phonenumbertype"),
-					request.getParameter("phoneownername"),
+					request.getParameter("type"),
+					request.getParameter("owner"),
 					request.getParameter("phonenumber"),
-					request.getParameter("phoneexplain"),
-					request.getParameter("typeofmyencrypt"));
+					request.getParameter("description"),
+					"none");
 			
 			insert.insertToPhoneTable(directoryTable);
 		
@@ -74,14 +74,14 @@ public class Telephonedirectoryservices extends HttpServlet {
 			UpdateDB update = new UpdateDB();
 			
 			directoryTable = new TelephoneDirectoryTable(
-					tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("useridUpdate"))-1).getIdentifyofDB(),
-					Integer.valueOf(request.getParameter("useridUpdate")),
+					tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB(),
+					Integer.valueOf(request.getParameter("userid")),
 					session.getAttribute("email").toString(),
-					request.getParameter("phonenumbertypeUpdate"),
-					request.getParameter("phoneownernameUpdate"),
-					request.getParameter("phonenumberUpdate"),
-					request.getParameter("phoneexplainUpdate"),
-					"None");
+					request.getParameter("type"),
+					request.getParameter("owner"),
+					request.getParameter("phonenumber"),
+					request.getParameter("description"),
+					"none");
 			
 			update.updateToPhoneTable(directoryTable);
 			

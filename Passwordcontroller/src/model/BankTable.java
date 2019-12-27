@@ -7,21 +7,19 @@ public class BankTable {
 	private String bankname;
 	private String bankcardnumber;
 	private String bankcardname;
-	private String banklastdate;
 	private String bankexpirationdate;
 	private String bankexplain;
 	private String usertypeofencrypt;
 	
 	public BankTable() {}
 	
-	public BankTable(int identifyofDB,int id,String useremail,String bankname,String bankcardnumber,String bankcardname,String banklastdate,String bankexpirationdate,String bankexplain,String usertypeofencrypt) {
+	public BankTable(int identifyofDB,int id,String useremail,String bankname,String bankcardnumber,String bankcardname,String bankexpirationdate,String bankexplain,String usertypeofencrypt) {
 		this.identifyofDB = identifyofDB;
 		this.id = id;
 		this.useremail = useremail;
 		this.bankname = bankname;
 		this.bankcardnumber = bankcardnumber;
 		this.bankcardname = bankcardname;
-		this.banklastdate = banklastdate;
 		this.bankexpirationdate = bankexpirationdate;
 		this.bankexplain = bankexplain;
 		this.usertypeofencrypt = usertypeofencrypt;
@@ -61,12 +59,6 @@ public class BankTable {
 	}
 	public void setBankcardname(String bankcardname) {
 		this.bankcardname = bankcardname;
-	}
-	public String getBanklastdate() {
-		return banklastdate;
-	}
-	public void setBanklastdate(String banklastdate) {
-		this.banklastdate = banklastdate;
 	}
 	public String getBankexpirationdate() {
 		return bankexpirationdate;
