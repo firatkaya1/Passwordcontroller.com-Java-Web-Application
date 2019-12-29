@@ -53,7 +53,7 @@ public class CheckPassword{
 		if(password.equals(password2)) {
 			return true;
 		}
-		errorList.add("Password and Re-Password does not match");
+		errorList.add("Password and Re-Password does not match.\n");
 		return false;
 	}
 	
@@ -63,7 +63,7 @@ public class CheckPassword{
 		if(password.length()>=8) {
 			return true;
 		} else {
-			errorList.add("*Password lenght must have at least 8 character");	
+			errorList.add("*Password lenght must have at least 8 character.\n");	
 			return false;
 		}
 		
@@ -76,7 +76,7 @@ public class CheckPassword{
 				return true;
 			
 		}
-		errorList.add("*Password must have at least one uppercase character.");
+		errorList.add("*Password must have at least one uppercase character.\n");
 		return false;
 	}
 	
@@ -87,7 +87,7 @@ public class CheckPassword{
 			if(Character.isLowerCase(password.charAt(i))) 
 				return true;
 		}
-		errorList.add("*Password must have at least one lowercase character.");
+		errorList.add("*Password must have at least one lowercase character.\n");
 		return false;
 		
 	}
@@ -99,7 +99,7 @@ public class CheckPassword{
 			if(Character.isDigit(password.charAt(i))) 
 				return true;
 		}
-		errorList.add("*Password must have at least one number.");
+		errorList.add("*Password must have at least one number.\n");
 		return false;
 	}
 	

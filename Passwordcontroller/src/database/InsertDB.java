@@ -20,13 +20,14 @@ public class InsertDB {
 		 
 		try {
 			conn =ConnectionHelper.getConn();
-			ps=conn.prepareStatement("INSERT INTO `userDate` (`userEmail`, `userLogType`,`userOS`,`userBrowser`,`useripAdress`,`userLogDate`) VALUES (?,?,?,?,?,?)");
+			ps=conn.prepareStatement("INSERT INTO `userDate` (`userEmail`, `userLogType`,`userOS`,`userBrowser`,`useripAdress`,`userLogDate`,`userService`) VALUES (?,?,?,?,?,?,?)");
 			ps.setString(1,ul.getUseremailadress());
 			ps.setString(2,ul.getUserlogtype());
 			ps.setString(3,ul.getUserOs());
 			ps.setString(4,ul.getUserBrowser());
 			ps.setString(5,ul.getUserIpAdress());
 			ps.setString(6,ul.getUserLogDate());
+			ps.setString(7, ul.getUserService());
 			status = ps.executeUpdate();
 			// close connections
 			conn.close();

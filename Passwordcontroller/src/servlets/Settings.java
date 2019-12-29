@@ -32,7 +32,7 @@ public class Settings extends HttpServlet {
 		
 		
 		switch(type) {
-		case "REFRESH":
+		case "":
 			request.setAttribute("userLogsList",userLogs);
 			request.getRequestDispatcher("/settings.jsp").forward(request, response);
 			break;

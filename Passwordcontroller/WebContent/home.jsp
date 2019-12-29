@@ -49,7 +49,7 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col-xl-2 col-lg-2">
                                     <div class="logo-img">
-                                        <a href="index.jsp">
+                                        <a href="home.jsp">
                                             <img src="img/logo.png" alt="">
                                         </a>
                                     </div>
@@ -60,14 +60,13 @@
                                             <ul id="navigation">
                                                 <li><a class="active" href="home.jsp">Home </a></li>
                                                 <li><a href="howitsworks.jsp">How Its Work ? </a></li>
-                                                <li><a href="mainpage.jsp">Manage <i class="ti-angle-down"></i></a>
+                                                <li><a href="manage.jsp">Manage <i class="ti-angle-down"></i></a>
                                                     <ul class="submenu">
                                                         <li><a href="basictable.jsp">Basic Table</a></li>
                                                         <li><a href="emailservices.jsp">Email Services</a></li>
                                                         <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
                                                         <li><a href="bankservices.jsp">Bank Services</a></li>
                                                         <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
-                                                        <li><a href="#">Date Services</a></li>
                                                     </ul>
                                                 </li>
                                                 
@@ -115,20 +114,20 @@
                                                 <img src="img/icon/avatar.jpg" alt="John Doe" />
                                             </div>
                                             <div class="content" style="float: right;margin: 10px">
-                                                <a class="js-acc-btn" href="account.jsp"><c:out value="${email}" /></a>
+                                                <a class="js-acc-btn" href="account.jsp"><%=name%></a>
                                             </div>
                                             <div class="account-dropdown js-dropdown">
                                                   <div class="info clearfix">
                                                       <div class="image">
                                                           <a href="account.jsp">
-                                                              <img src="img/icon/avatar.jpg" alt="Fırat Kaya" />
+                                                              <img src="img/icon/avatar.jpg" alt="<%=name%>" />
                                                           </a>
                                                       </div>
                                                       <div class="content">
                                                           <h5 class="name">     
                                                   			  <a href="account.jsp"><%=name%></a>
                                                           </h5>                                           
-                                               			 <span class="email"><c:out value="${email}" /></span>
+                                               			 <span class="email"><%=email%></span>
                                                       </div>
                                                   </div>
                                                   <div class="account-dropdown__body">
@@ -146,7 +145,7 @@
                                                       </div>
                                                   </div>
                                                   <div class="account-dropdown__footer">
-                                                      <a href="index.jsp">
+                                                      <a href="logout.jsp">
                                                           <i class="zmdi zmdi-power"></i>Logout</a>
                                                   </div>
                                               </div>
@@ -249,8 +248,9 @@
                             <div class="col-lg-9">
                                 <h2 class="title-1 m-b-25">Encrypted User Information</h2>
                                 <div class="table-responsive table--no-card m-b-40">
-                                <form action ="mainpage" method = "post" >
+                                <form action ="manage" method = "post" >
                                 <input type="submit" value="REFRESH" name="submit" class="butons">
+                                <input type="Submit" name="Submit" value="" class="butons" alt="Refresh">
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
@@ -269,7 +269,7 @@
 									           	<td><c:out value="${UserLogs.id}"/></td>
 									           	<td><c:out value="${UserLogs.userBrowser}"/></td> 
 									           	<td><c:out value="${UserLogs.userlogtype}"/></td>  
-									           	<td>SERVİCE</td>
+									           	<td><c:out value="${UserLogs.userService}"/></td> 
 									       	</tr>
 							    			</c:forEach>
                                         </tbody>
@@ -303,7 +303,7 @@
                                     <div class="au-card-title" style="background-image:url('img/bgtime.png');background-size: cover;">
                                         <div class="bg-overlay"></div>
                                         <h3>
-                                            <i class="zmdi zmdi-account-calendar"></i>December 11, 2019</h3>
+                                            <i class="zmdi zmdi-account-calendar" id="hours">  </i></h3>
                                     </div>
                                 </div>
                             </div>
@@ -329,6 +329,7 @@
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
     <script src="js/profile-main.js"></script>
+    <script src="js/time.js"></script>
 </body>
 
 </html>

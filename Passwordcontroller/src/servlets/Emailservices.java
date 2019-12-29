@@ -12,7 +12,9 @@ import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
 import database.InsertDB;
+import model.BrowserInformations;
 import model.EmailTable;
+import model.UserLogs;
 
 public class Emailservices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,9 @@ public class Emailservices extends HttpServlet {
 		UserLoginDB userLoginDB = new UserLoginDB();
 		
 		EmailTable emailTable;
+		UserLogs ul;
+		InsertDB insert = new InsertDB();
+		BrowserInformations browser = new BrowserInformations(request.getHeader("User-Agent"));
 		
 		HttpSession session = request.getSession();
 		
@@ -42,7 +47,7 @@ public class Emailservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			InsertDB insert = new InsertDB();
+			 insert = new InsertDB();
 			
 			emailTable = new EmailTable(
 					session.getAttribute("email").toString(),
@@ -56,6 +61,13 @@ public class Emailservices extends HttpServlet {
 		
 			emailList = userLoginDB.getEmailTable(emailTable.getUseremailadress());
 		
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"ADD",
+					browser,
+					"EMAIL TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
 			
@@ -77,6 +89,13 @@ public class Emailservices extends HttpServlet {
 			
 			emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
 			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"UPDATE",
+					browser,
+					"EMAIL TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);
 			
@@ -89,6 +108,13 @@ public class Emailservices extends HttpServlet {
 			delete.deleteFromEmailTable(emailList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
 			
 			emailList = userLoginDB.getEmailTable(session.getAttribute("email").toString());
+			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"DELETE",
+					browser,
+					"EMAIL TABLE");
+			insert.insertLog(ul);
 			
 			request.setAttribute("emailList",emailList);
 			request.getRequestDispatcher("/emailservices.jsp").forward(request, response);

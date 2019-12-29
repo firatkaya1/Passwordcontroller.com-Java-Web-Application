@@ -29,12 +29,12 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>mainpage</servlet-name>
-    <servlet-class>servlets.Mainpage</servlet-class>
+    <servlet-name>manage</servlet-name>
+    <servlet-class>servlets.Manage</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>mainpage</servlet-name>
-    <url-pattern>/mainpage</url-pattern>
+    <servlet-name>manage</servlet-name>
+    <url-pattern>/manage</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>basictables</servlet-name>

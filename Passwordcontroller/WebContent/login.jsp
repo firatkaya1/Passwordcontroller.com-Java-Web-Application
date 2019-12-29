@@ -25,10 +25,11 @@
                     <a href="register.jsp" class="signup-image-link">Create an account</a>
                     <a href="forgotpassword.jsp" class="signup-image-link">Forgot Password !</a>
                 </div>
-
+				
                 <div class="signin-form">
                     <h2 class="form-title">Sign In</h2>
                     <form action="login" method = "post" class="register-form" id="login-form">
+                    	<p style="color:red;">${invalid}</p>
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="email" id="your_name" pattern="[^ @]*@[^ @]*" minlength="4" maxlength="50" placeholder="Your Mail"/>

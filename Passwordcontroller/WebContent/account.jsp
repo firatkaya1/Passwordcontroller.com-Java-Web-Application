@@ -58,7 +58,7 @@
                                     <ul id="navigation">
                                         <li><a href="home.jsp">Home </a></li>
                                         <li><a href="howitsworks.jsp">How Its Work ? </a></li>
-                                        <li><a href="mainpage.jsp">Manage <i class="ti-angle-down"></i></a>
+                                        <li><a href="manage.jsp">Manage <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="basictable.jsp">Basic Table</a></li>
                                                 <li><a href="emailservices.jsp">Email Services</a></li>
@@ -144,7 +144,7 @@
                                             </div>
                                         </div>
                                         <div class="account-dropdown__footer">
-                                            <a href="index.jsp">
+                                            <a href="logout.jsp">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>

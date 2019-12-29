@@ -42,7 +42,7 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo-img">
                                     <a href="home.jsp">
-                                        <img src="img/logo.png" alt="">
+                                        <img src="img/logo.png" alt="logo">
                                     </a>
                                 </div>
                             </div>
@@ -51,14 +51,14 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="home.jsp">Home </a></li>
-                                            <li><a href="#">How Its Work ? </a></li>
-                                            <li><a class="active" href="#">Manage <i class="ti-angle-down"></i></a>
+                                            <li><a href="howitsworks.jsp">How Its Work ? </a></li>
+                                            <li><a class="active" href="manage.jsp">Manage <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="basictable.jsp">Basic Table</a></li>
                                                     <li><a href="emailservices.jsp">Email Services</a></li>
                                                     <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
                                                     <li><a href="bankservices.jsp">Bank Services</a></li>
-                                                    <li><a href="#">Telephone Directory</a></li>
+                                                    <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="premium.jsp">Premium</a></li>
@@ -111,12 +111,12 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="img/icon/avatar-big.jpg" alt="FÄ±rat Kaya">
+                                                        <img src="img/icon/avatar.jpg" alt="<%=name%>">
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><%=name%></a>
+                                                        <a href="account.jsp"><%=name%></a>
                                                     </h5>
                                                     <span class="email"><%=email%></span>
                                                 </div>
@@ -136,7 +136,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="logout.jsp">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

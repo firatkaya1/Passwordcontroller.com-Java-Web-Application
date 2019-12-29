@@ -14,6 +14,7 @@
 
 .header-area .main-header-area.sticky {
     background: #000000;
+    background-color: #0d0d0d;
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#3c35ce', GradientType=1);
     /* IE6-9 */
 }
@@ -435,10 +436,9 @@ h3 {
 }
 
 .boxed_btn:hover {
-    background: transparent;
-    color: #04D2C8;
-    border: 1px solid #04D2C8;
-    color: #04D2C8 !important;
+    background: #04D2C8;
+    border: 1px solid #0056b3;
+    color: #fff !important;
 }
 
 .boxed_btn_rev {
@@ -1059,8 +1059,9 @@ h3 {
 .slider_area .single_slider {
     height: 100vh;
     background-size: cover;
-    background-color: #0d0d0d;
+    background-repeat: no-repeat;
     background-position: center;
+    background-color: #2C3E50;
 }
 
 .slider_area .single_slider .illastrator_png {
@@ -1138,7 +1139,7 @@ h3 {
 }
 
 .about_area {
-    padding: 150px 0 200px 0;
+    padding: 100px 0 50px 0;
     background-color: #ECF0F1;
 }
 

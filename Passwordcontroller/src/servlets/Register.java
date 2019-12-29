@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
 					
 				} else {
 					
-					request.setAttribute("errorList", check.errorListAll());
+					request.setAttribute("errorlist", check.errorListAll());
 					
 					request.getRequestDispatcher("/register.jsp").forward(request, response);				
 				}

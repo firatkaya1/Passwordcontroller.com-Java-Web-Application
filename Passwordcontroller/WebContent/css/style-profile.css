@@ -13460,6 +13460,8 @@ section {
 
 .header-area .main-header-area .main-menu ul li .submenu li:hover a {
     color: #000;
+    border-left: 3px solid #0b0b0b;
+    padding-left: 3px;
 }
 
 .header-area .main-header-area .main-menu ul li:hover>.submenu {

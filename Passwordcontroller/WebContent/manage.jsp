@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Password Controller - Basic Table</title>
+    <title>Password Controller - Manage</title>
 
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -52,7 +52,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="home.jsp">Home </a></li>
-                                            <li><a href="error.jsp">How Its Work ? </a></li>
+                                            <li><a href="howitsworks.jsp">How Its Work ? </a></li>
                                             <li><a class="active" href="manage.jsp">Manage <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="basictable.jsp">Basic Table</a></li>
@@ -111,7 +111,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="account.jsp">
+                                                    <a href="#">
                                                         <img src="img/icon/avatar.jpg" alt="<%=name%>">
                                                     </a>
                                                 </div>
@@ -152,94 +152,4 @@
                 </div>
             </div>
         </header>
-
-        <section class="account">
-            <div style="max-width: 94%;" class="container">
-                <div class="account-content">
-                    <div class="pop-up" id="pop-up">
-                        <div class="contentx">
-                            <div class="containerx">
-                                <div class="dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div>
-                                <span id="closex" class="closex">Close</span>
-                                <div class="title">
-                                    <h1>Bank Service</h1>
-                                </div>
-                                <div class="subscribe">
-                                    <h1>* All field can not be blank</h1>
-                                    <form action ="bankservices" method = "post">
-                                        <input type="number" name="userid" minlength="1" maxlength="10" placeholder="Id" id="userid">
-                                        <input type="text" name="bankName" placeholder="Bank Name" id="bankname">
-                                        <input type="number" name="bankcardnumber" placeholder="Bank Card Number*" id="bankcardnumber">
-                                        <input type="text" name="bankcardname" placeholder="Bank Card Name*" id="bankcardname">
-                                        <input type="number" name="bankcardexpirationdate" minlength="4" placeholder="Bank Card Expiration Date" id="bankcardexpirationdate">
-                                        <input type="text" name="description" placeholder="Description" id="description">
-                                        <input type="Submit" name="Submit" id="modalButton" placeholder="Send">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="account-form">
-                        <h2 class="form-title">Bank Service</h2>
-                        <div class="form-group">
-                            <button id="btn-add" class="btn-add" onclick="openModal()"><span>Add New</span></button>
-                            <form action ="bankservices" method = "post" >
-					            <input type="submit" value="REFRESH" name="Submit" id="btn-refresh" class="btn-refresh">
-					        </form> 
-                        </div>
-                        <div class="col-lg-9" style="max-width: 100%">
-                            <div class="table-responsive table--no-card m-b-40">
-                                <table class="table table-borderless table-striped table-earning" id="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Bank Name</th>
-                                            <th>Bank Card Number</th>
-                                            <th>Bank Card Name</th>
-                                            <th>Bank Card Expiration Date</th>
-                                            <th>Explanation</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    
-                                    <c:forEach items="${tableBankList}" var="BankTable">
-							       		<tr>
-							           	 	<td><c:out value="${BankTable.id}"/></td>
-							           	 	<td><c:out value="${BankTable.bankname}" /></td>  
-							           	 	<td><c:out value="${BankTable.bankcardnumber}" /></td>
-							                <td><c:out value="${BankTable.bankcardname}" /></td>
-							           	 	<td><c:out value="${BankTable.bankexpirationdate}" /></td>  
-							           	 	<td><c:out value="${BankTable.bankexplain}" /></td>
-							           	 	<td class="text-right actions-td">
-                                                <span title="Edit"><i class="zmdi zmdi-edit actions-edit" id="${BankTable.id}"></i></span>
-                                                <span title="Delete"><i class="zmdi zmdi-delete actions-delete"></i></span>
-                                            </td>
-							        	</tr>
-							    	</c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="js/profile-settings.js"></script>
-    <script src="js/banktable.js"></script>
-
-</body>
-
-</html>
+ </div>        

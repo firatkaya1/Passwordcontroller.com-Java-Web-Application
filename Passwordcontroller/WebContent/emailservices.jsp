@@ -42,7 +42,7 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo-img">
                                     <a href="home.jsp">
-                                        <img src="img/logo.png" alt="">
+                                        <img src="img/logo.png" alt="logo">
                                     </a>
                                 </div>
                             </div>
@@ -51,14 +51,14 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="home.jsp">Home </a></li>
-                                            <li><a href="#">How Its Work ? </a></li>
-                                            <li><a class="active" href="#">Manage <i class="ti-angle-down"></i></a>
+                                            <li><a href="howitsworks.jsp">How Its Work ? </a></li>
+                                            <li><a class="active" href="manage.jsp">Manage <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
                                                     <li><a href="basictable.jsp">Basic Table</a></li>
                                                     <li><a href="emailservices.jsp">Email Services</a></li>
                                                     <li><a href="socialmediaservices.jsp">Social Media Services</a></li>
                                                     <li><a href="bankservices.jsp">Bank Services</a></li>
-                                                    <li><a href="#">Telephone Directory</a></li>
+                                                    <li><a href="telephonedirectory.jsp">Telephone Directory</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="premium.jsp">Premium</a></li>
@@ -105,38 +105,38 @@
                                             <img src="img/icon/avatar.jpg" alt="John Doe">
                                         </div>
                                         <div class="content" style="float: right;margin: 10px">
-                                            <a class="js-acc-btn" href="#">Fırat Kaya</a>
+                                            <a class="js-acc-btn" href="#"><%=name%></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="img/icon/avatar-big.jpg" alt="Fırat Kaya">
+                                                        <img src="img/icon/avatar.jpg" alt="<%=name%>">
                                                     </a>
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">Fırat Kaya</a>
+                                                        <a href="account.jsp"><%=name%></a>
                                                     </h5>
-                                                    <span class="email">firatkaya@passwordcontroller.com</span>
+                                                    <span class="email"><%=email%></span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="account.html">
+                                                    <a href="account.jsp">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="settings.html">
+                                                    <a href="settings.jsp">
                                                         <i class="zmdi zmdi-settings"></i>Setting</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="billing.html">
+                                                    <a href="billing.jsp">
                                                         <i class="zmdi zmdi-money-box"></i>Billing</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="logout.jsp">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

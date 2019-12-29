@@ -14,6 +14,8 @@ import database.DeleteDB;
 import database.UpdateDB;
 import database.InsertDB;
 import model.BankTable;
+import model.BrowserInformations;
+import model.UserLogs;
 
 public class BankServices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,9 +26,10 @@ public class BankServices extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserLoginDB userLoginDB = new UserLoginDB();
-		
 		BankTable bankTable;
-		
+		UserLogs ul;
+		InsertDB insert = new InsertDB();
+		BrowserInformations browser = new BrowserInformations(request.getHeader("User-Agent"));
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
@@ -46,7 +49,7 @@ public class BankServices extends HttpServlet {
 			
 		case "SAVE":
 			
-			InsertDB insert = new InsertDB();
+			insert = new InsertDB();
 			
 			bankTable = new BankTable(0,0,
 					session.getAttribute("email").toString(),
@@ -56,6 +59,13 @@ public class BankServices extends HttpServlet {
 					request.getParameter("bankcardexpirationdate"),
 					request.getParameter("description"),
 					"none");
+			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"ADD",
+					browser,
+					"BANK TABLE");
+			insert.insertLog(ul);
 		
 			insert.insertToBankTable(bankTable);
 		
@@ -87,6 +97,12 @@ public class BankServices extends HttpServlet {
 			
 			tableBankList = userLoginDB.getBankTable(session.getAttribute("email").toString());
 			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"UPDATE",
+					browser,
+					"BANK TABLE");
+			
 			request.setAttribute("tableBankList",tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
 			
@@ -106,6 +122,12 @@ public class BankServices extends HttpServlet {
 			request.setAttribute("tableBankList", tableBankList);
 			request.getRequestDispatcher("/bankservices.jsp").forward(request, response);
 
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"DELETE",
+					browser,
+					"BANK TABLE");
+			
 			type = "";
 
 			break;

@@ -23,6 +23,9 @@
             <div class="signup-content">
                 <div class="signup-form">
                     <h2 class="form-title">Sign up</h2>
+                    <c:forEach items="${errorlist}" var = "item">
+                    <i style="color: red;font-size: 15px;"> ${item}<br/></i>
+                    </c:forEach><br/>
                     <form action = "register" method = "post" class="register-form" id="register-form">
                         <div class="form-group">
                             <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -30,19 +33,19 @@
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" minlength="4" maxlength="50" placeholder="Your Email"/>
+                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" minlength="4" maxlength="50" placeholder="Your Email"/>                            
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="pass" placeholder="Password"/>
+                            <input type="password" name="password" id="pass" minlength="8" placeholder="Password" />
                         </div>
                         <div class="form-group">
                             <label for="repass"><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" name="repassword" id="re_pass" placeholder="Repeat your password"/>
+                            <input type="password" name="repassword" id="re_pass" minlength="8"  placeholder="Repeat your password" />
                         </div>
                         <div class="form-group">
                             <label for="phone"><i class="zmdi zmdi-phone"></i></label>
-                            <input type="text" name="phonenumber" id="phone" minlength="4" maxlength="11" pattern="^\+?\d{0,11}" placeholder="Phone Number"/>
+                            <input type="text" name="phonenumber" id="phone" minlength="10" maxlength="11" pattern="^\+?\d{0,11}" placeholder="Phone Number"/>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

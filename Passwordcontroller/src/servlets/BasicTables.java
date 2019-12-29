@@ -13,6 +13,8 @@ import database.DeleteDB;
 import database.UpdateDB;
 import database.InsertDB;
 import model.BasicTable;
+import model.BrowserInformations;
+import model.UserLogs;
 
 
 public class BasicTables extends HttpServlet {
@@ -22,7 +24,9 @@ public class BasicTables extends HttpServlet {
 		
 		UserLoginDB userLoginDB = new UserLoginDB();
 		BasicTable basicTable;
-		
+		UserLogs ul;
+		InsertDB insert = new InsertDB();
+		BrowserInformations browser = new BrowserInformations(request.getHeader("User-Agent"));
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
@@ -42,7 +46,7 @@ public class BasicTables extends HttpServlet {
 			
 		case "SAVE":
 			
-			InsertDB insert = new InsertDB();	
+				
 			
 			basicTable = new BasicTable(
 				session.getAttribute("email").toString(),
@@ -54,6 +58,14 @@ public class BasicTables extends HttpServlet {
 					"none");		//request.getParameter("typeofmyencrypt1")
 			
 				insert.insertToBasicTable(basicTable);
+				
+				
+				ul = new UserLogs(
+						session.getAttribute("email").toString(),
+						"ADD",
+						browser,
+						"BASIC TABLE");
+				insert.insertLog(ul);
 			
 				tableBasicList = userLoginDB.getTable(basicTable.getUseremail());
 			
@@ -80,6 +92,13 @@ public class BasicTables extends HttpServlet {
 			
 			update.updateToBasicTable(basicTable);		//update database
 			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"UPDATE",
+					browser,
+					"BASIC TABLE");
+			insert.insertLog(ul);
+			
 			tableBasicList = userLoginDB.getTable(basicTable.getUseremail());		
 			
 			request.setAttribute("tableBasicList",tableBasicList);
@@ -94,6 +113,13 @@ public class BasicTables extends HttpServlet {
 			delete.deleteFromBasicTable(tableBasicList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
 			tableBasicList = userLoginDB.getTable(session.getAttribute("email").toString());
+			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"DELETE",
+					browser,
+					"BASIC TABLE");
+			insert.insertLog(ul);
 			
 			request.setAttribute("tableBasicList",tableBasicList);
 			request.getRequestDispatcher("/basictable.jsp").forward(request, response);

@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import controller.UserLoginDB;
 import model.UserLogs;
 
-public class Mainpage extends HttpServlet {
+public class Manage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 

@@ -13,7 +13,9 @@ import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
 import database.InsertDB;
+import model.BrowserInformations;
 import model.TelephoneDirectoryTable;
+import model.UserLogs;
 
 public class Telephonedirectoryservices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +30,9 @@ public class Telephonedirectoryservices extends HttpServlet {
 		UserLoginDB userLoginDB = new UserLoginDB();
 		
 		TelephoneDirectoryTable directoryTable;
-		
+		UserLogs ul;
+		InsertDB insert = new InsertDB();
+		BrowserInformations browser = new BrowserInformations(request.getHeader("User-Agent"));
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
@@ -48,7 +52,7 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			InsertDB insert = new InsertDB();
+			 insert = new InsertDB();
 			
 			directoryTable = new TelephoneDirectoryTable(0,0,
 					session.getAttribute("email").toString(),
@@ -62,6 +66,13 @@ public class Telephonedirectoryservices extends HttpServlet {
 		
 			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable( session.getAttribute("email").toString());
 		
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"ADD",
+					browser,
+					"TELEPHONE DIRECTORY TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
 			
@@ -87,6 +98,13 @@ public class Telephonedirectoryservices extends HttpServlet {
 			
 			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
 			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"UPDATE",
+					browser,
+					"TELEPHONE DIRECTORY TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);
 			
@@ -101,6 +119,13 @@ public class Telephonedirectoryservices extends HttpServlet {
 			delete.deleteFromTelephoneDirectoryTable(tableTelephoneDirectoryList.get(Integer.valueOf(request.getParameter("userid"))-1).getIdentifyofDB());
 			
 			tableTelephoneDirectoryList = userLoginDB.getTelephoneDirectoryTable(session.getAttribute("email").toString());
+			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"DELETE",
+					browser,
+					"TELEPHONE DIRECTORY TABLE");
+			insert.insertLog(ul);
 			
 			request.setAttribute("tableTelephoneDirectoryList",tableTelephoneDirectoryList);
 			request.getRequestDispatcher("/telephonedirectory.jsp").forward(request, response);

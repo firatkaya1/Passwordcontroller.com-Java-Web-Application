@@ -35,7 +35,7 @@ public class UserLoginDB {
 			controll = rs.next();			
 			if(controll == true) {
 				BrowserInformations bI = new BrowserInformations(useragent);
-				UserLogs ul = new UserLogs(useremail,type,bI);
+				UserLogs ul = new UserLogs(useremail,type,bI,type);
 				InsertDB insert = new InsertDB();
 				insert.insertLog(ul);
 			}
@@ -126,6 +126,7 @@ public class UserLoginDB {
 				ul.setUserBrowser(rs.getString("userBrowser"));
 				ul.setUserIpAdress(rs.getString("useripAdress"));
 				ul.setUserLogDate(rs.getString("userLogDate"));
+				ul.setUserService(rs.getString("userService"));
 				
 				if(ul.getUseremailadress().equals(email)) {
 					ul.setId(++id);

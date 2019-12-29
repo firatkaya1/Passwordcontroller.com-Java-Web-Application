@@ -12,7 +12,9 @@ import controller.UserLoginDB;
 import database.DeleteDB;
 import database.UpdateDB;
 import database.InsertDB;
+import model.BrowserInformations;
 import model.SocialMediaTable;
+import model.UserLogs;
 
 public class Socialmediaservices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +29,9 @@ public class Socialmediaservices extends HttpServlet {
 		UserLoginDB userLoginDB = new UserLoginDB();
 		
 		SocialMediaTable socialMediaTable;
-		
+		UserLogs ul;
+		InsertDB insert = new InsertDB();
+		BrowserInformations browser = new BrowserInformations(request.getHeader("User-Agent"));
 		HttpSession session = request.getSession();
 		
 		String type = request.getParameter("Submit");
@@ -46,7 +50,7 @@ public class Socialmediaservices extends HttpServlet {
 			
 		case "SAVE":
 			
-			InsertDB insert = new InsertDB();
+			insert = new InsertDB();
 			
 			socialMediaTable = new SocialMediaTable(
 					session.getAttribute("email").toString(),
@@ -61,6 +65,13 @@ public class Socialmediaservices extends HttpServlet {
 		
 			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUseremailadress());
 		
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"ADD",
+					browser,
+					"SOCIAL MEDIA TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
 			 
@@ -85,6 +96,13 @@ public class Socialmediaservices extends HttpServlet {
 			
 			socialMediaList = userLoginDB.getSocialMedia(socialMediaTable.getUseremailadress());
 			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"UPDATE",
+					browser,
+					"SOCIAL MEDIA TABLE");
+			insert.insertLog(ul);
+			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
 			type = "";
@@ -96,6 +114,13 @@ public class Socialmediaservices extends HttpServlet {
 			
 			delete.deleteFromSocialMediaTable(socialMediaList.get(Integer.valueOf(request.getParameter("valueofid"))-1).getIdentifyofDB());
 			socialMediaList = userLoginDB.getSocialMedia(session.getAttribute("email").toString());
+			
+			ul = new UserLogs(
+					session.getAttribute("email").toString(),
+					"DELETE",
+					browser,
+					"SOCIAL MEDIA TABLE");
+			insert.insertLog(ul);
 			
 			request.setAttribute("socialMediaList",socialMediaList);
 			request.getRequestDispatcher("/socialmediaservices.jsp").forward(request, response);
